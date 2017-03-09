@@ -119,6 +119,10 @@ input {
   color: #6f6;
   text-decoration: none;
 }
+.glyphicon{
+    // font-family: 'Glyphicons Halflings';
+    font-family:'Glyphicons Halflings',verdana, arial, helvetica, sans-serif;
+}
 
 /* footer */
 
@@ -134,7 +138,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #222;
+  color: #6f6;
 }
 
 footer small {
