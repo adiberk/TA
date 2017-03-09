@@ -82,6 +82,8 @@ input {
 
 #error_explanation {
   color: red;
+  border:none;
+  width:100%;
   ul {
     color: red;
     margin: 0 0 30px 0;
@@ -93,6 +95,10 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+.field_with_errors {
+  background-color: white;
+  display:block;
 }
 
 
