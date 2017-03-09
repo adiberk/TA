@@ -1,29 +1,48 @@
 <p id="notice"><%= notice %></p>
+<% provide(:title, @user.first_name) %>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+   <div class="container-fluid main-contain">
+      <div class="row">
+        <div class="col-sm-3 col-lg-2">
+          <nav class="navbar navbar-default navbar-fixed-side">
+              <h1 class = "sidebar">Live Now </h1>
+                <dl class = "sidebar_data">
+                  <dt> COSI 166 UWS </dt>
+                  <dd><a href="#"> Nick April </a></dd>
+                  <br></br>
+                  <dt> 163COSI-29A-1 : Discrete Structures </dt>
+                  <dd><a href="#"> Jean Sawyer </a></dd>
+                </dl>
+          </nav>
+        </div>
+         <div class="col-sm-2">
+          <p>
+            <img src="http://www.hbc333.com/data/out/190/47199326-profile-pictures.png" height = "100" width = "100" />
+          </p>
+        </div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+        <div class="col-sm-2 user_name">
+          <p>
+            <h3> <%=@user.first_name%> <%=@user.last_name%></h3>
+          </p>
+        </div>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<!--         <div class="col-sm-7 col-lg-9 course_appoint">
+          <p>
+            <strong>Courses</strong>
+            <ul>
+                <%#= get_course_list()%>
+            </ul>
+          </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>University:</strong>
-  <%= @user.university_id %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+          <p>
+            <strong>Appointments</strong>
+            <ul>
+               <%#= get_appointment()%>
+            </ul>
+          </p>
+        </div> -->
+      </div>
+    </div>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
