@@ -124,12 +124,14 @@ input {
     // font-family: 'Glyphicons Halflings';
     font-family:'Glyphicons Halflings',verdana, arial, helvetica, sans-serif;
 }
-h2 > .btn-primary{
-  color:white;
-}
+// .glyphicon-log-in{
+//   padding-right: 25px;
+// }
 
 /*body*/
-
+h2 > .btn-primary{ //homepage btn
+  color:white;
+}
 .sidebar{
   padding-left: 0;
 }
