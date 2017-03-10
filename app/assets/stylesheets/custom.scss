@@ -23,7 +23,6 @@ $gray-medium-light: #eaeaea;
 
 body {
   // padding-top: 60px;
-  margin:0px!important;
   margin-top: 0 !important;
 }
 
@@ -150,9 +149,9 @@ input {
 h2 > .btn-primary{ //homepage btn
   color:white;
 }
-.btn-primary:visited{
-  color:white;
-}
+// .btn-primary:visited{
+//   color:white
+// }
 .sidebar{
   padding-left: 0;
 }
