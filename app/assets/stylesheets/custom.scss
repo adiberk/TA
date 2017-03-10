@@ -101,6 +101,20 @@ input {
   display:block;
 }
 
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
 
 /* header */
 #logo {
@@ -127,6 +141,9 @@ input {
 // .glyphicon-log-in{
 //   padding-right: 25px;
 // }
+
+
+
 
 /*body*/
 h2 > .btn-primary{ //homepage btn
