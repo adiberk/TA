@@ -124,7 +124,7 @@ input {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 10px;
+  padding-top: 15px;
   // margin-top:15px;
   font-weight: bold;
 }
@@ -147,6 +147,9 @@ input {
 
 /*body*/
 h2 > .btn-primary{ //homepage btn
+  color:white;
+}
+.btn-primary:visited{
   color:white;
 }
 .sidebar{
