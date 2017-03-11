@@ -1,15 +1,16 @@
 <%= form_for(course) do |f| %>
-  <% if course.errors.any? %>
+    <%= render 'shared/courses_error_messages' %>
+<!--   <%# if course.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+      <h2><%#= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
       <ul>
-      <% course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+      <%# course.errors.full_messages.each do |message| %>
+        <li><%#= message %></li>
+      <%# end %>
       </ul>
     </div>
-  <% end %>
+  <%# end %> -->
 
   <div class="field">
     <%= f.label :name %>
