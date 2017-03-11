@@ -42,17 +42,17 @@ Enrollment.create(user_id: 1, course_id:4, ta:false)
 Enrollment.create(user_id: 2, course_id:1, ta:false)
 # 5th enrollment
 Enrollment.create(user_id: 2, course_id:2, ta:true)
-# th enrollment
+# 6th enrollment
 Enrollment.create(user_id: 2, course_id:5, ta:false)
-# th enrollment
+# 7th enrollment
 Enrollment.create(user_id: 3, course_id:2, ta:false)
-# th enrollment
+# 8th enrollment
 Enrollment.create(user_id: 3, course_id:3, ta:false)
-# th enrollment
+# 9th enrollment
 Enrollment.create(user_id: 4, course_id:2, ta:true)
-# th enrollment
+# 10th enrollment
 Enrollment.create(user_id: 4, course_id:5, ta:true)
-# th enrollment
+# 11th enrollment
 Enrollment.create(user_id: 5, course_id:3, ta:false)
-# th enrollment
+# 12th enrollment
 Enrollment.create(user_id: 5, course_id:4, ta:false)
