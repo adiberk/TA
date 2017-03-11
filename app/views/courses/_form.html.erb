@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= f.label :major_id %>
-    <%= f.number_field :major_id %>
+    <%= f.number_field :major_id, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Course", class: "btn btn-primary" %>
   </div>
 <% end %>
