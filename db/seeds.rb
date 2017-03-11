@@ -21,16 +21,28 @@ User.create(id: 4, first_name: "Stacy", last_name: "Dean", username: "stacy", em
 # 5th user
 User.create(id: 5, first_name: "Fanny", last_name: "Ferguson", username: "fanny", email: "fannyferguson@bc.edu", university_id: 3, password:"foobar", password_confirmation: "foobar")
 # create fake courses
-# 1st course
-Course.create(id: 1, name: "Capstone Project", major_id:1)
-# 2nd course
-Course.create(id: 2, name: "Data Structure", major_id:1)
-# 3rd course
-Course.create(id: 3, name: "Mobile App", major_id:1)
-# 4th course
-Course.create(id: 4, name: "Macroeconomics", major_id:2)
-# 5th course
-Course.create(id: 5,name: "Algebra", major_id:3)
+arr = ["Capstone Project", "Data Structure", "Mobile App", "Macroeconomics", "Algebra"]
+count = 1
+major_id = 1
+arr.each do |course|
+	if count >=4
+		major_id +=1
+	end
+	Course.create(id: count, name: course, major_id: major_id)
+	count+=1
+end
+# # 1st course
+# Course.create(id: 1, name: "Capstone Project", major_id:1)
+# # 2nd course
+# Course.create(id: 2, name: "Data Structure", major_id:1)
+# # 3rd course
+# Course.create(id: 3, name: "Mobile App", major_id:1)
+# # 4th course
+# Course.create(id: 4, name: "Macroeconomics", major_id:2)
+# # 5th course
+# Course.create(id: 5,name: "Algebra", major_id:3)
+
+
 # create fake enrollments
 # 1st enrollment
 Enrollment.create(user_id: 1, course_id:1, ta:false)

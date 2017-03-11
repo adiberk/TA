@@ -20,7 +20,6 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
   end
-
   # POST /courses
   # POST /courses.json
   def create
