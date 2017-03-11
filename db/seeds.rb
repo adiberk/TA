@@ -57,7 +57,7 @@ Enrollment.create(user_id: 2, course_id:2, ta:true)
 # 6th enrollment
 Enrollment.create(user_id: 2, course_id:5, ta:false)
 # 7th enrollment
-Enrollment.create(user_id: 3, course_id:2, ta:false)
+Enrollment.create(user_id: 3, course_id:2, ta:true)
 # 8th enrollment
 Enrollment.create(user_id: 3, course_id:3, ta:false)
 # 9th enrollment
