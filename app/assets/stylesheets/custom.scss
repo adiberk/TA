@@ -130,7 +130,7 @@ input {
 }
 
 #logo:hover {
-  color: #6f6;
+  color: #808080;
   text-decoration: none;
   background-color:transparent;
 }
@@ -142,7 +142,28 @@ input {
 //   padding-right: 25px;
 // }
 
-
+.home-image{
+  position: relative;
+  background: url('https://static1.squarespace.com/static/54d011cee4b00667cb0d9405/t/54efaeafe4b0cdb011371bda/1424993969774/hrdarkblue.jpg?format=1500w') center;
+  // width: 100%;
+  // height: 100%;
+  background-size: cover;
+  overflow: hidden;
+}
+.home-image h1{
+  color: #fff;
+}
+.home-image h2{
+  color: rgb(0, 0, 0);
+}
+.home-image .container{
+  // background: #9F9898;
+  background: rgba(159,152,152,0.5);
+  -pie-background:  rgba(159,152,152, 0.5);
+  behavior: url(PIE.htc);
+   // z-index: -1;
+   // position:absolute;
+}
 
 
 /*body*/

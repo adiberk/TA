@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 20170310061851) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
+    #t.string   "teacher"
     t.integer  "major_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

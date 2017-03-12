@@ -1,14 +1,46 @@
 <p id="notice"><%= notice %></p>
+<% provide(:title, @course) %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
-</p>
+   <div class="container-fluid main-contain">
+      <div class="row">
+        <!--<div class="col-sm-3 col-lg-2 sidebar">
+          <%= render 'layouts/sidebar' %>
+        </div> -->
 
-<p>
-  <strong>Major:</strong>
-  <%= @course.major_id %>
-</p>
+        <%= render 'layouts/sidebar' %>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+
+         <div class="col-sm-2">
+          <p>
+            <img src="http://www.hbc333.com/data/out/190/47199326-profile-pictures.png" height = "100" width = "100" />
+          </p>
+        </div>
+
+        <div class="col-lg-6">
+          <p>
+            <h3> <%=@course.name%></h3>
+          </p>
+        </div>
+
+
+        <div class="col-lg-8 course_appoint">
+          <p>
+          	<br>
+        	<br>
+        	
+            <strong>Office Hours</strong>
+            <ul>
+                <li> 1 O'clock pm </li>
+            </ul>
+          </p>
+
+          <p>
+            <strong>TA's</strong>
+            <ul>
+               <li> TA #1 </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+    <%= link_to 'Back', users_path %>
