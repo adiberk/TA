@@ -15,3 +15,4 @@ module CoursesHelper
   end
 
 end
+
