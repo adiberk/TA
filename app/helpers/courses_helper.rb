@@ -4,15 +4,19 @@ module CoursesHelper
       if my_courses.length == 0
         return "Not registered for courses"
       end
-	  str = "<li>#{my_courses[0].name}</li> "
+    str = "<li>#{my_courses[0].name}</li> "
       # puts "*******#{my_courses[0]}"
 	  count = 1
       while count < my_courses.length do
       	str+="<li>#{my_courses[count].name}</li>"
-      	count+=1;
+        count+=1;
       end
       str.html_safe
   end
-
 end
 
+#str = "<li>#{my_courses[0].name}</li> "
+#str+="<li>#{my_courses[count].name}</li>"
+
+#str = "<li><%= link_to '#{my_courses[0].name}', courses/#{my_courses[0].id}, class: 'glyphicon glyphicon-log-in' %></li>"
+#str += '<li><%= link_to "#{my_courses[count].name}", courses/#{my_courses[count].id}, class: "glyphicon glyphicon-log-in" %></li>'

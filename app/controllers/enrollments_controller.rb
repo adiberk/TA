@@ -4,12 +4,12 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments
   # GET /enrollments.json
   def index
-    @enrollments = Enrollment.all
   end
 
   # GET /enrollments/1
   # GET /enrollments/1.json
   def show
+    @enrollment = Enrollment.find(params[:id])
   end
 
   # GET /enrollments/new

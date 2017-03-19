@@ -21,7 +21,7 @@ User.create(id: 4, first_name: "Stacy", last_name: "Dean", username: "stacy", em
 # 5th user
 User.create(id: 5, first_name: "Fanny", last_name: "Ferguson", username: "fanny", email: "fannyferguson@bc.edu", university_id: 3, password:"foobar", password_confirmation: "foobar")
 # create fake courses
-arr = ["Capstone Project", "Data Structure", "Mobile App", "Macroeconomics", "Algebra"]
+arr = ["Capstone Project", "Data Structures", "Mobile App", "Macroeconomics", "Algebra"]
 arr2 = ["Pito Salas", "Antonella Di Lillo", "James Storer", "Melissa Nemon", "Frank Lowenstein"]
 count = 1
 major_id = 1

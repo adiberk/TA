@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @enrollment = Enrollment.all
+    @courses = Course.all
     # debugger
   end
 

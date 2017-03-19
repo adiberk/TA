@@ -6,38 +6,41 @@
 
         <%= render 'layouts/sidebar' %>
 
-
-         <div class="col-sm-2">
-          <p>
-            <img src="http://www.hbc333.com/data/out/190/47199326-profile-pictures.png" height = "100" width = "100" />
-          </p>
-        </div>
-
         <div class="col-lg-6">
           <p>
             <h3> <%=@course.name%></h3>
+            <h5 style = "font-family: Arial"> <%= @course.teacher %> </h5>
           </p>
+          <br><br>
+          <p style = "text-align:left"> <strong>Office Hours</strong> </p>
         </div>
 
+        <p>
+          <br>
+          <br>
+          
+          <img src = "http://www-scf.usc.edu/~csci104/20142/img/last_oh.png" />
+        </p>
 
-        <div class="col-lg-8 course_appoint">
-          <p>
-          	<br>
-        	<br>
-        	
-            <strong>Office Hours</strong>
-            <ul>
-                <li> 1 O'clock pm </li>
-            </ul>
-          </p>
-
-          <p>
-            <strong>TA's</strong>
-            <ul>
-               <li> TA #1 </li>
-            </ul>
-          </p>
-        </div>
+        <div class="row-lg-6 course_appoint">
+          <div class="col-lg-3"></div>
+          <div class="col-lg-3">
+            <p>
+              <br>
+              <strong>Participants</strong>
+              <ul>
+                 <%= get_student_list(@course)%>
+              </ul>
+            </p>
+          </div>
+          <div class="col-lg-3">
+            <p>
+              <br>
+              <strong> Teaching Assistants </strong>
+              <ul>
+                <%= get_ta_list(@course)%>
+              </ul>
+            </p> 
+          </div>       
       </div>
     </div>
-    <%= link_to 'Back', users_path %>
