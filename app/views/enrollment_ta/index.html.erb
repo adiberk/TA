@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Enrollment Ta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enrollment_ta.each do |enrollment_tum| %>
+      <tr>
+        <td><%= enrollment_tum.course_id %></td>
+        <td><%= enrollment_tum.user_id %></td>
+        <td><%= link_to 'Show', enrollment_tum %></td>
+        <td><%= link_to 'Edit', edit_enrollment_tum_path(enrollment_tum) %></td>
+        <td><%= link_to 'Destroy', enrollment_tum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Enrollment Tum', new_enrollment_tum_path %>

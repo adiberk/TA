@@ -2,6 +2,10 @@ class User < ApplicationRecord
   has_many :enrollments
   has_many :courses, :through => :enrollments
 
+  has_many :enrollment_tas
+  has_many :courses, :through => :enrollment_tas
+
+
   attr_accessor :remember_token
 	before_save { self.email = email.downcase }
 	validates :first_name, presence: true, length:{maximum: 25}

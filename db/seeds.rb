@@ -9,6 +9,7 @@
 User.delete_all
 Course.delete_all
 Enrollment.delete_all
+EnrollmentTa.delete_all
 # create fake users
 # 1st user
 User.create(id: 1, first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar")
@@ -46,26 +47,28 @@ end
 
 # create fake enrollments
 # 1st enrollment
-Enrollment.create(user_id: 1, course_id:1, ta:false)
+Enrollment.create(user_id: 1, course_id:1)
 # 2nd enrollment
-Enrollment.create(user_id: 1, course_id:2, ta:false)
+Enrollment.create(user_id: 1, course_id:2)
 # 3rd enrollment
-Enrollment.create(user_id: 1, course_id:4, ta:false)
-# 4th enrollment
-Enrollment.create(user_id: 2, course_id:1, ta:false)
-# 5th enrollment
-Enrollment.create(user_id: 2, course_id:2, ta:true)
-# 6th enrollment
-Enrollment.create(user_id: 2, course_id:5, ta:false)
-# 7th enrollment
-Enrollment.create(user_id: 3, course_id:2, ta:false)
-# 8th enrollment
-Enrollment.create(user_id: 3, course_id:3, ta:false)
-# 9th enrollment
-Enrollment.create(user_id: 4, course_id:2, ta:true)
-# 10th enrollment
-Enrollment.create(user_id: 4, course_id:5, ta:true)
-# 11th enrollment
-Enrollment.create(user_id: 5, course_id:3, ta:false)
-# 12th enrollment
-Enrollment.create(user_id: 5, course_id:4, ta:false)
+# Enrollment.create(user_id: 1, course_id:4)
+# # 4th enrollment
+# Enrollment.create(user_id: 2, course_id:1)
+# # 5th enrollment
+# Enrollment.create(user_id: 2, course_id:2)
+# # 6th enrollment
+# Enrollment.create(user_id: 2, course_id:5)
+# # 7th enrollment
+# Enrollment.create(user_id: 3, course_id:2)
+# # 8th enrollment
+# Enrollment.create(user_id: 3, course_id:3)
+# # 9th enrollment
+# Enrollment.create(user_id: 4, course_id:2)
+# # 10th enrollment
+# Enrollment.create(user_id: 4, course_id:5)
+# # 11th enrollment
+# Enrollment.create(user_id: 5, course_id:3)
+# # 12th enrollment
+# Enrollment.create(user_id: 5, course_id:4)
+
+EnrollmentTa.create(user_id:1, course_id:4)

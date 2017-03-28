@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :enrollment_ta
   # get 'sessions/new'
 
   get 'home/index'

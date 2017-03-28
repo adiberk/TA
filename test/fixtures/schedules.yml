@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 1
+  from: 2017-03-22 15:25:50
+  to: 2017-03-22 15:25:50
+
+two:
+  employee_id: 1
+  from: 2017-03-22 15:25:50
+  to: 2017-03-22 15:25:50
