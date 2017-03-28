@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :enrollment_tas
   has_many :tacourses, :through => :enrollment_tas, :source => :course
 
+  has_many :ta_appointments, :class_name => 'Appointment', :foreign_key => 'ta_id'
+  has_many :student_appointments, :class_name => 'Appointment', :foreign_key => 'student_id'
 
   attr_accessor :remember_token
 	before_save { self.email = email.downcase }

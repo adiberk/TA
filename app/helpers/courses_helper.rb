@@ -5,7 +5,6 @@ module CoursesHelper
         return "Not registered for courses"
       end
 	  str = "<li>#{my_courses[0].name}</li> "
-      # puts "*******#{my_courses[0]}"
 	  count = 1
       while count < my_courses.length do
       	str+="<li>#{my_courses[count].name}</li>"
