@@ -33,14 +33,6 @@ ActiveRecord::Schema.define(version: 20170324040659) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "schedules", force: :cascade do |t|
-    t.integer  "employee_id"
-    t.datetime "from"
-    t.datetime "to"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
