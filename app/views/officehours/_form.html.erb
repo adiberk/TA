@@ -1,0 +1,42 @@
+<%= form_for(officehour) do |f| %>
+  <% if officehour.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(officehour.errors.count, "error") %> prohibited this officehour from being saved:</h2>
+
+      <ul>
+      <% officehour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :course_id %>
+    <%= f.number_field :course_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ta_id %>
+    <%= f.number_field :ta_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start %>
+    <%= f.datetime_select :start %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end %>
+    <%= f.datetime_select :end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :online %>
+    <%= f.check_box :online %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
