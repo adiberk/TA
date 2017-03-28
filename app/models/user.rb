@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :courses, :through => :enrollments
 
   has_many :enrollment_tas
-  has_many :courses, :through => :enrollment_tas
+  has_many :tacourses, :through => :enrollment_tas, :source => :course
 
 
   attr_accessor :remember_token
