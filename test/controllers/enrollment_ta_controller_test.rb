@@ -3,6 +3,8 @@ require 'test_helper'
 class EnrollmentTaControllerTest < ActionDispatch::IntegrationTest
   setup do
     @enrollment_tum = enrollment_ta(:one)
+    User.create(id: 1, first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar")
+    Course.create(id: 1, name: "blank", major_id: 1)
   end
 
   test "should get index" do
