@@ -3,6 +3,8 @@ require 'test_helper'
 class AppointmentsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @appointment = appointments(:one)
+    @user = User.create(id: 1, first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar")
+
   end
 
   test "should get index" do

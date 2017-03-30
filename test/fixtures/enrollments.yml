@@ -3,9 +3,9 @@
 one:
   user_id: 1
   course_id: 1
-  ta: false
+  # ta: false
 
 two:
   user_id: 1
   course_id: 1
-  ta: false
+  # ta: false
