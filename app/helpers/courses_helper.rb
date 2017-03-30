@@ -1,5 +1,5 @@
 module CoursesHelper
-	def get_course_list()
+  def get_course_list()
 	  my_courses = current_user().courses		
       if my_courses.length == 0
         return "Not registered for courses"
