@@ -3,6 +3,8 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
+    @user.courses.create(id: 1, name: "blank", major_id: 1)
+    # byebug
   end
 
   test "should get index" do
