@@ -13,5 +13,5 @@
 # These inflection rules are supported but not enabled by default:
 ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
-inflection.irregular 'enrollment_ta', 'enrollment_tas'
+	inflect.irregular 'enrollment_ta', 'enrollment_tas'
 end

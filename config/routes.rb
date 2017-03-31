@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :enrollment_tas
   resources :appointments
   resources :officehours
   # get 'sessions/new'
