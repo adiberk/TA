@@ -1,6 +1,8 @@
 <div class = 'row'>
 	<%= render 'layouts/sidebar' %>
-	<div class = 'col-sm-9 col-lg-10'>
+	<% if logged_in?%>
+		<div class = 'col-sm-9 col-lg-10'>
+	<%else%>
 		<div class="center jumbotron home-image">
 		  <div class = "container" >
 
@@ -11,5 +13,6 @@
 		    </h2>
 		  </div>
 		</div>
+	<%end%>
 	</div>
 </div>
