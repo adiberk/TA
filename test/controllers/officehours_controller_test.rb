@@ -3,6 +3,8 @@ require 'test_helper'
 class OfficehoursControllerTest < ActionDispatch::IntegrationTest
   setup do
     @officehour = officehours(:one)
+    user  = User.create(id: 1, first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar")
+    user.courses.create(id: 1, name: "blank", major_id: 1)
   end
 
   test "should get index" do
