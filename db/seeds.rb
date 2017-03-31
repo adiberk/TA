@@ -72,3 +72,7 @@ Enrollment.create(user_id: 1, course_id:2)
 # Enrollment.create(user_id: 5, course_id:4)
 
 EnrollmentTa.create(user_id:1, course_id:4)
+
+Officehour.create(ta_id: 1, course_id: 2, start:Time.now, end:Time.now, online: false)
+Officehour.create(ta_id: 3, course_id: 2, start:Time.now, end:Time.now, online: false)
+Officehour.create(ta_id: 2, course_id: 2, start:Time.now, end:Time.now, online: false)

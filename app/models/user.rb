@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :ta_appointments, :class_name => 'Appointment', :foreign_key => 'ta_id'
   has_many :student_appointments, :class_name => 'Appointment', :foreign_key => 'student_id'
 
+  has_many :officehours, :foreign_key => 'ta_id'
+
+  
   attr_accessor :remember_token
 	before_save { self.email = email.downcase }
 	validates :first_name, presence: true, length:{maximum: 25}
