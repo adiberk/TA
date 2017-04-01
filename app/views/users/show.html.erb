@@ -20,14 +20,50 @@
           <p>
             <strong>Courses</strong>
             <ul>
-                <%= get_course_list()%>
+                <%=get_course_list()%>
             </ul>
           </p>
-
+        </div>
+      </div>
+      <div class = 'row'>
+        <div class = 'col-sm-3 col-lg-2'>
+        </div>
+        <div class = 'col-xs-4'>
           <p>
-            <strong>Appointments</strong>
-            <ul>
+            <strong>Confirmed Appointments</strong>
+            <ul style = "padding-left:0px; margin-left:0px; margin-right:25%;">
                <%#= get_appointment()%>
+                <%userta = @user.ta_appointments%>
+                <%userta.each do |app|%>
+                  <%if app.confirmed == true%>
+                    <li class="list-group-item">Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%></li>
+                  <%end%>
+                <%end%>
+            </ul>
+          </p>
+        </div>
+        <div class = 'col-xs-5 input-group'>
+          <p>
+            <strong>Unconfirmed Appointments</strong>
+            <ul style = "padding-left:0px; margin-left:0px; margin-right:25%;">
+               <%#= get_appointment()%>
+               <%userta = @user.ta_appointments%>
+               <%userta.each do |app|%>
+                <%if app.confirmed == false%>
+                  <li class = 'list-group-item'>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
+                    <%=form_tag confirm_appointment_path, method:'put', id:'confirm_app'%>
+                      <%=hidden_field_tag :confirmed, true%>
+                      <%#=hidden_field_tag 'course_id', :value => app.course_id%>
+                      <%#=hidden_field_tag 'student_id', :value => app.student_id%>
+                      <%#=hidden_field_tag 'ta_id', :value => app.ta_id%>
+                      <%#=hidden_field_tag 'end', :value => app.end%>
+                      <%#=hidden_field_tag 'start', :value => app.start%>
+                      <%=hidden_field_tag :id, app.id%>
+                      <%=submit_tag 'Confirm', class: 'confirm_btn'%>
+                    <%#end%>
+                   </li>
+                 <%end%>
+               <%end%>
             </ul>
           </p>
         </div>

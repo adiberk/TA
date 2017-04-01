@@ -11,7 +11,13 @@ class AppointmentsController < ApplicationController
   # GET /appointments/1.json
   def show
   end
-
+  def confirm_app
+    @appointment = set_appointment
+    @appointment.confirmed = params[:confirmed]
+    if @appointment.save
+      redirect_to current_user
+    end
+  end
   # GET /appointments/new
   def new
     @appointment = Appointment.new
