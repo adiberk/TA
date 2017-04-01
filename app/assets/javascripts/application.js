@@ -15,3 +15,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(function() {
+  $(".confirm_btn").on('submit', function() {
+    $.post($("#confirm_app").attr("action"), $("#confirm_app").serialize(), null, "script");
+    // $("#confirmation").html("<%= escape_javascript(render partial: ('confirmed')) %>");
+    return false;
+  });
+});
