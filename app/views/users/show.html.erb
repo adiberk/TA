@@ -20,7 +20,11 @@
           <p>
             <strong>Courses</strong>
             <ul>
-                <%=get_course_list()%>
+                <% course_list = current_user().courses %>
+                <% course_list.each do |c| %>
+                    <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :course_id=>"#{c.id}", :course_name=>"#{c.name}", :class=>"ui-button-text button_text" %> </li>
+                <% end %>
+
             </ul>
           </p>
         </div>
@@ -31,3 +35,5 @@
     </div>
     <%= link_to 'Edit', edit_user_path(@user) %> |
     <%= link_to 'Back', users_path %>
+
+
