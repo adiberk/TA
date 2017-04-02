@@ -12,10 +12,12 @@ class AppointmentsController < ApplicationController
   def show
   end
   def confirm_app
-    @appointment = set_appointment
+    @appointment = Appointment.find(params[:id])
     @appointment.confirmed = params[:confirmed]
-    if @appointment.save
-      redirect_to current_user
+    respond_to do |format|
+      if @appointment.save
+        format.js {render 'users/confirm_app'}
+      end
     end
   end
   # GET /appointments/new
