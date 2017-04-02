@@ -33,6 +33,52 @@
         <div id='appointments'><%=render 'appointments'%></div>
       </div>
     </div>
+    <body>
+        <div class="container">
+            <div id="target" style="margin: auto; width: 50%; height: 100%; display: flex; flex-direction: row; justify-content: center;">
+            </div>
+        </div>
+        <script>
+            $('#target').weekly_schedule({
+
+              // Days displayed
+              days: ["sun", "mon", "tue", "wed", "thu", "fri"], 
+
+              // Hours displyed
+              hours: "7:00AM-10:00PM", 
+
+              // Font used in the component
+              fontFamily: "Montserrat", 
+
+              // Font colot used in the component
+              fontColor: "black", 
+
+              // Font weight used in the component
+              fontWeight: "100", 
+
+              // Font size used in the component
+              fontSize: "0.8em", 
+
+              // Background color when hovered
+              hoverColor: "#727bad", 
+
+              // Background color when selected
+              selectionColor: "#9aa7ee", 
+
+              // Background color of headers
+              headerBackgroundColor: "transparent"
+              
+            });
+            $('.schedule').on('selectionmade', function() {
+              console.log("Selection Made");
+
+            }).on('selectionremoved', function() {
+              console.log("Selection Removed");
+            });
+
+
+        </script>
+    </body>
     <%= link_to 'Edit', edit_user_path(@user) %> |
     <%= link_to 'Back', users_path %>
 
