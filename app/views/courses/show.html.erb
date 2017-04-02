@@ -27,9 +27,9 @@
           <div class="col-lg-3">
             <p>
               <br>
-              <strong>Participants</strong>
+              <strong>Students</strong>
               <ul>
-                 <li> Student </li> 
+                 <%= get_student_list(@course) %>
               </ul>
             </p>
           </div>
@@ -38,7 +38,7 @@
               <br>
               <strong> Teaching Assistants </strong>
               <ul>
-                <li> TA </li>
+                <%= get_ta_list(@course) %>
               </ul>
             </p> 
           </div>       
