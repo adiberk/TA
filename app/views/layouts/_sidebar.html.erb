@@ -1,20 +1,31 @@
 <%if logged_in?%>
 
-<div class="col-sm-3 col-lg-2 sidebar">
+  <div class="col-sm-3 col-lg-2 sidebar">
 
 
- <nav class="navbar navbar-default navbar-fixed-side">
-  <h1 class = "sidebar">Live Now </h1>
-    <dl class = "sidebar_data">
-      <dt> Course #1 </dt>
-      <dd><a href="#"> TA </a></dd>		
-      <br></br>
-      <dt> Course #2 </dt>
-      <dd><a href="#"> TA </a></dd>
-    </dl>
- </nav>
+     <nav class="navbar navbar-default navbar-fixed-side">
+        <h1 class = "sidebar">Live Now </h1>
+            <% name =  @current_user.first_name + " " + @current_user.last_name %>
+            <h2><%= name %></h2>
+            <dl>
+            <% current_courses=@current_user.courses%>
+
+              <% current_courses.each do |each_course| %>
+
+                  <dt><%= each_course.name %></dt>
+                  <% ta_list = each_course.tas%>
+                    <% ta_list.each do |each_ta|%>
+                      <% ta_name =  each_ta.first_name + " " + each_ta.last_name %>
+                      <dd><%= ta_name %></dd>                      
+                    <% end %>
+
+
+              <% end %>
+            </dl>
+
+     </nav>
+  </div>
 <% else %>
+
+
 <% end %>
-
-
-</div>

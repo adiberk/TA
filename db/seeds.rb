@@ -77,13 +77,13 @@ Officehour.create(ta_id: 1, course_id: 2, start:Time.now, end:Time.now, online: 
 Officehour.create(ta_id: 3, course_id: 2, start:Time.now, end:Time.now, online: false)
 Officehour.create(ta_id: 2, course_id: 2, start:Time.now, end:Time.now, online: false)
 
-EnrollmentTa.create(user_id: 1, course_id:1)
+EnrollmentTa.create(user_id: 2, course_id:1)
 EnrollmentTa.create(user_id: 3, course_id:1)
-EnrollmentTa.create(user_id: 1, course_id: 2)
+EnrollmentTa.create(user_id: 2, course_id: 2)
+
 Enrollment.create(user_id: 2, course_id: 1)
 Enrollment.create(user_id: 3, course_id: 1)
 Enrollment.create(user_id: 3, course_id: 2)
 Appointment.create(ta_id: 1, student_id:2, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: false)
 Appointment.create(ta_id: 1, student_id:3, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: true)
 Appointment.create(ta_id: 1, student_id:3, course_id: 2, start:Time.now, end: Faker::Date.forward, confirmed: false)
-
