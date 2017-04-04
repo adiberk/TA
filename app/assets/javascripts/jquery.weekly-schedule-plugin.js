@@ -43,7 +43,7 @@
         if (typeof callerSettings == 'string') {
             switch (callerSettings) {
                 case 'getSelectedHour':
-                console.log("output");
+                console.log("MEEEEEEEEEEEEEEEEEEEEE");
                     return getSelectedHour();
                     break;
                 default:
@@ -248,6 +248,7 @@
             });
 
             $('.hour').on('mouseenter', function() {
+                var count = 0;
                 if (!mousedown) {
                     $(this).addClass('hover');
                 }
@@ -266,11 +267,16 @@
                 if ($(this).hasClass('selected')) {
                     schedule.trigger('selectionremoved')
                     $(this).removeClass('selected');
+                    time = $(this).children().remove()
+                    console.log(time)
                     devarionMode = true;
                 }
                 else {
                     schedule.trigger('selectionmade')
                     $(this).addClass('selected');
+                    $(this).addClass('counter');
+                    $(this).append("<h4 class = 'time-added'>HELLO</h4>");
+
                 }
                 $(this).removeClass('hover');
             }).on('mouseup', function() {
@@ -287,13 +293,28 @@
 
         function parseHours(string) {
             var output = [];
-
+            console.log(string);
             var split = string.toUpperCase().split("-");
+            console.log(split);
             var startInt = parseInt(split[0].split(":")[0]);
             var endInt = parseInt(split[1].split(":")[0]);
-
-            var startHour = split[0].includes("PM") ? startInt + 12 : startInt;
-            var endHour = split[1].includes("PM") ? endInt + 12 : endInt;
+            console.log(startInt);
+            console.log(endInt);
+            // var startHour = split[0].includes("PM") ? startInt + 12 : startInt;
+            var startHour = 0;
+            console.log(split[0]);
+            if (split[0].includes("PM")){
+                startHour = startInt+12;
+            }
+            console.log(startInt);
+            // var endHour = split[1].includes("PM") ? endInt + 12 : endInt;
+            var endHour = 0;
+            if (split[1].includes("PM")){
+                endHour = endInt+12;
+            }
+            console.log(split[1]);
+            console.log(endHour);
+            console.log(endInt);
 
             var curHour = startHour;
             var count = 0;
@@ -331,7 +352,10 @@
         }
 
         function capitalize(string) {
+            console.log(string.slice(1));
+            console.log(string.charAt(0).toUpperCase() + string.slice(1));
             return string.charAt(0).toUpperCase() + string.slice(1);
+
         }
 
         function focusOn(day) {

@@ -35,38 +35,44 @@
     </div>
     <body>
         <div class="container">
-            <div id="target" style="margin: auto; width: 50%; height: 100%; display: flex; flex-direction: row; justify-content: center;">
+            <div id="target" style="margin: auto; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start;">
+                        <%=create_header%>
+            <%=create_cal%>
             </div>
         </div>
+<!--         <div class="container">
+            <div id="mytarget" style="margin: auto; width: 50%; height: 100%; display: flex; flex-direction: row; justify-content: center;">
+            </div>
+        </div> -->
         <script>
-            $('#target').weekly_schedule({
+            $().weekly_schedule({
 
-              // Days displayed
-              days: ["sun", "mon", "tue", "wed", "thu", "fri"], 
+              // // Days displayed
+              // days: ["sun", "mon", "tue", "wed", "thu", "fri"], 
 
-              // Hours displyed
-              hours: "7:00AM-10:00PM", 
+              // // Hours displyed
+              // hours: "7:00AM-10:00PM", 
 
-              // Font used in the component
-              fontFamily: "Montserrat", 
+              // // Font used in the component
+              // fontFamily: "Montserrat", 
 
-              // Font colot used in the component
-              fontColor: "black", 
+              // // Font colot used in the component
+              // fontColor: "black", 
 
-              // Font weight used in the component
-              fontWeight: "100", 
+              // // Font weight used in the component
+              // fontWeight: "100", 
 
-              // Font size used in the component
-              fontSize: "0.8em", 
+              // // Font size used in the component
+              // fontSize: "0.8em", 
 
-              // Background color when hovered
-              hoverColor: "#727bad", 
+              // // Background color when hovered
+              // hoverColor: "#727bad", 
 
-              // Background color when selected
-              selectionColor: "#9aa7ee", 
+              // // Background color when selected
+              // selectionColor: "#9aa7ee", 
 
-              // Background color of headers
-              headerBackgroundColor: "transparent"
+              // // Background color of headers
+              // headerBackgroundColor: "transparent"
               
             });
             $('.schedule').on('selectionmade', function() {
