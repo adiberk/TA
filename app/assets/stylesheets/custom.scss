@@ -318,6 +318,17 @@ footer ul li {
     height: 100%;
     user-select: none;
 }
+.hover{
+  background:#727bad!important;
+}
+.selected {
+  background: #9aa7ee!important;
+}
+.disabled { 
+  pointer-events: none !important; 
+  opacity: 0.3 !important; 
+  box-shadow: none !important; 
+}
 
 /*calendar settings*/
 .cal-header{

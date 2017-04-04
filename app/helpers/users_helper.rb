@@ -41,7 +41,8 @@ module UsersHelper
 			day = "<div class = 'day #{@days[count]}'>"
 
 			(0..@parsedHours.length-1).each do |jcount|
-				hour = "<div class = 'hour #{@parsedHours[jcount]}'></div>"
+				Officehour.all
+				hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'></div>"
 				day = day + hour
 			end
 			days_sched = days_sched + day + "</div>"
