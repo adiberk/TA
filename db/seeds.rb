@@ -87,3 +87,6 @@ Enrollment.create(user_id: 3, course_id: 2)
 Appointment.create(ta_id: 1, student_id:2, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: false)
 Appointment.create(ta_id: 1, student_id:3, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: true)
 Appointment.create(ta_id: 1, student_id:3, course_id: 2, start:Time.now, end: Faker::Date.forward, confirmed: false)
+
+
+Review.create(ta_id: 1, student_id:3, course_id: 2, review: "I am happy with TA", score: 4)

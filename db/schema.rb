@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170331190307) do
+ActiveRecord::Schema.define(version: 20170404150211) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "course_id"
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(version: 20170331190307) do
     t.datetime "start"
     t.datetime "end"
     t.boolean  "online"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "ta_id"
+    t.integer  "score"
+    t.text     "review"
+    t.integer  "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
