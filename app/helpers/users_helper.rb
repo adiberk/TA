@@ -1,11 +1,4 @@
 module UsersHelper
-  # def side_bar
-  #
-  #   @current_user.courses
-  #
-  # end
-  #
-
 	def create_header
 		@days = ["sun", "mon", "tue", "wed", "thu", "fri"]
 		@hours = "7:00AM-10:00PM"
@@ -18,7 +11,7 @@ module UsersHelper
 		@headerBackgroundColor = "transparent"
 		@parsedHours = parseHours(@hours)
 		dayHeaderContainer = "<div class = 'header'><div class = 'align-block'></div>"
-		count = 0;
+		# count = 0;
 		@days.each do |day|
 			dayHeaderContainer = dayHeaderContainer +  "<div class = 'header-item #{day}-header'><h3 class = 'day-titles'>#{day.upcase}</h3></div>"
 		end
