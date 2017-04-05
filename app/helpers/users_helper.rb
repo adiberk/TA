@@ -1,13 +1,10 @@
 module UsersHelper
-<<<<<<< HEAD
   # def side_bar
   #
   #   @current_user.courses
   #
   # end
   #
-
-=======
 
 	def create_header
 		@days = ["sun", "mon", "tue", "wed", "thu", "fri"]
@@ -119,7 +116,6 @@ module UsersHelper
 	def capitalize(string)
 		return string.charAt(0).upcase + string.slice!(0)
 	end
->>>>>>> 638f966563ec9da398dbca43982a148f2e72bcf9
 
 
 end
