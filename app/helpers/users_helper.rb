@@ -19,7 +19,7 @@ module UsersHelper
 		dayHeaderContainer += "</div>"
 		return dayHeaderContainer.html_safe
 	end
-	def create_cal
+	def create_cal(course)
 		@days = ["sun", "mon", "tue", "wed", "thu", "fri"]
 		@hours = "7:00AM-10:00PM"
 		@fontFamily = "Montserrat"
@@ -39,10 +39,20 @@ module UsersHelper
 		# days-wrapper is still open
 		(0..@days.length-1).each do |count|
 			day = "<div class = 'day #{@days[count]}'>"
-
+			officehours = course.officehours
+			correct_hour = nil;
+			officehours.each do |offh|
+				if (offh.start.strftime('%l:%M%p').split(" ")[0].eql?(@parsedHours[count]))
+					correct_hour = offh
+				end
+			end
+			byebug
 			(0..@parsedHours.length-1).each do |jcount|
-				Officehour.all
-				hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'></div>"
+				if correct_hour!=nil
+					hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'><div class = 'time-added'>#{User.find(correct_hour.ta_id).first_name}</div></div>"
+				else
+					hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'></div>"
+				end
 				day = day + hour
 			end
 			days_sched = days_sched + day + "</div>"
