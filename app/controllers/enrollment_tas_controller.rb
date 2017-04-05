@@ -3,6 +3,15 @@ class EnrollmentTasController < ApplicationController
 
   # GET /enrollment_tas
   # GET /enrollment_tas.json
+
+  #Using for the ta_list
+  def talist
+
+    @courses = Course.all
+
+  end
+
+
   def index
     @enrollment_tas = EnrollmentTa.all
   end

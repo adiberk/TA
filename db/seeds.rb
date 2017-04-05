@@ -89,4 +89,6 @@ Appointment.create(ta_id: 1, student_id:3, course_id: 1, start:Time.now, end: Fa
 Appointment.create(ta_id: 1, student_id:3, course_id: 2, start:Time.now, end: Faker::Date.forward, confirmed: false)
 
 
-Review.create(ta_id: 1, student_id:3, course_id: 2, review: "I am happy with TA", score: 4)
+Review.create(ta_id: 1, student_id:3, course_id: 2, review: "3 am happy with 1", score: 4)
+Review.create(ta_id: 1, student_id:2, course_id: 2, review: "2 am happy with 1", score: 4)
+Review.create(ta_id: 1, student_id:4, course_id: 2, review: "4 am happy with 1", score: 4)

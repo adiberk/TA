@@ -1,0 +1,8 @@
+<%= @user.first_name %>
+<%= @user.last_name %>
+
+
+
+<% @user.ta_reviews.each do |each_review|%>
+  <%= each_review['id']%>
+<% end %>

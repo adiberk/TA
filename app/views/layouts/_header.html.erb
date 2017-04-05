@@ -6,6 +6,7 @@
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home",   root_url, class: "active" %></li>
+        <li><%= link_to "TA List",   talist_path %></li>
         <li><%= link_to "Help",   '#' %></li>
         <li><%= link_to "SignUp", signup_path, class:"glyphicon glyphicon-user" %></li>
         <%if logged_in?%>
