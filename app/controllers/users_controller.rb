@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+  def taprofile
+    ta_id=params[:ta_id]
+    @user = User.find(id=ta_id)
+  end
   def index
     @users = User.all
   end
