@@ -45,7 +45,7 @@ module UsersHelper
 					correct_hour = offh
 				end
 			end
-			byebug
+			# byebug
 			(0..@parsedHours.length-1).each do |jcount|
 				if correct_hour!=nil
 					hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'><div class = 'time-added'>#{User.find(correct_hour.ta_id).first_name}</div></div>"
