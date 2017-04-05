@@ -73,9 +73,11 @@ Enrollment.create(user_id: 1, course_id:2)
 
 EnrollmentTa.create(user_id:1, course_id:4)
 
-Officehour.create(ta_id: 1, course_id: 2, start:Time.now, end:Time.now, online: false)
-Officehour.create(ta_id: 3, course_id: 2, start:Time.now, end:Time.now, online: false)
-Officehour.create(ta_id: 2, course_id: 2, start:Time.now, end:Time.now, online: false)
+Officehour.create(ta_id: 1, course_id: 2, start:"Mon, 3 Apr 2017 01:30:00 AM", end:Time.now, online: false)
+Officehour.create(ta_id: 3, course_id: 2, start:"Mon, 3 Apr 2017 02:00:00 AM", end:Time.now, online: false)
+Officehour.create(ta_id: 2, course_id: 2, start:"Mon, 3 Apr 2017 03:30:00 AM", end:Time.now, online: false)
+Officehour.create(ta_id: 2, course_id: 2, start:"Wed, 5 Apr 2017 03:30:00 AM", end:Time.now, online: false)
+Officehour.create(ta_id: 1, course_id: 2, start:"Thu, 6 Apr 2017 01:30:00 AM", end:Time.now, online: false)
 
 EnrollmentTa.create(user_id: 2, course_id:1)
 EnrollmentTa.create(user_id: 3, course_id:1)

@@ -39,16 +39,23 @@ module UsersHelper
 		(0..@days.length-1).each do |count|
 			day = "<div class = 'day #{@days[count]}'>"
 			officehours = course.officehours
-			correct_hour = nil;
-			officehours.each do |offh|
-				if (offh.start.strftime('%l:%M%p').split(" ")[0].eql?(@parsedHours[count]))
-					correct_hour = offh
-				end
-			end
 			# byebug
+			correct_hour = nil;
+			# found = false
 			(0..@parsedHours.length-1).each do |jcount|
+				officehours.each do |offh|
+					if (offh.start.strftime('%a').downcase.eql?(@days[count]))
+						# byebug
+						if(offh.start.strftime('%l:%M%p').split(" ")[0].eql?(@parsedHours[jcount]))
+							# byebug
+							correct_hour = offh
+							# found = true
+						end
+					end
+				end
 				if correct_hour!=nil
 					hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'><div class = 'time-added'>#{User.find(correct_hour.ta_id).first_name}</div></div>"
+					correct_hour = nil
 				else
 					hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'></div>"
 				end
