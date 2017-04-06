@@ -78,16 +78,23 @@
 
                   if ($(this).hasClass('selected')) {
                       $(this).trigger('selectionremoved')
+                      // // time = $(this).children()[1].remove();
                       $(this).removeClass('selected');
-                      time = $(this).children().remove()
-                      console.log(time)
+                      if (!$(this).children().children().hasClass('offhour')){
+                        $(this).children().children('div:nth-child(2)').modal('hide');
+                      }
+
+                      // console.log(time)
                       // devarionMode = true;
                   }
                   else {
                       $(this).trigger('selectionmade')
                       $(this).addClass('selected');
-                      $(this).addClass('counter');
-                      $(this).append("<h4 class = 'time-added'>HELLO</h4>");
+                      if (!$(this).children().children().hasClass('offhour')){ 
+                        $(this).children().children('div:nth-child(2)').modal('show');
+                      }
+                      // $(this).addClass('counter');
+                      // $(this).append("<h4 class = 'time-added', id = 'time-added'>HELLO</h4>");
 
                   }
                   // $(this).removeClass('hover');
@@ -135,6 +142,13 @@
               //   }
               // }
             });
+          //   $('.hour').on('click', function(event) {
+          //       if $(this).children().children('div:nth-child(2)').hasClass()
+          //       $(this).children().children('div:nth-child(2)').modal('show');
+          //       $(this).children().children('div:nth-child(2)').toggle();
+          //       $(this).children().children('div:nth-child(2)').modal('hide');
+          //   // $(this).children().children('button').click()
+          // });
         </script>
     </body>
     <%= link_to 'Edit', edit_user_path(@user) %> |

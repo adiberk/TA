@@ -54,10 +54,13 @@ module UsersHelper
 					end
 				end
 				if correct_hour!=nil
-					hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'><div class = 'time-added'>#{User.find(correct_hour.ta_id).first_name}</div></div>"
+					# hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'><div class = 'time-added'>#{User.find(correct_hour.ta_id).first_name}</div></div>"
+					hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'><div class = 'time-added'><button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>#{create_modal}<h4 class = 'offhour'>#{User.find(correct_hour.ta_id).first_name}</h4></div></div>"
+
 					correct_hour = nil
 				else
-					hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'></div>"
+					# hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'></div>"
+					hour = "<div class = 'hour #{@parsedHours[jcount]}', id = 'cal-table'><div class = 'time-added'><button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>#{create_modal}</div></div>"
 				end
 				day = day + hour
 			end
@@ -115,6 +118,35 @@ module UsersHelper
 
 	def capitalize(string)
 		return string.charAt(0).upcase + string.slice!(0)
+	end
+
+	def create_modal()
+		str = "
+			<div class='modal fade' id='myModal' role='dialog'>
+			  <div class='modal-dialog'>
+			  
+			    <!-- Modal content-->
+			    <div class='modal-content'>
+			      <div class='modal-header'>
+			        <button type='button' class='close' data-dismiss='modal'>&times;</button>
+			        <h4 class='modal-title'>Modal Header</h4>
+			      </div>
+			      <div class='modal-body'>
+			        <p>Some text in the modal.</p>
+			      </div>
+			      <div class='modal-footer'>
+			        <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+			      </div>
+			    </div>
+			    
+			  </div>
+			</div>
+		"
+		return str
+	end
+
+	def create_modal_form()
+
 	end
 
 
