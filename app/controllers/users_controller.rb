@@ -16,6 +16,15 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @courses = Course.all
+    @days = ["sun", "mon", "tue", "wed", "thu", "fri"]
+    @hours = "7:00AM-10:00PM"
+    @fontFamily = "Montserrat"
+    @fontColor = "black"
+    @fontWeight =  "100"
+    @fontSize = "0.8em"
+    @hoverColor = "#727bad"
+    @selectionColor = "#9aa7ee"
+    @headerBackgroundColor = "transparent"
     # debugger
   end
 

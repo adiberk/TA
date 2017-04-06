@@ -1,4 +1,21 @@
 module UsersHelper
+	def off_hour(officehours, count, jcount)
+		# byebug
+		hour = nil
+		officehours.each do |offh|
+			if (offh.start.strftime('%a').downcase.eql?(@days[count]))
+				if(offh.start.strftime("%l:%M%p").split(" ")[0].eql?(parseHours(@hours)[jcount]))
+					hour = offh
+				end
+			end
+		end
+		if hour != nil
+			return hour
+		else
+			return nil
+		end
+	end
+
 	def create_header
 		@days = ["sun", "mon", "tue", "wed", "thu", "fri"]
 		@hours = "7:00AM-10:00PM"
@@ -98,22 +115,22 @@ module UsersHelper
 			    	parsedStr += (curHour-12).to_s+ ":30PM"
                     count = 0
 				end
-            elsif curHour == 12
-            	parsedStr += curHour.to_s + ":00PM"
-            else
+      elsif curHour == 12
+        parsedStr += curHour.to_s + ":00PM"
+      else
 				if (count  == 0)
-            	    parsedStr += (curHour).to_s + ":00AM"
-            	    count = 1
+    	    parsedStr += (curHour).to_s + ":00AM"
+    	    count = 1
             	
-            	else
-            	    parsedStr += (curHour).to_s + ":30AM"
-            	    count = 0
+      	else
+    	    parsedStr += (curHour).to_s + ":30AM"
+    	    count = 0
 				end
 			end
-            curHour+=1
-            output.push(parsedStr)
+      curHour+=1
+      output.push(parsedStr)
 		end
-        return output;
+    return output;
 	end
 
 	def capitalize(string)
@@ -121,8 +138,7 @@ module UsersHelper
 	end
 
 	def create_modal()
-		str = "
-			<div class='modal fade' id='myModal' role='dialog'>
+		str = "<div class='modal fade' id='myModal' role='dialog'>
 			  <div class='modal-dialog'>
 			  
 			    <!-- Modal content-->
@@ -140,14 +156,12 @@ module UsersHelper
 			    </div>
 			    
 			  </div>
-			</div>
-		"
-		return str
+			</div>"
+		str.html_safe
 	end
 
 	def create_modal_form()
 
 	end
-
 
 end

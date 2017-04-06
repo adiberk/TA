@@ -36,8 +36,9 @@
     <body>
         <div class="container">
             <div id="target" style="margin: auto; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start;">
-              <%=create_header%>
-              <%=create_cal(Course.find(2))%>
+              <%#=create_header%>
+              <%#=create_cal(Course.find(2))%>
+              <%= render 'cal_create'%>
             </div>
         </div>
 <!--         <div class="container">
@@ -77,21 +78,24 @@
                   // focusOn($(this).parent());
 
                   if ($(this).hasClass('selected')) {
-                      $(this).trigger('selectionremoved')
-                      // // time = $(this).children()[1].remove();
-                      $(this).removeClass('selected');
+                      // $(this).trigger('selectionremoved')
+                      // // // time = $(this).children()[1].remove();
+                      // $(this).removeClass('selected');
                       if (!$(this).children().children().hasClass('offhour')){
                         $(this).children().children('div:nth-child(2)').modal('hide');
+                        $(this).trigger('selectionremoved')
+                        // // time = $(this).children()[1].remove();
+                        $(this).removeClass('selected');
                       }
 
                       // console.log(time)
                       // devarionMode = true;
                   }
                   else {
-                      $(this).trigger('selectionmade')
-                      $(this).addClass('selected');
                       if (!$(this).children().children().hasClass('offhour')){ 
                         $(this).children().children('div:nth-child(2)').modal('show');
+                        $(this).trigger('selectionmade')
+                        $(this).addClass('selected');
                       }
                       // $(this).addClass('counter');
                       // $(this).append("<h4 class = 'time-added', id = 'time-added'>HELLO</h4>");
@@ -150,7 +154,6 @@
           //   // $(this).children().children('button').click()
           // });
         </script>
-    </body>
     <%= link_to 'Edit', edit_user_path(@user) %> |
     <%= link_to 'Back', users_path %>
 

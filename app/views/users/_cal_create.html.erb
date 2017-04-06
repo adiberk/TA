@@ -1,0 +1,38 @@
+<%=create_header%>
+<div class = 'days-wrapper'>
+	<div class = 'hour-header'>
+	<%(0..parseHours(@hours).length-1).each do |count|%>
+		<div class = "hour-header-item <%=parseHours(@hours)[count]%>">
+			<h5 class = 'time-slots'><%=parseHours(@hours)[count]%></h5>
+		</div>
+	<% end %>
+	</div>
+	<%(0..@days.length-1).each do |count|%>
+		<div class = "day <%=@days[count]%>">
+
+		<%officehours = Course.find(2).officehours%>
+		<%correct_hour = nil%>
+		<%(0..parseHours(@hours).length-1).each do |jcount|%>
+			<%correct_hour = off_hour(officehours, count, jcount)%>
+			<%if correct_hour!=nil%>
+				<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>">
+					<div class = 'time-added'>
+						<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
+						<%=render 'create_modal'%>
+						<h4 class = 'offhour'><%=User.find(correct_hour.ta_id).first_name%></h4>
+					</div>
+				</div>
+				<%correct_hour = nil%>
+			<% else %>
+				<div class = 'hour <%=parseHours(@hours)[jcount]%>', id = 'cal-table'>
+					<div class = 'time-added'>
+						<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'>
+						</button>
+						<%= render 'create_modal'%>
+					</div>
+				</div>
+			<% end %>
+		<%end%>
+		</div>
+	<% end %>
+</div>
