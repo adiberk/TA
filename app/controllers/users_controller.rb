@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @courses = Course.all
     @days = ["sun", "mon", "tue", "wed", "thu", "fri"]
-    @hours = "7:00AM-10:00PM"
+    @hours = "8:00AM-8:00PM"
     @fontFamily = "Montserrat"
     @fontColor = "black"
     @fontWeight =  "100"

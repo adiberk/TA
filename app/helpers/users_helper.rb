@@ -16,36 +16,25 @@ module UsersHelper
 		end
 	end
 
-	def create_header
-		@days = ["sun", "mon", "tue", "wed", "thu", "fri"]
-		@hours = "7:00AM-10:00PM"
-		@fontFamily = "Montserrat"
-		@fontColor = "black"
-		@fontWeight =  "100"
-		@fontSize = "0.8em"
-		@hoverColor = "#727bad"
-		@selectionColor = "#9aa7ee"
-		@headerBackgroundColor = "transparent"
-		@parsedHours = parseHours(@hours)
+	def create_header(days)
 		dayHeaderContainer = "<div class = 'header'><div class = 'align-block'></div>"
-		# count = 0;
-		@days.each do |day|
+		days.each do |day|
 			dayHeaderContainer = dayHeaderContainer +  "<div class = 'header-item #{day}-header'><h3 class = 'day-titles'>#{day.upcase}</h3></div>"
 		end
 		dayHeaderContainer += "</div>"
 		return dayHeaderContainer.html_safe
 	end
 	def create_cal(course)
-		@days = ["sun", "mon", "tue", "wed", "thu", "fri"]
-		@hours = "7:00AM-10:00PM"
-		@fontFamily = "Montserrat"
-		@fontColor = "black"
-		@fontWeight =  "100"
-		@fontSize = "0.8em"
-		@hoverColor = "#727bad"
-		@selectionColor = "#9aa7ee"
-		@headerBackgroundColor = "transparent"
-		@parsedHours = parseHours(@hours)
+		# @days = ["sun", "mon", "tue", "wed", "thu", "fri"]
+		# @hours = "7:00AM-10:00PM"
+		# @fontFamily = "Montserrat"
+		# @fontColor = "black"
+		# @fontWeight =  "100"
+		# @fontSize = "0.8em"
+		# @hoverColor = "#727bad"
+		# @selectionColor = "#9aa7ee"
+		# @headerBackgroundColor = "transparent"
+		# @parsedHours = parseHours(@hours)
 		days_sched = "<div class = 'days-wrapper'><div class = 'hour-header'>"
 		(0..@parsedHours.length-1).each do |count|
 			hour_header = "<div class = 'hour-header-item #{@parsedHours[count]}'><h5 class = 'time-slots'>#{@parsedHours[count]}</h5></div>"
@@ -93,15 +82,21 @@ module UsersHelper
 		split = string.upcase.split("-")
 		startInt = Integer(split[0].split(":")[0])
 		endInt = Integer(split[1].split(":")[0])
+		# byebug
 
 		startHour = 0
 		if split[0].include?("PM")
 			startHour = startInt+12
+			# byebug
+		else
+			startHour = startInt
 		end
 		endHour = 0
 		if split[1].include?("PM")
 			endHour = endInt+12;
+			# byebug
 		end
+		# byebug
 		curHour = startHour
 		count = 0
 		while curHour <= endHour
@@ -111,23 +106,25 @@ module UsersHelper
 				if (count  == 0)
 			        parsedStr += (curHour-12).to_s + ":00PM"
 			        count = 1
-			    else
-			    	parsedStr += (curHour-12).to_s+ ":30PM"
-                    count = 0
+			  else
+		    	parsedStr += (curHour-12).to_s+ ":30PM"
+          count = 0
 				end
       elsif curHour == 12
         parsedStr += curHour.to_s + ":00PM"
       else
 				if (count  == 0)
     	    parsedStr += (curHour).to_s + ":00AM"
-    	    count = 1
-            	
+    	    count = 1 	
       	else
     	    parsedStr += (curHour).to_s + ":30AM"
     	    count = 0
 				end
 			end
-      curHour+=1
+			if count == 0
+				curHour+=1
+			end
+      # curHour+=1
       output.push(parsedStr)
 		end
     return output;
