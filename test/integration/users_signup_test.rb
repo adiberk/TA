@@ -28,6 +28,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password_confirmation: "password" } }
     end
     follow_redirect!
+    User.all.first.courses.create(id: 2) #used so that 'users/show works bc it need course with id 2'
     assert_template 'users/show'
     assert is_logged_in?
   end
