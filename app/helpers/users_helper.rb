@@ -111,8 +111,14 @@ module UsersHelper
           count = 0
 				end
       elsif curHour == 12
-        parsedStr += curHour.to_s + ":00PM"
-      else
+      	if count == 0
+	        parsedStr += curHour.to_s + ":00PM"
+	        count = 1
+		    else
+		    	parsedStr += curHour.to_s + ":30PM"
+		    	count = 0
+		    end	
+	  	else
 				if (count  == 0)
     	    parsedStr += (curHour).to_s + ":00AM"
     	    count = 1 	
