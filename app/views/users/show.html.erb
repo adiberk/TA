@@ -72,35 +72,35 @@
 
           // });
           $('.hour').on('mousedown', function(event) {
-              var count = 0;
+              // var count = 0;
           // }).on('mousedown', function() {
               // mousedown = true;
               // focusOn($(this).parent());
 
-              if ($(this).hasClass('selected')) {
-                  // $(this).trigger('selectionremoved')
-                  // // // time = $(this).children()[1].remove();
-                  // $(this).removeClass('selected');
-                  if (!$(this).children().children().hasClass('offhour')){
-                    // $(this).children().children('div:nth-child(2)').modal('hide');
-                    $(this).trigger('selectionremoved')
-                    // // time = $(this).children()[1].remove();
-                    $(this).removeClass('selected');
-                  }
+              // if ($(this).hasClass('selected')) {
+              //     // $(this).trigger('selectionremoved')
+              //     // // // time = $(this).children()[1].remove();
+              //     // $(this).removeClass('selected');
+              //     if (!$(this).children().children().hasClass('offhour')){
+              //       // $(this).children().children('div:nth-child(2)').modal('hide');
+              //       $(this).trigger('selectionremoved')
+              //       // // time = $(this).children()[1].remove();
+              //       $(this).removeClass('selected');
+              //     }
 
-                  // console.log(time)
-                  // devarionMode = true;
-              }
-              else {
-                  if (!$(this).children().children().hasClass('offhour')){ 
+              //     // console.log(time)
+              //     // devarionMode = true;
+              // }
+              // else {
+                  if (!$(this).children().hasClass('offhour')){ 
                     $(this).children().children('div:nth-child(2)').modal('show');
-                    $(this).trigger('selectionmade')
-                    $(this).addClass('selected');
+                    // $(this).trigger('selectionmade')
+                    // $(this).addClass('selected');
                   }
                   // $(this).addClass('counter');
                   // $(this).append("<h4 class = 'time-added', id = 'time-added'>HELLO</h4>");
 
-              }
+              // }
               // $(this).removeClass('hover');
           // }).on('mouseup', function() {
               // devarionMode = false;
