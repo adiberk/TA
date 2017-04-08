@@ -14,11 +14,12 @@
 		<%correct_hour = nil%>
 		<%(0..parseHours(@hours).length-1).each do |jcount|%>
 			<%correct_hour = off_hour(officehours, count, jcount)%>
+			<%hours = parseHours(@hours)[jcount]%>
 			<%if correct_hour!=nil%>
 				<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>">
 					<div class = 'time-added'>
 						<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
-						<%=render 'create_modal'%>
+						<%=render 'create_modal', :params => {hours: hours}%>
 						<h4 class = 'offhour'><%=User.find(correct_hour.ta_id).first_name%></h4>
 					</div>
 				</div>
@@ -28,7 +29,7 @@
 					<div class = 'time-added'>
 						<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'>
 						</button>
-						<%= render 'create_modal', :params => {hours: parseHours(@hours)[jcount]}%>
+						<%= render 'create_modal', :params => {hours: hours}%>
 					</div>
 				</div>
 			<% end %>

@@ -8,24 +8,12 @@
         <h4 class='modal-title'>Modal Header</h4>
       </div>
       <div class='modal-body'>
-        <p>Some text in the modal.</p>
         <%appointment = current_user.student_appointments.new()%>
         <%= bootstrap_form_for(appointment, :url=>request_appointment_path, action: 'request_app') do |f| %>
-        	<% if appointment.errors.any? %>
-        	  <div id="error_explanation">
-        	    <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
-
-        	    <ul>
-        	    <% appointment.errors.full_messages.each do |message| %>
-        	      <li><%= message %></li>
-        	    <% end %>
-        	    </ul>
-        	  </div>
-        	<% end %>
             <%= f.number_field :course_id %>
-            <%= f.number_field :student_id, :default=>current_user.first_name, :value=> current_user.first_name%>
-            <%= f.number_field :ta_id %>
-            <%byebug%>
+            <%= f.hidden_field :student_id, :value=> current_user.id%>
+            <%#= f.number_field :ta_id %>
+            <%=f.collection_select :ta_id, Course.find(1).tas, 'id', 'first_name', class:'selectpicker'%>
             <%t = params[:hours].split(":")%>
 
             <% if params[:hours].include? "PM"%>
@@ -37,6 +25,9 @@
             <%else%>
             	<%= f.datetime_select :start, :default => {hour:t[0].to_i, minute:t[1][0..1].to_i}, ampm: true%>
             <%end%>
+            <%=f.hidden_field :end, :value => DateTime.now%>
+            <%=f.hidden_field :confirmed, :value=> false%>
+            <%=f.submit%>
         <% end %>
       </div>
       <div class='modal-footer'>

@@ -48,6 +48,7 @@ class AppointmentsController < ApplicationController
   def request_app
     @appointment = Appointment.new(appointment_params)
     # respond_to do |format|
+    byebug
       if @appointment.save
         flash[:succes] = 'Appointment Rquests'
         redirect_to current_user
