@@ -32,7 +32,6 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
   # GET /users/1/edit
   def edit
   end

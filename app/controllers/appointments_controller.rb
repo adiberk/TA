@@ -45,6 +45,18 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def request_app
+    @appointment = Appointment.new(appointment_params)
+    # respond_to do |format|
+      if @appointment.save
+        flash[:succes] = 'Appointment Rquests'
+        redirect_to current_user
+      else
+        flash[:danger] = 'incorrect parameters'
+        redirect_to current_user
+      end
+  end
+
   # PATCH/PUT /appointments/1
   # PATCH/PUT /appointments/1.json
   def update

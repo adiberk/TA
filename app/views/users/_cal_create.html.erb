@@ -28,7 +28,7 @@
 					<div class = 'time-added'>
 						<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'>
 						</button>
-						<%= render 'create_modal'%>
+						<%= render 'create_modal', :params => {hours: parseHours(@hours)[jcount]}%>
 					</div>
 				</div>
 			<% end %>
