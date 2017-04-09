@@ -1,20 +1,20 @@
 module UsersHelper
-	def off_hour(officehours, count, jcount)
-		# byebug
-		hour = nil
-		officehours.each do |offh|
-			if (offh.start.strftime('%a').downcase.eql?(@days[count]))
-				if(offh.start.strftime("%l:%M%p").split(" ")[0].eql?(parseHours(@hours)[jcount]))
-					hour = offh
-				end
-			end
-		end
-		if hour != nil
-			return hour
-		else
-			return nil
-		end
-	end
+	# def off_hour(officehours, count, jcount)
+	# 	# byebug
+	# 	hour = nil
+	# 	officehours.each do |offh|
+	# 		if (offh.start.strftime('%a').downcase.eql?(@days[count]))
+	# 			if(offh.start.strftime("%l:%M%p").split(" ")[0].eql?(parseHours(@hours)[jcount]))
+	# 				hour = offh
+	# 			end
+	# 		end
+	# 	end
+	# 	if hour != nil
+	# 		return hour
+	# 	else
+	# 		return nil
+	# 	end
+	# end
 
 	def create_header(days)
 		dayHeaderContainer = "<div class = 'header'><div class = 'align-block'></div>"

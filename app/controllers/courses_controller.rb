@@ -15,7 +15,17 @@ class CoursesController < ApplicationController
     # @user = User.find(params[:id])
     # @message = params[:message]
     @courses = Course.all
-    @days = ["sun", "mon", "tue", "wed", "thu", "fri"]
+    days_hold = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    @days = []
+    f = 0
+    days_hold.each do |d|
+      day = Date.parse(d)
+      if day > (Date.today+f)
+          day -= 7
+      end
+      f+=1
+      @days.push(day.strftime('%a %d/%m/%y'))
+    end
     @hours = "8:00AM-8:00PM"
     @fontFamily = "Montserrat"
     @fontColor = "black"

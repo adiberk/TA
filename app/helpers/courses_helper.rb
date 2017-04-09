@@ -11,7 +11,7 @@ module CoursesHelper
     str = "<li> test </li>"
 
 	  count = 1
-      while count < my_courses.length do
+      while count < my_courses.length
 
         name = my_courses[count].name
         id = my_courses[count].id
@@ -59,7 +59,7 @@ module CoursesHelper
       # byebug
     hour = nil
     officehours.each do |offh|
-      if (offh.start.strftime('%a').downcase.eql?(@days[count]))
+      if (offh.start.strftime('%a').downcase.eql?(@days[count].split(" ")[0].downcase))
         if(offh.start.strftime("%l:%M%p").split(" ")[0].eql?(parseHours(@hours)[jcount]))
           hour = offh
         end
@@ -102,7 +102,7 @@ module CoursesHelper
     # byebug
     curHour = startHour
     count = 0
-    while curHour <= endHour
+    while curHour <= endHour do
       parsedStr = ''
 
       if (curHour > 12) 
