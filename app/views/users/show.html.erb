@@ -4,16 +4,19 @@
 <div class="container-fluid main-contain">
   <div class="row">
     <%= render 'layouts/sidebar' %>
-     <div class="col-sm-2">
+<!--      <div class="col-sm-1">
       <p>
-        <img src="http://www.hbc333.com/data/out/190/47199326-profile-pictures.png" height = "100" width = "100" />
+        <img src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
       </p>
-    </div>
+    </div> -->
 
-    <div class="col-sm-2 user_name">
+    <div class="col-sm-4 user_name">
+      <div class = 'container'>
       <p>
+        <img src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
         <h3> <%=@user.first_name%> <%=@user.last_name%></h3>
       </p>
+      </div>
     </div>
 
     <div class="col-sm-7 col-lg-9 course_appoint">
@@ -22,7 +25,7 @@
         <ul>
             <% course_list = current_user().courses %>
             <% course_list.each do |c| %>
-                <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :course_id=>"#{c.id}", :course_name=>"#{c.name}", :class=>"ui-button-text button_text" %> </li>
+                <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", :class=>"ui-button-text button_text" %> </li>
             <% end %>
 
         </ul>

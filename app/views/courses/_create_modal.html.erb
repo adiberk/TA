@@ -27,7 +27,7 @@
             <%end%>
             <%=f.hidden_field :end, :value => DateTime.now%>
             <%=f.hidden_field :confirmed, :value=> false%>
-            <%=f.submit 'Request Appointment'%>
+            <%=f.submit 'Request Appointment', id: 'appoint_submit'%>
         <% end %>
       </div>
       <div class='modal-footer'>
@@ -37,3 +37,5 @@
     
   </div>
 </div>
+<script>
+</script>

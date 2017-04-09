@@ -10,10 +10,10 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @course = Course.find(params[:id])
+    @course = set_course
     @users = User.all
-    @user = User.find(params[:id])
-    @message = params[:message]
+    # @user = User.find(params[:id])
+    # @message = params[:message]
     @courses = Course.all
     @days = ["sun", "mon", "tue", "wed", "thu", "fri"]
     @hours = "8:00AM-8:00PM"
