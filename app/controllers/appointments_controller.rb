@@ -48,13 +48,13 @@ class AppointmentsController < ApplicationController
   def request_app
     @appointment = Appointment.new(appointment_params)
     # respond_to do |format|
-    byebug
+    # byebug
       if @appointment.save
-        flash[:succes] = 'Appointment Rquests'
-        redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id).name
+        flash[:success] = 'Sent appointment request (to cancel, please check your user page)'
+        redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id).name, message:'Appointment requestes'
       else
+        redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id), message:'Error creating appointment'
         flash[:danger] = 'incorrect parameters'
-        redirect_to current_user
       end
   end
 

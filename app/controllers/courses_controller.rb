@@ -13,6 +13,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @users = User.all
     @user = User.find(params[:id])
+    @message = params[:message]
     @courses = Course.all
     @days = ["sun", "mon", "tue", "wed", "thu", "fri"]
     @hours = "8:00AM-8:00PM"
