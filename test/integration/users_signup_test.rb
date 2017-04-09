@@ -4,6 +4,10 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
+  def setup
+    @user = users(:michael)
+    @user.courses.create(id: 1)
+  end
   test "invalid signup information" do
     get signup_path
     assert_no_difference 'User.count' do
@@ -28,7 +32,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                          password_confirmation: "password" } }
     end
     follow_redirect!
-    User.all.first.courses.create(id: 2) #used so that 'users/show works bc it need course with id 2'
+    # User.all.first.courses.create(id: 2)
+    # User.all.first.courses.create(id: 1) #used so that 'users/show works bc it need course with id 2'
     assert_template 'users/show'
     assert is_logged_in?
   end

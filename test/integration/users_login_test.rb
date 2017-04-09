@@ -6,6 +6,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   # end
   def setup
     @user = users(:michael)
+    @user.courses.create(id: 1)
     @user.courses.create(id: 2)
   end
   test "login with invalid information" do

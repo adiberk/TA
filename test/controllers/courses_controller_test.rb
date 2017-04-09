@@ -2,7 +2,9 @@ require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @course = courses(:one)
+    # @course = courses(:one)
+    user = User.create(id: 2, first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar")
+    @course = user.courses.create(name:'MyString', major_id:1, id:2)
   end
 
   test "should get index" do
