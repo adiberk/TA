@@ -51,7 +51,7 @@ class AppointmentsController < ApplicationController
     byebug
       if @appointment.save
         flash[:succes] = 'Appointment Rquests'
-        redirect_to current_user
+        redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id).name
       else
         flash[:danger] = 'incorrect parameters'
         redirect_to current_user

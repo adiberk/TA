@@ -12,6 +12,17 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @users = User.all
+    @user = User.find(params[:id])
+    @courses = Course.all
+    @days = ["sun", "mon", "tue", "wed", "thu", "fri"]
+    @hours = "8:00AM-8:00PM"
+    @fontFamily = "Montserrat"
+    @fontColor = "black"
+    @fontWeight =  "100"
+    @fontSize = "0.8em"
+    @hoverColor = "#727bad"
+    @selectionColor = "#9aa7ee"
+    @headerBackgroundColor = "transparent"
   end
 
   # GET /courses/new
