@@ -48,13 +48,12 @@ end
 # create fake enrollments
 # 1st enrollment
 Enrollment.create!(user_id: 1, course_id:1)
-# 2nd enrollment
 Enrollment.create!(user_id: 1, course_id:2)
 Enrollment.create!(user_id: 3, course_id: 4)
 Enrollment.create!(user_id: 3, course_id: 2)
 Enrollment.create!(user_id: 2, course_id: 3)
 Enrollment.create!(user_id:5, course_id:1)
-
+Enrollment.create!(user_id:5, course_id:5)
 # 3rd enrollment
 # Enrollment.create(user_id: 1, course_id:4)
 # # 4th enrollment
@@ -93,6 +92,6 @@ Appointment.create!(ta_id: 1, student_id:3, course_id: 4, start: "Wed, 5 Apr 201
 Appointment.create!(ta_id: 3, student_id:1, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: false)
 
 
-Review.create(ta_id: 1, student_id:3, course_id: 2, review: "3 am happy with 1", score: 4)
-Review.create(ta_id: 1, student_id:2, course_id: 2, review: "2 am happy with 1", score: 4)
-Review.create(ta_id: 1, student_id:4, course_id: 2, review: "4 am happy with 1", score: 4)
+Review.create!(ta_id: 2, student_id:3, course_id: 2, review: "3 am happy with 1", score: 4)
+Review.create!(ta_id: 1, student_id:5, course_id: 5, review: "2 am happy with 1", score: 4)
+Review.create!(ta_id: 1, student_id:3, course_id: 4, review: "4 am happy with 1", score: 4)
