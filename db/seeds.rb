@@ -47,9 +47,14 @@ end
 
 # create fake enrollments
 # 1st enrollment
-Enrollment.create(user_id: 1, course_id:1)
+Enrollment.create!(user_id: 1, course_id:1)
 # 2nd enrollment
-Enrollment.create(user_id: 1, course_id:2)
+Enrollment.create!(user_id: 1, course_id:2)
+Enrollment.create!(user_id: 3, course_id: 4)
+Enrollment.create!(user_id: 3, course_id: 2)
+Enrollment.create!(user_id: 2, course_id: 3)
+Enrollment.create!(user_id:5, course_id:1)
+
 # 3rd enrollment
 # Enrollment.create(user_id: 1, course_id:4)
 # # 4th enrollment
@@ -70,26 +75,22 @@ Enrollment.create(user_id: 1, course_id:2)
 # Enrollment.create(user_id: 5, course_id:3)
 # # 12th enrollment
 # Enrollment.create(user_id: 5, course_id:4)
+EnrollmentTa.create!(user_id: 2, course_id:1)
+EnrollmentTa.create!(user_id: 3, course_id:1)
+EnrollmentTa.create!(user_id: 2, course_id: 2)
+EnrollmentTa.create!(user_id:1, course_id:4)
+EnrollmentTa.create!(user_id:1, course_id:5)
 
-EnrollmentTa.create(user_id:1, course_id:4)
+Officehour.create!(ta_id: 1, course_id: 4, start:"Mon, 3 Apr 2017 08:30:00 AM", end:Time.now, online: false)
+Officehour.create!(ta_id: 3, course_id: 1, start:"Mon, 3 Apr 2017 10:00:00 AM", end:Time.now, online: false)
+Officehour.create!(ta_id: 2, course_id: 2, start:"Mon, 3 Apr 2017 12:30:00 PM", end:Time.now, online: false)
+Officehour.create!(ta_id: 2, course_id: 2, start:"Wed, 5 Apr 2017 03:30:00 PM", end:Time.now, online: false)
+Officehour.create!(ta_id: 1, course_id: 5, start:"Thu, 6 Apr 2017 05:30:00 PM", end:Time.now, online: false)
+Officehour.create!(ta_id: 2, course_id: 2, start:"Thu, 6 Apr 2017 05:30:00 PM", end:Time.now, online: false )
 
-Officehour.create(ta_id: 1, course_id: 2, start:"Mon, 3 Apr 2017 08:30:00 AM", end:Time.now, online: false)
-Officehour.create(ta_id: 3, course_id: 2, start:"Mon, 3 Apr 2017 10:00:00 AM", end:Time.now, online: false)
-Officehour.create(ta_id: 2, course_id: 2, start:"Mon, 3 Apr 2017 12:30:00 PM", end:Time.now, online: false)
-Officehour.create(ta_id: 2, course_id: 2, start:"Wed, 5 Apr 2017 03:30:00 PM", end:Time.now, online: false)
-Officehour.create(ta_id: 1, course_id: 2, start:"Thu, 6 Apr 2017 05:30:00 PM", end:Time.now, online: false)
-Officehour.create(ta_id: 2, course_id: 1, start:"Thu, 6 Apr 2017 05:30:00 PM", end:Time.now, online: false )
-EnrollmentTa.create(user_id: 2, course_id:1)
-EnrollmentTa.create(user_id: 3, course_id:1)
-EnrollmentTa.create(user_id: 2, course_id: 2)
-
-# Enrollment.create(user_id: 2, course_id: 1)
-Enrollment.create(user_id: 3, course_id: 1)
-Enrollment.create(user_id: 3, course_id: 2)
-Enrollment.create(user_id: 2, course_id: 3)
-Appointment.create(ta_id: 1, student_id:2, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: false)
-Appointment.create(ta_id: 1, student_id:3, course_id: 1, start: "Wed, 5 Apr 2017 01:30:00 PM", end: Faker::Date.forward, confirmed: true)
-Appointment.create(ta_id: 1, student_id:3, course_id: 2, start:Time.now, end: Faker::Date.forward, confirmed: false)
+Appointment.create!(ta_id: 2, student_id:5, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: false)
+Appointment.create!(ta_id: 1, student_id:3, course_id: 4, start: "Wed, 5 Apr 2017 01:30:00 PM", end: Faker::Date.forward, confirmed: true)
+Appointment.create!(ta_id: 3, student_id:1, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: false)
 
 
 Review.create(ta_id: 1, student_id:3, course_id: 2, review: "3 am happy with 1", score: 4)
