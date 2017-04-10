@@ -51,11 +51,12 @@ class AppointmentsController < ApplicationController
     # byebug
       if @appointment.save
         flash[:success] = 'Sent appointment request (to cancel, please check your user page)'
-        redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id).name, message:'Appointment requestes'
+        redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id).name
       else
-        redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id), message:'Error creating appointment'
-        flash[:danger] = 'incorrect parameters'
+        redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id)
+        flash[:danger] = 'Error requesting appointment - please try again'
       end
+    # end
   end
 
   # PATCH/PUT /appointments/1

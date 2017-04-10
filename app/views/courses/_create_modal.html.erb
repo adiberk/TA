@@ -28,7 +28,7 @@
             <%end%>
             <%=f.hidden_field :end, :value => DateTime.now%>
             <%=f.hidden_field :confirmed, :value=> false%>
-            <%=f.submit 'Request Appointment', id: 'appoint_submit'%>
+            <%=f.submit 'Request Appointment', "data-disable-with": 'Requesting please wait...'%>
         <% end %>
       </div>
       <div class='modal-footer'>
@@ -39,4 +39,5 @@
   </div>
 </div>
 <script>
+
 </script>
