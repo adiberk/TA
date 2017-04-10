@@ -55,7 +55,7 @@ class AppointmentsController < ApplicationController
       else
         redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id)
         errors = @appointment.errors.messages
-        flash[:danger] = errors
+        flash[:danger] = errors[:base]
       end
     # end
   end
