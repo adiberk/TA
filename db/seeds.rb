@@ -88,7 +88,7 @@ Enrollment.create(user_id: 3, course_id: 1)
 Enrollment.create(user_id: 3, course_id: 2)
 Enrollment.create(user_id: 2, course_id: 3)
 Appointment.create(ta_id: 1, student_id:2, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: false)
-Appointment.create(ta_id: 1, student_id:3, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: true)
+Appointment.create(ta_id: 1, student_id:3, course_id: 1, start: "Wed, 5 Apr 2017 01:30:00 PM", end: Faker::Date.forward, confirmed: true)
 Appointment.create(ta_id: 1, student_id:3, course_id: 2, start:Time.now, end: Faker::Date.forward, confirmed: false)
 
 
