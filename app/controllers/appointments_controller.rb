@@ -13,9 +13,9 @@ class AppointmentsController < ApplicationController
   end
   def confirm_app
     @appointment = Appointment.find(params[:id])
-    @appointment.confirmed = params[:confirmed]
+    # @appointment.confirmed = params[:confirmed]
     respond_to do |format|
-      if @appointment.save
+      if @appointment.update_attribute(:confirmed, params[:confirmed])
         format.js {render 'users/confirm_app'}
       end
     end
