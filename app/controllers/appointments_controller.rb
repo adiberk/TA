@@ -54,7 +54,9 @@ class AppointmentsController < ApplicationController
         redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id).name
       else
         redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id)
-        flash[:danger] = 'Error requesting appointment - please try again'
+        errors = @appointment.errors.messages[:base]
+        byebug
+        flash[:danger] = errors[0]
       end
     # end
   end
