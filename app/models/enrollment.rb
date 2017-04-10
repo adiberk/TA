@@ -8,7 +8,7 @@ class Enrollment < ApplicationRecord
 
   def is_ta
   	if (EnrollmentTa.find_by(user_id: self.user_id, course_id: self.course_id) != nil)
-  		errors.add(:base, 'Can not be a TA and take the course')
+  		errors.add(:base, 'Can not be a TA and be a student in the course')
   	end
   end
 end

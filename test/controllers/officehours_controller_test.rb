@@ -4,7 +4,7 @@ class OfficehoursControllerTest < ActionDispatch::IntegrationTest
   setup do
     @officehour = officehours(:one)
     user  = User.create(id: 1, first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar")
-    user.courses.create(id: 1, name: "blank", major_id: 1)
+    user.tacourses.create(id: 3, name: "blank", major_id: 1)
   end
 
   test "should get index" do
@@ -19,7 +19,7 @@ class OfficehoursControllerTest < ActionDispatch::IntegrationTest
 
   test "should create officehour" do
     assert_difference('Officehour.count') do
-      post officehours_url, params: { officehour: { course_id: @officehour.course_id, end: @officehour.end, online: @officehour.online, start: @officehour.start, ta_id: @officehour.ta_id } }
+      post officehours_url, params: { officehour: { course_id: 3, end: @officehour.end, online: @officehour.online, start: @officehour.start, ta_id: @officehour.ta_id } }
     end
 
     assert_redirected_to officehour_url(Officehour.last)
@@ -36,7 +36,7 @@ class OfficehoursControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update officehour" do
-    patch officehour_url(@officehour), params: { officehour: { course_id: @officehour.course_id, end: @officehour.end, online: @officehour.online, start: @officehour.start, ta_id: @officehour.ta_id } }
+    patch officehour_url(@officehour), params: { officehour: { course_id: 3, end: @officehour.end, online: @officehour.online, start: @officehour.start, ta_id: @officehour.ta_id } }
     assert_redirected_to officehour_url(@officehour)
   end
 
