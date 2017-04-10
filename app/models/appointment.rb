@@ -4,7 +4,10 @@ class Appointment < ApplicationRecord
 	validate :appointment_request
 	validate :appointment_create
 	def appointment_request
-		if (Appointment.find_by(ta_id: self.ta_id, student_id: self.student_id, course_id: self.course_id, start: self.start, confirmed:true ))
+		if (Appointment.find_by(ta_id: self.ta_id, student_id: self.student_id, course_id: self.course_id, start: self.start))
+			errors.add(:base, 'Appointment already requested')
+		end
+		if (Appointment.find_by(ta_id: self.ta_id, course_id: self.course_id, start: self.start, confirmed:true))
 			errors.add(:base, 'Appointment already taken')
 		end
 	end
