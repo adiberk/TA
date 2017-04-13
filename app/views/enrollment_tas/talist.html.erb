@@ -4,6 +4,7 @@
 
 <% @courses.each do |each_course| %>
   <h2><%= each_course.name %></h2>
+  <form action="/taprofile" method="GET">
   <table class="table">
     <thead class="thead-default">
       <tr>
@@ -23,9 +24,9 @@
           <td><%= each_ta['last_name'] %></td>
           <td><%= each_ta['email'] %></td>
           <td>
-            <form action="/taprofile" method="GET">
+      
             <td><button type="submit" class="btn btn-primary" value="<%= each_ta['id'] %>" name = "ta_id">TA Profile</button></td>
-            </form>
+
           </td>
 
 
@@ -33,4 +34,5 @@
       <% end %>
     </tbody>
   </table>
+  </form>
 <% end %>
