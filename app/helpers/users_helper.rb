@@ -102,7 +102,7 @@ module UsersHelper
 		while curHour <= endHour
 			parsedStr = ''
 
-			if (curHour > 12) 
+			if (curHour > 12)
 				if (count  == 0)
 			        parsedStr += (curHour-12).to_s + ":00PM"
 			        count = 1
@@ -117,11 +117,11 @@ module UsersHelper
 		    else
 		    	parsedStr += curHour.to_s + ":30PM"
 		    	count = 0
-		    end	
+		    end
 	  	else
 				if (count  == 0)
     	    parsedStr += (curHour).to_s + ":00AM"
-    	    count = 1 	
+    	    count = 1
       	else
     	    parsedStr += (curHour).to_s + ":30AM"
     	    count = 0
@@ -143,7 +143,7 @@ module UsersHelper
 	def create_modal()
 		str = "<div class='modal fade' id='myModal' role='dialog'>
 			  <div class='modal-dialog'>
-			  
+
 			    <!-- Modal content-->
 			    <div class='modal-content'>
 			      <div class='modal-header'>
@@ -157,7 +157,7 @@ module UsersHelper
 			        <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
 			      </div>
 			    </div>
-			    
+
 			  </div>
 			</div>"
 		str.html_safe
@@ -167,4 +167,5 @@ module UsersHelper
 
 	end
 
+	
 end
