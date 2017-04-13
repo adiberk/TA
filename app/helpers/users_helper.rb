@@ -167,5 +167,33 @@ module UsersHelper
 
 	end
 
-	
+	def create_rating_icon(score)
+		# print "======================"
+		# print score
+		if score == 0
+			rating_icon = "<span class='stars-container stars-0'>★★★★★</span>"
+		elsif score == 0.5
+			rating_icon = "<span class='stars-container stars-10'>★★★★★</span>"
+		elsif score == 1
+			rating_icon = "<span class='stars-container stars-20'>★★★★★</span>"
+		elsif score == 1.5
+			rating_icon = "<span class='stars-container stars-30'>★★★★★</span>"
+		elsif score == 2
+			rating_icon = "<span class='stars-container stars-40'>★★★★★</span>"
+		elsif score == 2.5
+			rating_icon = "<span class='stars-container stars-50'>★★★★★</span>"
+		elsif score == 3
+			rating_icon = "<span class='stars-container stars-60'>★★★★★</span>"
+		elsif score == 3.5
+			rating_icon = "<span class='stars-container stars-70'>★★★★★</span>"
+		elsif score == 4
+			rating_icon = "<span class='stars-container stars-80'>★★★★★</span>"
+		elsif score == 4.5
+			rating_icon = "<span class='stars-container stars-90'>★★★★★</span>"
+		else
+			rating_icon = "<span class='stars-container stars-100'>★★★★★</span>"
+
+		end
+		return rating_icon.html_safe
+	end
 end
