@@ -32,7 +32,11 @@
         <div class="panel panel-default">
         <div class="panel-heading">
 
-        <%= create_rating_icon(each_review['score']) %> <%= each_review['score']%> <span class="text-muted"><%= each_review['created_at'] %></span>
+          <%= create_rating_icon(each_review['score']) %> 
+          <%= each_review['score']%> 
+          <span class="text-muted">
+            <%= each_review['created_at'] %>
+          </span>
         </div>
         <div class="panel-body">
         <%= each_review['review'] %>
