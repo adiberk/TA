@@ -76,6 +76,10 @@ module UsersHelper
 	def create_rating_icon(score)
 		# print "======================"
 		# print score
+		if score == nil
+			rating_icon = "<span>Not yet rated</span>"
+			return rating_icon.html_safe
+		end
 		if score == 0
 			rating_icon = "<span class='stars-container stars-0'>★★★★★</span>"
 		elsif score == 0.5

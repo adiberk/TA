@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404150211) do
+ActiveRecord::Schema.define(version: 20170414015832) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "course_id"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170404150211) do
   create_table "reviews", force: :cascade do |t|
     t.integer  "student_id"
     t.integer  "ta_id"
-    t.integer  "score"
+    t.float    "score"
     t.text     "review"
     t.integer  "course_id"
     t.datetime "created_at", null: false
