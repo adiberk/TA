@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   post '/confirm_appointment', to: 'appointments#confirm_app'
+  post '/unconfirm_appointment', to: 'appointments#unconfirm_app'
   post '/request_appointment', to: 'appointments#request_app'
 
   get '/ta', to: 'reviews#index'
