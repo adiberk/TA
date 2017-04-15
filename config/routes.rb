@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   resources :officehours
   # get 'sessions/new'
 
+  resources :chat_rooms, only: [:new, :create, :show, :index]
+
+  mount ActionCable.server => '/cable'  
+
   get 'home/index'
 
   resources :courses
