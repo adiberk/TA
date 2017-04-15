@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
   resources :enrollment_tas
   resources :appointments
   resources :officehours

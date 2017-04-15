@@ -37,6 +37,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'rails-controller-testing'
 
+gem 'devise'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
