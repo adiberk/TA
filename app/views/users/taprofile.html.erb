@@ -17,17 +17,23 @@
   </div>
 
 </section>
+<hr />
 <section id="review">
   <div class = "row">
-      <p>Comments:</p>
-      <br>
+    <div class="col-md-3">
+      <h2><strong>Comments:</strong></h2>
+    </div>
+    <br>
+  </div>
 
-      <div class="col-md-3">
-      <div class="thumbnail">
-      <img style="border:3px solid black;" src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
-      </div><!-- /thumbnail -->
-      </div><!-- /col-sm-1 -->
       <% @user.ta_reviews.each do |each_review|%>
+      <div class="row">
+        <div class="col-md-3">
+        <div class="thumbnail">
+        <img style="border:3px solid black;" src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
+        </div><!-- /thumbnail -->
+        </div><!-- /col-sm-3 -->
+
         <div class="col-md-9">
         <div class="panel panel-default">
         <div class="panel-heading">
@@ -40,11 +46,10 @@
         </div><!-- /panel panel-default -->
         </div><!-- /col-sm-5 -->
 
-
+      </div>
 
       <% end %>
 
 
 
-  </div>
 </section>
