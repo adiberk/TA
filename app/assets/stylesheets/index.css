@@ -1,4 +1,4 @@
-body {
+/*body {
     margin: 0;
 }
 
@@ -56,11 +56,11 @@ body {
 .days-wrapper {
     width: 100%;
     height: 500px!important;
-    background: transparent;
+    background: transparent;*/
 /*    display: flex;
     flex-direction: row;
     justify-content: flex-start;*/
-    position: relative;
+/*    position: relative;
     overflow:auto;
 }
 
@@ -148,3 +148,4 @@ body {
 .row-header{
     width:100%;
 }
+*/

@@ -26,6 +26,14 @@
     <br>
   </div>
 
+<<<<<<< HEAD
+=======
+      <div class="col-md-3">
+      <div class="thumbnail">
+      <img style="border:3px solid black;" src="<%=Faker::Avatar.image%>" height = "88" width = "88" />
+      </div><!-- /thumbnail -->
+      </div><!-- /col-sm-1 -->
+>>>>>>> 2d9d2d9d081d13fda7ae7f700b6629bb58cb8c86
       <% @user.ta_reviews.each do |each_review|%>
       <div class="row">
         <div class="col-md-3">
@@ -38,7 +46,11 @@
         <div class="panel panel-default">
         <div class="panel-heading">
 
-        <%= create_rating_icon(each_review['score']) %> <%= each_review['score']%> <span class="text-muted"><%= each_review['created_at'] %></span>
+          <%= create_rating_icon(each_review['score']) %> 
+          <%= each_review['score']%> 
+          <span class="text-muted">
+            <%= each_review['created_at'] %>
+          </span>
         </div>
         <div class="panel-body">
         <%= each_review['review'] %>

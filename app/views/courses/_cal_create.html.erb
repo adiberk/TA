@@ -21,7 +21,17 @@
 						<div class = 'time-added'>
 							<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
 							<%=render 'create_modal', :params => {hours: hours, course:locals[:course], days: @days[count]}%>
-							<h4 class = 'offhour'><%=User.find(correct_hour.ta_id).first_name%></h4>
+							<h5 class = 'offhour'><%=User.find(correct_hour.ta_id).first_name%>
+							</h5>
+							<h5>
+							<%hold = User.find(correct_hour.ta_id).ta_reviews%>
+							<%if hold.size > 0%>
+								<%hold = create_rating_icon(hold.first.score)%>
+							<%else%>
+								<%hold = create_rating_icon(nil)%>
+							<%end%>
+							Rating: <%=hold%> 
+							</h5>
 						</div>
 					</div>
 					<%correct_hour = nil%>

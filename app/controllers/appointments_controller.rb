@@ -20,6 +20,16 @@ class AppointmentsController < ApplicationController
       end
     end
   end
+
+  def unconfirm_app
+    @appointment = Appointment.find(params[:id])
+    # @appointment.confirmed = params[:confirmed]
+    respond_to do |format|
+      if @appointment.update_attribute(:confirmed, params[:confirmed])
+        format.js {render 'users/confirm_app'}
+      end
+    end
+  end
   # GET /appointments/new
   def new
     @appointment = Appointment.new
