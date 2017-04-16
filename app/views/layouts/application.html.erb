@@ -12,18 +12,13 @@
     <%= render 'layouts/shim' %>
 <!--     <script src="assets/stylesheets/jquery.weekly-schedule-plugin.min.js"></script> -->
   </head>
-<div class="container-narrow">
-  <div class="masthead">
-    <%= render 'layouts/header' %> 
-
-  </div>
-
-  <%= yield %>
-  <hr />
-
-</div>
+  <body>
+    <div class="container-narrow">
+      <div class="masthead">
+        <%= render 'layouts/header' %> 
+      </div>
+      <%= yield %>
+    </div>
+  </body>
 
 </html>
-
-
-<!--  -->
