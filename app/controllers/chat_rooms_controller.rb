@@ -22,6 +22,14 @@ class ChatRoomsController < ApplicationController
     @message = Message.new
   end
 
+  def destroy
+    @chat_room.destroy
+    respond_to do |format|
+      format.html { redirect_to chat_room_url, notice: 'Chat was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end  
+
   private
 
   def chat_room_params

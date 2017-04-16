@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :officehours
   # get 'sessions/new'
 
-  resources :chat_rooms, only: [:new, :create, :show, :index]
+  resources :chat_rooms
 
   mount ActionCable.server => '/cable'  
 
@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   post '/request_appointment', to: 'appointments#request_app'
 
   get '/ta', to: 'reviews#index'
+
+  delete '/chat_rooms',   to: 'chat_rooms#index'
   # get '/confirm_appointment', to: 'appointments#confirm_app'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
