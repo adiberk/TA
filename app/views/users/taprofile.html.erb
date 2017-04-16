@@ -117,6 +117,7 @@
 
 			</div>
 		</div>
+    <hr>
 
 
     <!-- end of average rating -->
@@ -125,9 +126,10 @@
 		<div class="row">
       <div class="col-sm-2">
       </div>
+
 			<div class="col-sm-7">
-        <% @user.ta_reviews.each do |each_review|%>
-				<hr/>
+
+          <% @user.ta_reviews.each do |each_review|%>
 				<div class="review-block">
 					<div class="row">
 						<div class="col-sm-3">
@@ -145,11 +147,14 @@
 							<div class="review-block-description"><%= each_review['review'] %></div>
 						</div>
 					</div>
-					<hr/>
-          <% end %>
+
+
 
       		</div>
-        </div>
+          <% end %>
+          </div>
+
+
       </div>
     <!-- end of reviews -->
   </div>
@@ -159,6 +164,45 @@
 <% else %>
   <p>No Reviews</p>
 <% end %>
+<hr>
 <section id="edit_review">
+  <div class="row">
+
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-7">
+
+            <form>
+              <div class="form-group row">
+                <div class="col-xs-12">
+                <div class="lead">
+                <div id="hearts" class="starrr"></div>
+                <span id="count">0</span> star(s)
+                </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-xs-4">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title">
+                </div>
+
+                <div class="col-xs-12">
+                <label for="Review">Review:</label>
+                <textarea class="form-control" rows="5" id="comment" placeholder="Write here..." ></textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-xs-12">
+                <button type="submit" class="btn btn-success green">Share</button>
+                </div>
+              </div>
+            </form>
+
+      </div>
+    </div>
+
+  </div>
 
 </section>
