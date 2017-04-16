@@ -372,7 +372,7 @@ footer ul li {
 
 /*end of calendar settings*/
 
-/* User sign in and sign forms. */
+/* User sign in and sign up forms. */
 .border-form-div {
   max-width: 300px;
   padding: 19px 29px 29px;
@@ -397,4 +397,64 @@ footer ul li {
   height: auto;
   margin-bottom: 15px;
   padding: 7px 9px;
+}
+
+
+/* Chat index styling */
+
+.chat{
+  font-size: 1.5em;
+  letter-spacing: -1px;
+  line-height: 18px;
+  text-align: left;
+}
+.destroy{
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  color: #777;
+  padding: 0px 35px 0px;
+}
+
+/* Chatroom styling */
+
+.chatbox {
+    position: fixed;
+    position: expression("absolute");
+    width: 280px;
+    display: none;
+}
+
+.chatboxcontent {
+    font-family: arial, sans-serif;
+    height: 280px;
+    width: 280px;
+    overflow-y: auto;
+    padding: 7px;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #eeeeee;
+    background: #e5e5e5;
+    line-height: 1.3em;
+    list-style: none;
+}
+
+
+.chatboxinput {
+    padding: 5px;
+    background-color: #ffffff;
+}
+
+.chatboxmessage {
+    margin-left: 1em;
+}
+
+.chatboxtitle {
+    float: left;
+}
+
+.chattake2 {
+  font-family: arial, sans-serif;
+  height: 500px;
+  width: 500px;
+  overflow-y: auto;
 }

@@ -1,6 +1,5 @@
 
-<h1> Chat Rooms </h1>
-<p class="lead"><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary' %></p>
+<h1 > Chat Rooms </h1>
 
 <% if @chat_rooms.count == 0 %>
 	No existing chat rooms to show.
@@ -8,17 +7,21 @@
 	<table>
 	  <thead>
 	    <tr>
-	      <th> Title </th>
+	      <th> </th>
 	      <th> </th>
 	    </tr>
+	    <tr><th></th></tr>
 	  </thead>
 	  <tbody>
 	    <% @chat_rooms.each do |room| %>
 	      <tr>
 	        <td><%= link_to "#{room.title}", chat_room_path(room) %></td>
-	        <td><%= link_to 'Destroy', @chat_room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	        <td><%= link_to 'Destroy', room, method: :destroy, data: { confirm: 'Are you sure?' }, class: 'destroy' %></td>
 	      </tr>
+	      <tr><td><br></td></tr>
 	    <% end %>
 	  </tbody>
 	</table>
 <% end %>
+
+<p class="lead"><%= link_to 'New chat room', new_chat_room_path, class: 'btn btn-primary btn-sm' %></p>
