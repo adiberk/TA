@@ -1,14 +1,14 @@
-<%if logged_in?%>
+<%if user_signed_in?%>
 
   <div class="col-sm-3 col-lg-2 sidebar">
 
 
      <nav class="navbar navbar-default navbar-fixed-side">
         <h1 class = "sidebar">Live Now </h1>
-            <% name =  @current_user.first_name + " " + @current_user.last_name %>
+            <% name =  current_user.first_name + " " + current_user.last_name %>
             <h2><%= name %></h2>
             <dl>
-            <% current_courses=@current_user.courses%>
+            <% current_courses=current_user.courses%>
 
               <% current_courses.each do |each_course| %>
 

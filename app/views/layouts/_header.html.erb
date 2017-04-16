@@ -2,18 +2,18 @@
   <nav class="navbar navbar-inverse my_head">
     <div class="container-fluid">
       <div class="navbar-header">
-        <%= link_to "TaOnDemand", root_url, id: "logo" %>
+        <%= link_to "TaOnDemand", root_url, class: 'navbar-brand' %>
       </div>
       <ul class="nav navbar-nav navbar-right">
 
         <%if user_signed_in?%>
 
-          <li><%= link_to "Home",   root_url, class: "active" %></li>
-          <li><%= link_to 'CableChat', chat_rooms_path, class: 'navbar-brand' %></li>
-          <li><%= link_to "TA List",   talist_path %></li>
+          <li><%= link_to "Home",   root_url, class: 'navbar-brand' %></li>
+          <li><%= link_to 'Chat', chat_rooms_path, class: 'navbar-brand' %></li>
+          <li><%= link_to "TA List",   talist_path, class: 'navbar-brand' %></li>
 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <li class="dropdown"  >
+            <a href="#" class = 'navbar-brand' data-toggle="dropdown" >
               Account <b class="caret"></b>
             </a>
           <ul class="dropdown-menu">
@@ -24,7 +24,7 @@
 
           </ul>
         <% else %>
-          <li><%= link_to "Login", login_path, class: "glyphicon glyphicon-log-in" %></li>
+          <li><%= link_to "Login", login_path, class: 'navbar-brand' %></li>
         <% end %>
         </li>
       </ul>

@@ -7,14 +7,11 @@ class UsersController < ApplicationController
     ta_id=params[:ta_id]
     @user = User.find(id=ta_id)
   end
-  def index
-    @users = User.all
-  end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @courses = Course.all
     @days = ["sun", "mon", "tue", "wed", "thu", "fri"]
     @hours = "8:00AM-8:00PM"

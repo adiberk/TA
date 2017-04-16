@@ -1,9 +1,9 @@
 <div class="card">
   <div class="card-block">
     <div class="row">
-      <div class="col-md-1">
-        <span style="font-weight:bold; color:#0b545a">NAME</span>
- <span class="text-muted"> at <%= message.timestamp %> says</span><br>
+      <div class="col-md-2" onmouseover="show_time();">
+        <span style="font-weight:bold; color:#0b545a"> <%= message.user.first_name %> </span>
+        <span class="text-muted">  <%= message.timestamp %> </span><br>
       </div>
       <div class="col-md-11">
         <p class="card-text">
