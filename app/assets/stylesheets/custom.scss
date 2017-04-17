@@ -415,9 +415,19 @@ footer ul li {
 }
 
 .chatcontent{
+  
   font-size: 13px;
   height: 600px;
   width: 725px;
-  overflow-y: auto;
+  overflow-x: hidden;
 }
 
+.chatboxtextarea {
+  
+  width: 350px;
+  height: 75px;
+  padding: 3px 0pt 3px 3px;
+  border: 1px solid #eeeeee;
+  margin: 1px;
+
+}
