@@ -1,5 +1,6 @@
-<h1><%= @chat_room.title %></h1>
 
+<div class="chatroom">
+<h1><%= @chat_room.title %></h1>
 
 <div class="chatcontent">
 
@@ -14,16 +15,15 @@
 <%= form_for @message, :remote => true, url: '#' do |f| %>
   <%= hidden_field_tag 'chat_room_id', @chat_room.id %>
   <div class="form-group">
-    <%= f.label :body %>
-  	<%= f.text_field :body, class: "chatboxtextarea" %>
-
-    <small class="text-muted">1000 character Limit</small>
-
-
+   
+  	<%= f.text_field :body, :placeholder => 'Enter text here', class: "chatboxtextarea" %>
+  	<br>
+    <small class="text-muted"> &nbsp;1000 character Limit</small>
   
   </div>
 <% end %>
 
+</div>
 
 <script>
 	<!-- #updateScroll() -->
@@ -32,3 +32,5 @@
 	    element.scrollTop = element.scrollHeight;
 	}
 </script>
+
+<!-- $("#mydiv").scrollTop($("#mydiv")[0].scrollHeight); -->

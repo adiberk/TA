@@ -163,7 +163,6 @@ input {
 .jumbo-row{
   margin:0px;
 }
-/*******************/
 
 /*body*/
 h2 > .btn-primary{ //homepage btn
@@ -414,20 +413,29 @@ footer ul li {
   padding: 0px 35px 0px;
 }
 
+
+.chatroom {
+  height: 50%;
+  width: 50%;
+  margin: auto;
+}
+
 .chatcontent{
-  
+  padding: 10px;
+  background-color: #ddddde;
+  border-radius: 10px;
   font-size: 13px;
   height: 500px;
-  width: 725px;
   overflow-x: hidden;
+
 }
 
 .chatboxtextarea {
   
-  width: 350px;
+  width: 500px;
   height: 75px;
   padding: 3px 0pt 3px 3px;
-  border: 1px solid #eeeeee;
-  margin: 1px;
+  border: 2px solid #79797a;
+  margin: 5px;
 
 }
