@@ -18,8 +18,17 @@
   	<%= f.text_field :body, class: "chatboxtextarea" %>
 
     <small class="text-muted">1000 character Limit</small>
+
+
   
   </div>
 <% end %>
 
 
+<script>
+	<!-- #updateScroll() -->
+	function updateScroll(){
+	    var element = document.getElementById("yourDivID");
+	    element.scrollTop = element.scrollHeight;
+	}
+</script>
