@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
     end
     # current user who log in
-    if logged_in?
+    if user_signed_in?
 
         @current_user ||= User.find_by(id: session[:user_id])
         @user = User.find(id=ta_id)

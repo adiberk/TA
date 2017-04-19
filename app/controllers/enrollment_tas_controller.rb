@@ -6,7 +6,7 @@ class EnrollmentTasController < ApplicationController
 
   #Using for the ta_list
   def talist
-    if logged_in?
+    if user_signed_in?
       @courses = Course.all
     else
       redirect_to login_path
