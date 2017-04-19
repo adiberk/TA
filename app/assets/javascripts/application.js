@@ -131,9 +131,9 @@ $( document ).ready(function() {
 
   $('#hearts').on('starrr:change', function(e, value){
     $('#count').html(value);
+    $('#startP').val(value);
+    
   });
 
-  $('#hearts-existing').on('starrr:change', function(e, value){
-    $('#count-existing').html(value);
-  });
+
 });

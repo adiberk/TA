@@ -10,10 +10,17 @@
       <img style="border:3px solid black;" src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
       </center>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <dl class="row">
-        <dt class="col-md-2">University</dt>
-        <dd class="col-md-7"><%= @user.university_id %></dd>
+        <div class="row"><dt class="col-md-2">University</dt>
+        <dd class="col-md-7"><%= @user.university_id %></dd></div>
+        <div class="row">
+        <dt class="col-md-4">Course he tutors</dt><br>
+        <% course_list = course_list_of_ta(@user)%>
+        <% course_list.each do |each_course_id| %>
+          <dd class="col-md-7"><%= Course.find(id=each_course_id)['name']%></dd>
+        <% end %>
+       </div>
       </dl>
     </div>
   </div>
@@ -173,29 +180,51 @@
       </div>
       <div class="col-sm-7">
 
-            <form>
+            <form action="/" method="post">
               <div class="form-group row">
                 <div class="col-xs-12">
                 <div class="lead">
                 <div id="hearts" class="starrr"></div>
                 <span id="count">0</span> star(s)
-                </div>
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-xs-4">
-                <label for="title">Title:</label>
-                <input type="text" class="form-control" id="title">
-                </div>
 
-                <div class="col-xs-12">
-                <label for="Review">Review:</label>
-                <textarea class="form-control" rows="5" id="comment" placeholder="Write here..." ></textarea>
+                <input type="hidden" value="" id="startP" name="score">
+                </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="row">
+                  <div class="col-xs-4">
+                  <label for="title">Title:</label>
+                  <input type="text" class="form-control" name="title">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-4">
+                  <div class="form-group">
+                    <label for="sel1">Select list:</label>
+                    <select class="form-control" id="sel1" name="course_id">
+                      <% course_list = course_list_of_ta(@user)%>
+                      <% course_list.each do |each_course_id| %>
+                        <% each_course=Course.find(id=each_course_id) %>
+                        <option value="<%= each_course['id']%>"><%= each_course['name']%></option>
+                      <% end %>
+
+                    </select>
+                  </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                  <label for="Review">Review:</label>
+                  <textarea class="form-control" rows="5" name="review" placeholder="Write here..." ></textarea>
+                  </div>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-xs-12">
-                <button type="submit" class="btn btn-success green">Share</button>
+                <input type="hidden" value="<%= @user['id']%>" name="ta_id">
+                <input type="hidden" value="<%= @current_user['id']%>" name="user_id">
+                <button type="submit" class="btn btn-success green">submit</button>
                 </div>
               </div>
             </form>

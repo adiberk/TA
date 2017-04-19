@@ -5,7 +5,15 @@ class UsersController < ApplicationController
   # GET /users.json
   def taprofile
     ta_id=params[:ta_id]
-    @user = User.find(id=ta_id)
+    # current user who log in
+    if logged_in?
+        @current_user ||= User.find_by(id: session[:user_id])
+        @user = User.find(id=ta_id)
+        @courses = Course.all
+
+    else
+        redirect_to login_path
+    end
   end
   def index
     @users = User.all

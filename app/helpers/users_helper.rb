@@ -239,7 +239,7 @@ module UsersHelper
 			sum = sum + each_review['score']
 			index = index + 1
 		end
-	
+
 		return sum.to_f/index
 	end
 	# get the array of score distribution
@@ -265,7 +265,7 @@ module UsersHelper
 			return [one, two, three, four, five]
 		end
 	end
-	# get the width of progress
+	# get the width of progress bar
 	def width_of_progress(score)
 
 		case score
@@ -284,6 +284,14 @@ module UsersHelper
 		end
 		return per
 
+	end
+	# get the course list with id
+	def course_list_of_ta(user)
+		course_list = []
+		user.tacourses.each do |each_ta_course|
+			course_list << each_ta_course.id
+		end
+		return course_list
 	end
 
 
