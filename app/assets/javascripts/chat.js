@@ -22,7 +22,7 @@ var ready = function () {
 }
 
 function show_time() {
-    document.write(<%= message.timestamp %>);
+    document.write( message.timestamp);
 }
 
 

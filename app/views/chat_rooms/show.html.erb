@@ -2,7 +2,7 @@
 <div class="chatroom">
 <h1><%= @chat_room.title %></h1>
 
-<div class="chatcontent">
+<div class="chatcontent" id = 'myChat'>
 
 	<div id="messages" data-chat-room-id="<%= @chat_room.id %>">
 	  <%= render @chat_room.messages %>
@@ -12,11 +12,11 @@
 </div>
 
 
-<%= form_for @message, :remote => true, url: '#' do |f| %>
+<%= form_for @message, url: '#' do |f| %>
   <%= hidden_field_tag 'chat_room_id', @chat_room.id %>
   <div class="form-group">
    
-  	<%= f.text_field :body, :placeholder => 'Enter text here', class: "chatboxtextarea" %>
+  	<%= f.text_field :body, :placeholder => 'Enter text here', class: "chatboxtextarea"%>
   	<br>
     <small class="text-muted"> &nbsp;1000 character Limit</small>
   
@@ -26,9 +26,8 @@
 </div>
 
 <script>
-	<!-- #updateScroll() -->
 	function updateScroll(){
-	    var element = document.getElementById("yourDivID");
+	    var element = document.getElementById('#myChat');
 	    element.scrollTop = element.scrollHeight;
 	}
 </script>
