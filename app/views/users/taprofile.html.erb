@@ -41,7 +41,7 @@
           <!-- average rating -->
 
           <% avg_score = average_rating_scores(@user) %>
-					<h2 class="bold padding-bottom-7"><%= avg_score %> <small>/ 5</small></h2>
+					<h2 class="bold padding-bottom-7"><%= avg_score.round(2) %> <small>/ 5</small></h2>
 					<%= create_big_rating_icon(avg_score.round) %>
 				</div>
 			</div>
@@ -180,7 +180,7 @@
       </div>
       <div class="col-sm-7">
 
-            <form action="/taprofile_update" method="get">
+            <form action="/taprofile" method="post">
               <div class="form-group row">
                 <div class="col-xs-12">
                 <div class="lead">
@@ -228,6 +228,8 @@
                 </div>
               </div>
             </form>
+
+
 
       </div>
     </div>

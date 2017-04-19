@@ -236,7 +236,9 @@ module UsersHelper
 		sum=0
 		index = 0
 		user.ta_reviews.each do |each_review|
-			sum = sum + each_review['score']
+			if each_review['score']!=nil
+				sum = sum + each_review['score']
+			end
 			index = index + 1
 		end
 
@@ -250,20 +252,22 @@ module UsersHelper
 		four = 0
 		five = 0
 		user.ta_reviews.each do |each_review|
-			case each_review['score']
-			when 1
+			if each_review['score'] == 1
 				one = one + 1
-			when 2
+			elsif each_review['score'] == 2
 				two = two + 1
-			when 3
+			elsif each_review['score'] == 3
+
 				three = three + 1
-			when 4
+			elsif each_review['score'] == 4
 				four = four + 1
-			else
+			elsif each_review['score'] == 5
+
 				five = five + 1
 			end
-			return [one, two, three, four, five]
+
 		end
+		return [five, four, three, two, one]
 	end
 	# get the width of progress bar
 	def width_of_progress(score)

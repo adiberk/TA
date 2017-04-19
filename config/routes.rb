@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post '/signup',  to: 'users#create'
   get '/talist',   to: 'enrollment_tas#talist'
   get '/taprofile',   to: 'users#taprofile'
-  get '/taprofile_update',   to: 'users#taprofile_update'
+  post '/taprofile',   to: 'users#taprofile'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
