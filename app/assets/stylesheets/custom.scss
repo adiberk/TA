@@ -3,6 +3,10 @@
 
 /* mixins, variables, etc. --for debugging*/
 $gray-medium-light: #eaeaea;
+.thumbnail {
+    padding:0px;
+    border: 0px;
+}
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -334,10 +338,10 @@ footer ul li {
 .selected {
   background: #9aa7ee!important;
 }
-.disabled { 
-  pointer-events: none !important; 
-  opacity: 0.3 !important; 
-  box-shadow: none !important; 
+.disabled {
+  pointer-events: none !important;
+  opacity: 0.3 !important;
+  box-shadow: none !important;
 }
 
 /*calendar settings*/
@@ -355,6 +359,7 @@ footer ul li {
       max-height: 100px;
       min-height: 100px;
 }
+
 
 .cal-header{
    margin-bottom: 2px;
