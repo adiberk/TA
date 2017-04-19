@@ -4,9 +4,36 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def taprofile
+
     ta_id=params[:ta_id]
+
+    # after submit the new reviews
+    # score = params[:score]
+    # course_id = params[:course_id]
+    # ta_id = params[:ta_id]
+    # user_id = params[:user_id]
+    # review = params[:review]
+    # print "**********************"
+    # print score
+    # print course_id
+    # print ta_id
+    # print user_id
+    # print review
+    # if user_id != nil
+    #   print "=============="
+    #   print score
+    #   print course_id
+    #   print ta_id
+    #   print user_id
+    #   print review
+    #
+    #
+    #   Review.create!(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
+
+    #end
     # current user who log in
     if logged_in?
+
         @current_user ||= User.find_by(id: session[:user_id])
         @user = User.find(id=ta_id)
         @courses = Course.all
@@ -15,6 +42,27 @@ class UsersController < ApplicationController
         redirect_to login_path
     end
   end
+
+  def taprofile_update
+    # after submit the new reviews
+    score = params[:score]
+    course_id = params[:course_id]
+    ta_id = params[:ta_id]
+    user_id = params[:user_id]
+    review = params[:review]
+
+    Review.create(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
+
+    @current_user ||= User.find_by(id: session[:user_id])
+    @user = User.find(id=ta_id)
+    @courses = Course.all
+    render 'taprofile'
+
+  end
+
+
+
+
   def index
     @users = User.all
   end

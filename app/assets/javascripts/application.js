@@ -22,6 +22,8 @@
 //     return false;
 //   });
 // });
+
+
 // Starrr plugin (https://github.com/dobtco/starrr)
 var __slice = [].slice;
 
@@ -132,8 +134,11 @@ $( document ).ready(function() {
   $('#hearts').on('starrr:change', function(e, value){
     $('#count').html(value);
     $('#startP').val(value);
-    
+
   });
 
 
 });
+
+
+// Ajax for taprofile: submit the review
