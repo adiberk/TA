@@ -8,10 +8,15 @@ Rails.application.routes.draw do
   resources :courses
   resources :enrollments
   resources :users
+  resources :conversations, only: [:create] do
+    member do
+      post :close
+    end
+    resources :messages, only: [:create]
+  end
+  root 'home#index'
 
-  root 'users#show'
-
-  mount ActionCable.server => '/cable'  
+  # mount ActionCable.server => '/cable'  
 
   get 'home/index'
   get '/talist',   to: 'enrollment_tas#talist'
