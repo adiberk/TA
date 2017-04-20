@@ -25,6 +25,5 @@ function show_time() {
     document.write( message.timestamp);
 }
 
-
 $(document).ready(ready);
 $(document).on("page:load", ready);            	
