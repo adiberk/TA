@@ -1,12 +1,69 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => [:taprofile_update,:taprofile]
 
   # GET /users
   # GET /users.json
   def taprofile
+
     ta_id=params[:ta_id]
-    @user = User.find(id=ta_id)
+
+    # after submit the new reviews
+    score = params[:score]
+    course_id = params[:course_id]
+    ta_id = params[:ta_id]
+    user_id = params[:user_id]
+    review = params[:review]
+    # print "**********************"
+    # print score
+    # print course_id
+    # print ta_id
+    # print user_id
+    # print review
+    if user_id != nil
+      # print "=============="
+      # print score
+      # print course_id
+      # print ta_id
+      # print user_id
+      # print review
+
+
+      Review.create(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
+
+    end
+    # current user who log in
+    if user_signed_in?
+
+        @current_user ||= User.find_by(id: session[:user_id])
+        @user = User.find(id=ta_id)
+        @courses = Course.all
+
+    else
+        redirect_to login_path
+    end
   end
+
+  # def taprofile_update
+  #   # after submit the new reviews
+  #   score = params[:score]
+  #   course_id = params[:course_id]
+  #   ta_id = params[:ta_id]
+  #   user_id = params[:user_id]
+  #   review = params[:review]
+  #
+  #   Review.create(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
+  #
+  #   @current_user ||= User.find_by(id: session[:user_id])
+  #   @user = User.find(id=ta_id)
+  #   @courses = Course.all
+  #   render 'taprofile'
+  #
+  # end
+
+
+
+
   def index
     @users = User.all
   end
@@ -14,7 +71,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @courses = Course.all
     @days = ["sun", "mon", "tue", "wed", "thu", "fri"]
     @hours = "8:00AM-8:00PM"
@@ -83,7 +140,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

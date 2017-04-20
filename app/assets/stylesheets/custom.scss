@@ -3,6 +3,10 @@
 
 /* mixins, variables, etc. --for debugging*/
 $gray-medium-light: #eaeaea;
+.thumbnail {
+    padding:0px;
+    border: 0px;
+}
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -163,7 +167,6 @@ input {
 .jumbo-row{
   margin:0px;
 }
-/*******************/
 
 /*body*/
 h2 > .btn-primary{ //homepage btn
@@ -335,10 +338,10 @@ footer ul li {
 .selected {
   background: #9aa7ee!important;
 }
-.disabled { 
-  pointer-events: none !important; 
-  opacity: 0.3 !important; 
-  box-shadow: none !important; 
+.disabled {
+  pointer-events: none !important;
+  opacity: 0.3 !important;
+  box-shadow: none !important;
 }
 
 /*calendar settings*/
@@ -357,6 +360,7 @@ footer ul li {
       min-height: 100px;
 }
 
+
 .cal-header{
    margin-bottom: 2px;
    width: 100%;
@@ -371,3 +375,72 @@ footer ul li {
 }
 
 /*end of calendar settings*/
+
+/* User sign in and sign forms. */
+.border-form-div {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.border-form-div .form-signin-heading,
+.border-form-div .checkbox {
+  margin-bottom: 10px;
+}
+.border-form-div input[type="text"],
+.border-form-div input[type="email"],
+.border-form-div input[type="password"] {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
+}
+
+/* Chat index styling */
+
+.chat{
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  line-height: 18px;
+  text-align: left;
+}
+.destroy{
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  color: #777;
+  padding: 0px 35px 0px;
+}
+
+
+.chatroom {
+  height: 50%;
+  width: 50%;
+  margin: auto;
+}
+
+.chatcontent{
+  padding: 10px;
+  background-color: #ddddde;
+  border-radius: 10px;
+  font-size: 13px;
+  height: 500px;
+  overflow-x: hidden;
+
+}
+
+.chatboxtextarea {
+  
+  width: 500px;
+  height: 75px;
+  padding: 3px 0pt 3px 3px;
+  border: 2px solid #79797a;
+  margin: 5px;
+
+}

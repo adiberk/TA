@@ -72,7 +72,7 @@ module UsersHelper
 		return string.charAt(0).upcase + string.slice!(0)
 	end
 
-
+# small rating icon for 0 0.5 1 1.5 ...
 	def create_rating_icon(score)
 		# print "======================"
 		# print score
@@ -106,4 +106,198 @@ module UsersHelper
 		end
 		return rating_icon.html_safe
 	end
+# big rating icon for taprofile only
+
+	def create_big_rating_icon(score)
+		# print "======================"
+		# print score
+		if score == nil
+			rating_icon = "<span>Not yet rated</span>"
+			return rating_icon.html_safe
+		end
+		if score == 0
+			rating_icon="""
+			<button type='button' class='btn btn-default btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			"""
+		elsif score == 1
+			rating_icon="""
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			"""
+		elsif score == 2
+			rating_icon="""
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			"""
+
+		elsif score == 3
+			rating_icon="""
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			"""
+
+		elsif score == 4
+
+			rating_icon="""
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-default btn-grey btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			"""
+		else
+			rating_icon="""
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			<button type='button' class='btn btn-warning btn-xs' aria-label='Left Align'>
+				<span class='glyphicon glyphicon-star' aria-hidden='true'></span>
+			</button>
+			"""
+
+
+		end
+		return rating_icon.html_safe
+	end
+	# get the average score of review scores
+	def average_rating_scores(user)
+		sum=0
+		index = 0
+		user.ta_reviews.each do |each_review|
+			if each_review['score']!=nil
+				sum = sum + each_review['score']
+			end
+			index = index + 1
+		end
+
+		return sum.to_f/index
+	end
+	# get the array of score distribution
+	def array_score_distribution(user)
+		one = 0
+		two = 0
+		three = 0
+		four = 0
+		five = 0
+		user.ta_reviews.each do |each_review|
+			if each_review['score'] == 1
+				one = one + 1
+			elsif each_review['score'] == 2
+				two = two + 1
+			elsif each_review['score'] == 3
+
+				three = three + 1
+			elsif each_review['score'] == 4
+				four = four + 1
+			elsif each_review['score'] == 5
+
+				five = five + 1
+			end
+
+		end
+		return [five, four, three, two, one]
+	end
+	# get the width of progress bar
+	def width_of_progress(score)
+
+		case score
+		when 0
+			per = '0'
+		when 1
+			per = '20%'
+		when 2
+			per = '40%'
+		when 3
+			per = '60%'
+		when 4
+			per = '80%'
+		when 5
+			per = '100%'
+		end
+		return per
+
+	end
+	# get the course list with id
+	def course_list_of_ta(user)
+		course_list = []
+		user.tacourses.each do |each_ta_course|
+			course_list << each_ta_course.id
+		end
+		return course_list
+	end
+
+
+
 end
