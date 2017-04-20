@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.web_socket_server_url = "wss://taondemand.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://taondemand.herokuapp.com', 'http://taondemand.herokuapp.com']
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -51,7 +52,7 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
-  config.cache_store = :redis_store if ENV['REDIS_URL']
+  # config.cache_store = :redis_store if ENV['REDIS_URL']
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
