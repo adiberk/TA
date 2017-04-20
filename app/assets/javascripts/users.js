@@ -1,4 +1,4 @@
-chavar ready = function () {
+var ready = function () {
 
     /**
      * Listen on keypress' in our chat textarea and call the

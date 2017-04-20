@@ -19,7 +19,7 @@ var ready = function () {
             }
         }
     };
-};
+}
 
 function show_time() {
     document.write( message.timestamp);
