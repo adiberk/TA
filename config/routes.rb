@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
   root 'home#index'
 
-  # mount ActionCable.server => '/cable'  
+  mount ActionCable.server => '/cable'  
 
   get 'home/index'
   get '/talist',   to: 'enrollment_tas#talist'
