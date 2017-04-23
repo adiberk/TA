@@ -8,4 +8,5 @@ class Course < ApplicationRecord
 	has_many :officehours
 
 	belongs_to :major
+	has_one :university, :through => :major
 end
