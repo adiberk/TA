@@ -1,38 +1,61 @@
 
 <h1>TA LIST</h1>
+<div class="row">
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'London')">Normal</button>
+    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+  </div>
 
+  <div id="London" class="tabcontent">
+    <h3>London</h3>
+    <p>London is the capital city of England.</p>
+  </div>
 
-<% @courses.each do |each_course| %>
-  <h2><%= each_course.name %></h2>
-  <form action="/taprofile" method="GET">
-  <table class="table">
-    <thead class="thead-default">
-      <tr>
-        <th></th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th></th>
+  <div id="Paris" class="tabcontent">
+    <h3>Paris</h3>
+    <p>Paris is the capital of France.</p>
+  </div>
 
-    </thead>
-    <tbody>
-      <% tas= each_course.tas %>
-      <% tas.each do |each_ta| %>
+  <div id="Tokyo" class="tabcontent">
+    <h3>Tokyo</h3>
+    <p>Tokyo is the capital of Japan.</p>
+  </div>
+
+  <% @courses.each do |each_course| %>
+    <h2><%= each_course.name %></h2>
+    <form action="/taprofile" method="GET">
+    <table class="table">
+      <thead class="thead-default">
         <tr>
-          <th scope="row"><%= each_ta['id'] %></th>
-          <td><%= each_ta['first_name'] %></td>
-          <td><%= each_ta['last_name'] %></td>
-          <td><%= each_ta['email'] %></td>
-          <td>
-      
-            <td><button type="submit" class="btn btn-primary" value="<%= each_ta['id'] %>" name = "ta_id">TA Profile</button></td>
+          <th></th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th></th>
 
-          </td>
+      </thead>
+      <tbody>
+        <% tas= each_course.tas %>
+        <% tas.each do |each_ta| %>
+          <tr>
+            <th scope="row"><%= each_ta['id'] %></th>
+            <td><%= each_ta['first_name'] %></td>
+            <td><%= each_ta['last_name'] %></td>
+            <td><%= each_ta['email'] %></td>
+            <td>
+
+              <td><button type="submit" class="btn btn-primary" value="<%= each_ta['id'] %>" name = "ta_id">TA Profile</button></td>
+
+            </td>
 
 
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  </form>
-<% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </form>
+  <% end %>
+
+
+</div>
