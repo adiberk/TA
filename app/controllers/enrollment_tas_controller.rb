@@ -8,6 +8,8 @@ class EnrollmentTasController < ApplicationController
   def talist
     if user_signed_in?
       @courses = Course.all
+      @user=User.all
+      @enrollment_tas = EnrollmentTa.all
     else
       redirect_to login_path
     end

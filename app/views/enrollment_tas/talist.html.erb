@@ -3,18 +3,73 @@
 <div class="row">
   <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'London')">Normal</button>
-    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+    <button class="tablinks" onclick="openCity(event, 'Paris')">Category by Course</button>
     <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
   </div>
 
-  <div id="London" class="tabcontent">
-    <h3>London</h3>
-    <p>London is the capital city of England.</p>
+  <div id="London" class="tabcontent" style=display:block>
+    <% ta_list=get_ta_list_from_enrollment_tas(@enrollment_tas) %>
+    <%= ta_list %>
+
+    <table class="table">
+
+        <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for num in ta_list %>
+            <% each_user=User.find(num)%>
+            <tr>
+              <td><%= each_user['first_name']%></td>
+              <td><%= each_user['last_name']%></td>
+              <td><%= each_user['email']%></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
+
+
   </div>
 
   <div id="Paris" class="tabcontent">
-    <h3>Paris</h3>
-    <p>Paris is the capital of France.</p>
+    <% @courses.each do |each_course| %>
+      <h2><%= each_course.name %></h2>
+      <form action="/taprofile" method="GET">
+      <table class="table">
+        <thead class="thead-default">
+          <tr>
+            <th></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th></th>
+
+        </thead>
+        <tbody>
+          <% tas= each_course.tas %>
+          <% tas.each do |each_ta| %>
+            <tr>
+              <th scope="row"><%= each_ta['id'] %></th>
+              <td><%= each_ta['first_name'] %></td>
+              <td><%= each_ta['last_name'] %></td>
+              <td><%= each_ta['email'] %></td>
+              <td>
+
+                <td><button type="submit" class="btn btn-primary" value="<%= each_ta['id'] %>" name = "ta_id">TA Profile</button></td>
+
+              </td>
+
+
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </form>
+    <% end %>
   </div>
 
   <div id="Tokyo" class="tabcontent">
@@ -22,40 +77,7 @@
     <p>Tokyo is the capital of Japan.</p>
   </div>
 
-  <% @courses.each do |each_course| %>
-    <h2><%= each_course.name %></h2>
-    <form action="/taprofile" method="GET">
-    <table class="table">
-      <thead class="thead-default">
-        <tr>
-          <th></th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th></th>
 
-      </thead>
-      <tbody>
-        <% tas= each_course.tas %>
-        <% tas.each do |each_ta| %>
-          <tr>
-            <th scope="row"><%= each_ta['id'] %></th>
-            <td><%= each_ta['first_name'] %></td>
-            <td><%= each_ta['last_name'] %></td>
-            <td><%= each_ta['email'] %></td>
-            <td>
-
-              <td><button type="submit" class="btn btn-primary" value="<%= each_ta['id'] %>" name = "ta_id">TA Profile</button></td>
-
-            </td>
-
-
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    </form>
-  <% end %>
 
 
 </div>
