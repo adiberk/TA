@@ -84,20 +84,60 @@ end
 
 
 # create fake enrollments
-# 1st enrollment
-Enrollment.create!(user_id: 1, course_id:1)
-Enrollment.create!(user_id: 1, course_id:2)
-Enrollment.create!(user_id: 3, course_id: 4)
-Enrollment.create!(user_id: 3, course_id: 2)
-Enrollment.create!(user_id: 2, course_id: 3)
-Enrollment.create!(user_id:5, course_id:1)
-Enrollment.create!(user_id:5, course_id:5)
 
-EnrollmentTa.create!(user_id: 2, course_id:1)
-EnrollmentTa.create!(user_id: 3, course_id:1)
-EnrollmentTa.create!(user_id: 2, course_id: 2)
-EnrollmentTa.create!(user_id:1, course_id:4)
-EnrollmentTa.create!(user_id:1, course_id:5)
+Enrollment.create!(id: 1, user_id: 1, course_id:1)
+Enrollment.create!(id: 2, user_id: 1, course_id:2)
+Enrollment.create!(id: 5, user_id: 2, course_id: 3)
+Enrollment.create!(id: 3, user_id: 3, course_id: 4)
+Enrollment.create!(id: 4, user_id: 3, course_id: 2)
+Enrollment.create!(id: 6, user_id:5, course_id:1)
+Enrollment.create!(id: 7, user_id:5, course_id:5)
+
+# 2nd version of enrollments create by hao
+Enrollment.create!(id:8, user_id:6, course_id:12)
+Enrollment.create!(id:9, user_id:6, course_id:7)
+Enrollment.create!(id:10, user_id:6, course_id:5)
+#
+Enrollment.create!(id:11, user_id:7, course_id:3)
+Enrollment.create!(id:12, user_id:7, course_id:8)
+Enrollment.create!(id:13, user_id:7, course_id:11)
+#
+Enrollment.create!(id:14, user_id:8, course_id:4)
+Enrollment.create!(id:15, user_id:8, course_id:13)
+Enrollment.create!(id:16, user_id:8, course_id:6)
+#
+Enrollment.create!(id:17, user_id:9, course_id:2)
+Enrollment.create!(id:18, user_id:9, course_id:4)
+Enrollment.create!(id:19, user_id:9, course_id:2)
+#
+Enrollment.create!(id:20, user_id:10, course_id:4)
+
+# create fake enrollment_tas
+
+EnrollmentTa.create!(id:1, user_id: 2, course_id:1)
+EnrollmentTa.create!(id:2, user_id: 3, course_id:1)
+EnrollmentTa.create!(id:3, user_id: 2, course_id: 2)
+EnrollmentTa.create!(id:4, user_id:1, course_id:4)
+EnrollmentTa.create!(id:5, user_id:1, course_id:5)
+
+# 2nd version of enrollment_tas
+EnrollmentTa.create!(id:6, user_id:6, course_id:13)
+EnrollmentTa.create!(id:7, user_id:6, course_id:8)
+EnrollmentTa.create!(id:8, user_id:6, course_id:1)
+#
+EnrollmentTa.create!(id:9, user_id:7, course_id:4)
+EnrollmentTa.create!(id:10, user_id:7, course_id:12)
+#
+EnrollmentTa.create!(id:12, user_id:8, course_id:9)
+EnrollmentTa.create!(id:13, user_id:8, course_id:7)
+EnrollmentTa.create!(id:14, user_id:8, course_id:3)
+#
+EnrollmentTa.create!(id:15, user_id:9, course_id:11)
+EnrollmentTa.create!(id:16, user_id:9, course_id:10)
+EnrollmentTa.create!(id:17, user_id:9, course_id:7)
+#
+EnrollmentTa.create!(id:19, user_id:10, course_id:7)
+EnrollmentTa.create!(id:20, user_id:10, course_id:10)
 
 
 
