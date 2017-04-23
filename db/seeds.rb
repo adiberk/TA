@@ -41,7 +41,7 @@ File.open("#{Rails.root}/db/name.txt").each do |line|
   else
     each_uni_id = 1
   end
-	User.create(id:each_id, first_name:each_fname, last_name:each_lname, username:each_username, email:each_email, university_id:each_uni_id, password:"foobar", password_confirmation: "foobar")
+	User.create!(id:each_id, first_name:each_fname, last_name:each_lname, username:each_username, email:each_email, university_id:each_uni_id, password:"foobar", password_confirmation: "foobar")
 	each_id += 1
   index += 1
 end
@@ -57,9 +57,9 @@ end
 # total of university: 5
 
 # create fake major
-Major.create(id:1, university_id:1, name:"Computer Science")
-Major.create(id:2, university_id:1, name:"Economics")
-Major.create(id:3, university_id:1, name:"Mathmatic")
+Major.create!(id:1, university_id:1, name:"Computer Science")
+Major.create!(id:2, university_id:1, name:"Economics")
+Major.create!(id:3, university_id:1, name:"Mathmatic")
 
 
 # create fake courses
@@ -77,7 +77,7 @@ arr.each do |course|
 	else
 		major_id = 1
 	end
-	Course.create(id: count, name: course, major_id: major_id)	#teacher: arr2[count],
+	Course.create!(id: count, name: course, major_id: major_id)	#teacher: arr2[count],
 	count+=1
 end
 # total of courses : 14 courses
