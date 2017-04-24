@@ -1,38 +1,13 @@
 class ChatRoomsController < ApplicationController
   def index
-    @chat_rooms = ChatRoom.all
-  end
+    session[:conversations] ||= []
 
-  def new
-    @chat_room = ChatRoom.new
-  end
-
-  def create
-    @chat_room = current_user.chat_rooms.build(chat_room_params) 
-    if @chat_room.save
-      flash[:success] = 'Chat room added!'
-      redirect_to chat_rooms_path
-    else
-      render 'new'
-    end
+    @users = User.all.where.not(id: current_user)
+    @conversations = Conversation.includes(:recipient, :messages)
+                                 .find(session[:conversations])
   end
 
   def show
-    @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
-    @message = Message.new
-  end
 
-  def destroy
-    @chat_room.destroy
-    respond_to do |format|
-      format.html { redirect_to chat_room_url, notice: 'Chat was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end  
-
-  private
-
-  def chat_room_params
-    params.require(:chat_room).permit(:title)
   end
 end
