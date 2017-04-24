@@ -1,17 +1,17 @@
-chavar ready = function () {
+// chavar ready = function () {
 
-    /**
-     * Listen on keypress' in our chat textarea and call the
-     * chatInputKey in chat.js for inspection
-     */
+//     /**
+//      * Listen on keypress' in our chat textarea and call the
+//      * chatInputKey in chat.js for inspection
+//      */
 
-    $(document).on('keydown', '.chatboxtextarea', function (event) {
+//     $(document).on('keydown', '.chatboxtextarea', function (event) {
 
-        var id = $(this).data('cid');
-        chatBox.checkInputKey(event, $(this), id);
-    });
+//         var id = $(this).data('cid');
+//         chatBox.checkInputKey(event, $(this), id);
+//     });
 
-}
+// }
 
-$(document).ready(ready);
-$(document).on("page:load", ready);
+// $(document).ready(ready);
+// $(document).on("page:load", ready);
