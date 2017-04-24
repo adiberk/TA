@@ -24,6 +24,22 @@ module CoursesHelper
       str.html_safe
   end
 
+  def get_confirmed_appointments(tas)
+    byebug
+    apps = []
+    tas.each do |ta|
+      byebug
+      hold = ta.ta_appointments
+      hold.each do |app|
+        if app.confirmed == true
+          apps.push(app)
+        end
+      end
+      byebug
+    end
+    return apps
+  end
+
 
 
 

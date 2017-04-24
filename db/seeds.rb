@@ -153,7 +153,8 @@ Officehour.create!(ta_id:2, course_id:1, start:"Mon, 3 Apr 2017 10:00:00 AM", en
 Appointment.create!(ta_id: 2, student_id:5, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: false)
 Appointment.create!(ta_id: 1, student_id:3, course_id: 4, start: "Wed, 5 Apr 2017 01:30:00 PM", end: Faker::Date.forward, confirmed: true)
 Appointment.create!(ta_id: 3, student_id:1, course_id: 1, start:Time.now, end: Faker::Date.forward, confirmed: false)
-
+Appointment.create!(ta_id: 8, student_id:2, course_id: 3, start:"Sun, 23 Apr 2017 09:30:00 AM", end: Faker::Date.forward, confirmed: true)
+Appointment.create!(ta_id: 8, student_id:2, course_id: 3, start:"Tue, 25 Apr 2017 08:00:00 AM", end: Faker::Date.forward, confirmed: true)
 
 Review.create!(ta_id: 2, student_id:3, course_id: 2, review: "3 am happy with 1", score: 3)
 Review.create!(ta_id: 1, student_id:5, course_id: 5, review: "2 am happy with 1", score: 4)
