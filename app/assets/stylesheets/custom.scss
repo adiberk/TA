@@ -28,6 +28,8 @@ $gray-medium-light: #eaeaea;
 body {
   // padding-top: 60px;
   margin-top: 0 !important;
+  margin-left:15px;
+  margin-right:15px;
 }
 
 // section {
@@ -149,9 +151,12 @@ input {
   // height: 100%;
   background-size: cover;
   overflow: hidden;
+  padding-left:15px;
+  padding-right:15px;
 }
 .home-image h1{
   color: #fff;
+
 }
 .home-image h2{
   color: rgb(0, 0, 0);
