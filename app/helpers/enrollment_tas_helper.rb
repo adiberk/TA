@@ -7,6 +7,15 @@ module EnrollmentTasHelper
     end
     return ta_list.uniq
   end
+
+  def get_user_list_from_users(users)
+    user_list = []
+    users.each do |user|
+      user_list.push(user['id'])
+    end
+    return user_list
+  end
+
   def find_tacourses_from_user(user)
     tacourses=''
     user.tacourses.each do |each_course|
@@ -15,4 +24,5 @@ module EnrollmentTasHelper
 
     return tacourses[0..tacourses.length-4]
   end
+
 end

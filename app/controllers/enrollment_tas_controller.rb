@@ -1,19 +1,35 @@
 class EnrollmentTasController < ApplicationController
   before_action :set_enrollment_ta, only: [:show, :edit, :update, :destroy]
-
+  include EnrollmentTasHelper
   # GET /enrollment_tas
   # GET /enrollment_tas.json
 
   #Using for the ta_list
   def talist
-    if user_signed_in?
-      @courses = Course.all
-      @user=User.all
-      @enrollment_tas = EnrollmentTa.all
-    else
-      redirect_to login_path
-    end
+    @courses = Course.all
+    @user=User.all
 
+      @enrollment_tas = EnrollmentTa.all
+      @ta_list=get_ta_list_from_enrollment_tas(@enrollment_tas)
+      render 'talist'
+
+  end
+  def talistfilter
+    puts "========hi========="
+    ta_name = params[:name]
+    puts ta_name
+    puts "******************"
+
+    users_fname=User.where("first_name LIKE ?", "%#{ta_name}%")
+    users_lname=User.where("last_name LIKE ?", "%#{ta_name}%")
+
+    user_fname_list=get_user_list_from_users(users_fname)
+    user_lname_list=get_user_list_from_users(users_lname)
+    user_list = user_fname_list | user_lname_list
+    @enrollment_tas = EnrollmentTa.all
+    ta_list=get_ta_list_from_enrollment_tas(@enrollment_tas)
+    @ta_list = ta_list & user_list
+    render :partial => 'partial'
 
   end
 

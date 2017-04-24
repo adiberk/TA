@@ -5,42 +5,23 @@
   <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'London')">Normal</button>
     <button class="tablinks" onclick="openCity(event, 'Paris')">Category by Course</button>
-    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+    <!-- <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button> -->
   </div>
 
   <div id="London" class="tabcontent" style=display:block>
-    <form action="/taprofile" method="GET">
-    <% ta_list=get_ta_list_from_enrollment_tas(@enrollment_tas) %>
-    <%= ta_list %>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= form_tag("#", method: "get") do %>
+          <%= label_tag(:q, "Search for:") %>
+          <%= text_field_tag 'search_name', nil ,:placeholder => 'First or Last Name' %>
 
-    <table class="table">
+        <% end %>
+      </div>
+      <div class="col-sm-10" id="talist1">
+      <%= render 'partial' %>
+      </div>
+    </div>
 
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Course</th>
-            <th>Profile</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for num in ta_list %>
-            <% each_user=User.find(num)%>
-            <tr>
-              <td><%= each_user['first_name']%> <%= each_user['last_name']%></td>
-              <td><%= each_user['email']%></td>
-              <td><%= find_tacourses_from_user(each_user) %> </td>
-              <td>
-
-                <button type="submit" class="btn btn-primary" value="<%= each_user['id'] %>" name = "ta_id">TA Profile</button>
-
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-    </table>
-
-    </form>
   </div>
 
   <div id="Paris" class="tabcontent">

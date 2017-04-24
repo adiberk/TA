@@ -172,3 +172,30 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+
+// ajax in talist for search taname
+
+document.addEventListener("turbolinks:load", function() {
+  $(document).ready(function(){
+    console.log('hi');
+    $("#search_name").keyup(function(){
+      $.ajax({
+          type: "GET",
+          url: "talist/filter?name=" + $("#search_name").val(),
+          dataType: "html",
+          success:function(data){
+            // alert(data)
+            $("#talist1").html(data)
+          },
+          error:function(jqXHR){
+            alert(jqXHR)
+
+          }
+      });
+
+    });
+
+    // console.log("test");
+
+  });
+})
