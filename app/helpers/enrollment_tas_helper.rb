@@ -7,4 +7,12 @@ module EnrollmentTasHelper
     end
     return ta_list.uniq
   end
+  def find_tacourses_from_user(user)
+    tacourses=''
+    user.tacourses.each do |each_course|
+      tacourses = tacourses + each_course['name'] + " | "
+    end
+
+    return tacourses[0..tacourses.length-4]
+  end
 end
