@@ -223,7 +223,7 @@
               <div class="form-group row">
                 <div class="col-xs-12">
                 <input type="hidden" value="<%= @user['id']%>" name="ta_id">
-                <input type="hidden" value="<%= @current_user['id']%>" name="user_id">
+                <input type="hidden" value="<%= current_user.id%>" name="user_id">
                 <button type="submit" class="btn btn-success green">submit</button>
                 </div>
               </div>
