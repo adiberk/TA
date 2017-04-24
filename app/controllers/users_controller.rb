@@ -27,10 +27,12 @@ class UsersController < ApplicationController
       # print ta_id
       # print user_id
       # print review
+      review = Review.new(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
 
-
-      Review.create(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
-
+      if !review.save(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
+        errors = review.errors.messages
+        flash.now[:danger] = errors[:base][0]
+      end
     end
     # current user who log in
     if user_signed_in?
