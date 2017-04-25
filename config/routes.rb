@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
   resources :enrollment_tas
   resources :appointments
   resources :officehours
@@ -11,11 +11,12 @@ Rails.application.routes.draw do
 
   root 'users#show'
 
-  mount ActionCable.server => '/cable'  
+  mount ActionCable.server => '/cable'
 
   get 'home/index'
   get '/talist',   to: 'enrollment_tas#talist'
-
+  get '/talist/filter',   to: 'enrollment_tas#talistfilter'
+  get '/talist/filter2',   to: 'enrollment_tas#talistfilter2'
   get '/taprofile',   to: 'users#taprofile'
   post '/taprofile',   to: 'users#taprofile'
   get    '/login',   to: 'sessions#new'
