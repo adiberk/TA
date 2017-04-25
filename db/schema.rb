@@ -103,8 +103,6 @@ ActiveRecord::Schema.define(version: 20170423164441) do
     t.boolean  "online"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "password_digest"
-    t.string   "remember_digest"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
