@@ -1,53 +1,34 @@
 <%if user_signed_in?%>
-	<%=create_header(@days)%>
-	<div class = 'days-wrapper'>
-		<div class = 'hour-header'>
-		<%(0..parseHours(@hours).length-1).each do |count|%>
-			<div class = "hour-header-item <%=parseHours(@hours)[count]%>">
-				<h5 class = 'time-slots'><%=parseHours(@hours)[count]%></h5>
+	<%if !is_ta_of_course(current_user, locals[:course])%>
+		<%=create_header(@days)%>
+		<div class = 'days-wrapper'>
+			<div class = 'hour-header'>
+			<%(0..parseHours(@hours).length-1).each do |count|%>
+				<div class = "hour-header-item <%=parseHours(@hours)[count]%>">
+					<h5 class = 'time-slots'><%=parseHours(@hours)[count]%></h5>
+				</div>
+			<% end %>
 			</div>
-		<% end %>
-		</div>
-		<%tas= locals[:course].tas%>
-		<%ta_appointments = get_confirmed_appointments(tas)%>
-		<%(0..@days.length-1).each do |count|%>
-			<div class = "day <%=@days[count]%>">
+			<%tas= locals[:course].tas%>
+			<%ta_appointments = get_confirmed_appointments(tas)%>
+			<%(0..@days.length-1).each do |count|%>
+				<div class = "day <%=@days[count]%>">
 
-			<%officehours = locals[:course].officehours%>
-			<%correct_hour = nil%>
-			<%(0..parseHours(@hours).length-1).each do |jcount|%>
-				<%correct_hour = off_hour(officehours, count, jcount)%>
-				<%correct_app = off_hour(ta_appointments, count, jcount)%>
-				<%hours = parseHours(@hours)[jcount]%>
-				<%if correct_hour!=nil%>
-					<div id = "cal-table" class = "hour <%=parseHours(@hours)[jcount]%>">
-						<div class = 'time-added'>
-							<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
-							<%=render 'create_modal', :params => {hours: hours, course:locals[:course], days: @days[count]}%>
-							<h5 class = 'offhour'><%=User.find(correct_hour.ta_id).first_name%>
-							</h5>
-							<h5>
-							<%hold = User.find(correct_hour.ta_id).ta_reviews%>
-							<%if hold.size > 0%>
-								<%hold = create_rating_icon(hold.first.score)%>
-							<%else%>
-								<%hold = create_rating_icon(nil)%>
-							<%end%>
-							Rating: <%=hold%> 
-							</h5>
-						</div>
-					</div>
-					<%correct_hour = nil%>
-				<% else %>
-					<%if correct_app!=nil%>
-						<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>" style="background:#00eaff;">
+				<%officehours = locals[:course].officehours%>
+				<%correct_hour = nil%>
+				<%(0..parseHours(@hours).length-1).each do |jcount|%>
+					<%correct_hour = off_hour(officehours, count, jcount)%>
+					<%correct_app = off_hour(ta_appointments, count, jcount)%>
+					<%hours = parseHours(@hours)[jcount]%>
+					<%if correct_hour!=nil%>
+						<div id = "cal-table" class = "hour <%=parseHours(@hours)[jcount]%>">
 							<div class = 'time-added'>
 								<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
 								<%=render 'create_modal', :params => {hours: hours, course:locals[:course], days: @days[count]}%>
-								<h5 class = 'offhour'><%="Appointment with "%><%=User.find(correct_app.ta_id).first_name%>
+								<h5 class = 'offhour'><%=User.find(correct_hour.ta_id).first_name%>
 								</h5>
 								<h5>
-								<%hold = User.find(correct_app.ta_id).ta_reviews%>
+								<%hold = User.find(correct_hour.ta_id).ta_reviews%>
 								<%if hold.size > 0%>
 									<%hold = create_rating_icon(hold.first.score)%>
 								<%else%>
@@ -57,19 +38,115 @@
 								</h5>
 							</div>
 						</div>
-						<%correct_app= nil%>
-					<%else%>
-						<div class = 'hour <%=parseHours(@hours)[jcount]%>', id = 'cal-table'>
+						<%correct_hour = nil%>
+					<% else %>
+						<%if correct_app!=nil%>
+							<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>" style="background:#00eaff;">
+								<div class = 'time-added'>
+									<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
+									<%=render 'create_modal', :params => {hours: hours, course:locals[:course], days: @days[count]}%>
+									<h5 class = 'offhour'><%="Appointment with "%><%=User.find(correct_app.ta_id).first_name%>
+									</h5>
+									<h5>
+									<%hold = User.find(correct_app.ta_id).ta_reviews%>
+									<%if hold.size > 0%>
+										<%hold = create_rating_icon(hold.first.score)%>
+									<%else%>
+										<%hold = create_rating_icon(nil)%>
+									<%end%>
+									Rating: <%=hold%> 
+									</h5>
+								</div>
+							</div>
+							<%correct_app= nil%>
+						<%else%>
+							<div class = 'hour <%=parseHours(@hours)[jcount]%>', id = 'cal-table'>
+								<div class = 'time-added'>
+									<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'>
+									</button>
+									<%= render 'create_modal', :params => {hours: hours, course: locals[:course], days: @days[count]}%>
+								</div>
+							</div>
+						<% end %>
+					<% end %>
+				<%end%>
+				</div>
+			<% end %>
+		</div>
+	<% else %>
+		<%=create_header(@days)%>
+		<div class = 'days-wrapper'>
+			<div class = 'hour-header'>
+			<%(0..parseHours(@hours).length-1).each do |count|%>
+				<div class = "hour-header-item <%=parseHours(@hours)[count]%>">
+					<h5 class = 'time-slots'><%=parseHours(@hours)[count]%></h5>
+				</div>
+			<% end %>
+			</div>
+			<%tas= locals[:course].tas%>
+			<%ta_appointments = get_confirmed_appointments(tas)%>
+			<%(0..@days.length-1).each do |count|%>
+				<div class = "day <%=@days[count]%>">
+
+				<%officehours = locals[:course].officehours%>
+				<%correct_hour = nil%>
+				<%(0..parseHours(@hours).length-1).each do |jcount|%>
+					<%correct_hour = off_hour(officehours, count, jcount)%>
+					<%correct_app = off_hour(ta_appointments, count, jcount)%>
+					<%hours = parseHours(@hours)[jcount]%>
+					<%if correct_hour!=nil%>
+						<div id = "cal-table" class = "hour <%=parseHours(@hours)[jcount]%>">
 							<div class = 'time-added'>
-								<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'>
-								</button>
-								<%= render 'create_modal', :params => {hours: hours, course: locals[:course], days: @days[count]}%>
+								<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
+								<%=render 'update_modal', :params => {office_hour: correct_hour}%>
+								<h5 class = ''><%=User.find(correct_hour.ta_id).first_name%>
+								</h5>
+								<h5>
+								<%hold = User.find(correct_hour.ta_id).ta_reviews%>
+								<%if hold.size > 0%>
+									<%hold = create_rating_icon(hold.first.score)%>
+								<%else%>
+									<%hold = create_rating_icon(nil)%>
+								<%end%>
+								Rating: <%=hold%> 
+								</h5>
 							</div>
 						</div>
+						<%correct_hour = nil%>
+					<% else %>
+						<%if correct_app!=nil%>
+							<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>" style="background:#00eaff;">
+								<div class = 'time-added'>
+									<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
+									<%=render 'create_modal', :params => {hours: hours, course:locals[:course], days: @days[count]}%>
+									<h5 class = 'offhour'><%="Appointment with "%><%=User.find(correct_app.ta_id).first_name%>
+									</h5>
+									<h5>
+									<%hold = User.find(correct_app.ta_id).ta_reviews%>
+									<%if hold.size > 0%>
+										<%hold = create_rating_icon(hold.first.score)%>
+									<%else%>
+										<%hold = create_rating_icon(nil)%>
+									<%end%>
+									Rating: <%=hold%> 
+									</h5>
+								</div>
+							</div>
+							<%correct_app= nil%>
+						<%else%>
+							<div class = 'hour <%=parseHours(@hours)[jcount]%>', id = 'cal-table'>
+								<div class = 'time-added'>
+									<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'>
+									</button>
+									<%= render 'create_modal', :params => {hours: hours, course: locals[:course], days: @days[count]}%>
+								</div>
+							</div>
+						<% end %>
 					<% end %>
-				<% end %>
-			<%end%>
-			</div>
-		<% end %>
-	</div>
+				<%end%>
+				</div>
+			<% end %>
+		</div>
+	<%end%>
+
 <%end%>
