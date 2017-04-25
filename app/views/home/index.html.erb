@@ -8,22 +8,13 @@
 	  </div>
 	</div>
 </div>
-<div class="row">
-  <div class="col-md-9">
-    <ul id="conversations-list">
-      <% if @conversations.nil? %>	
-      	<% @conversations.each do |conversation| %>
-        	<%= render 'conversations/conversation', conversation: conversation, user: current_user %>
-      	<% end %>
-      <% end %>
-
-    </ul>
-  </div>
+<h1> One </h1>
+<div class="row" style="border:1px solid black">
 
   <div class="col-md-3">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">User list</h3>
+        <h3 class="panel-title">Chat Rooms</h3>
       </div>
       <div class="panel-body">
         <ul>
@@ -34,4 +25,15 @@
       </div>
     </div>
   </div>
+
+
+
+  <div class="col-md-9">
+    <ul id="conversations-list">
+      <% @conversations.each do |conversation| %>
+        <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+      <% end %>
+    </ul>
+  </div>
+
 </div>

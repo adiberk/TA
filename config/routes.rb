@@ -4,11 +4,17 @@ Rails.application.routes.draw do
   resources :enrollment_tas
   resources :appointments
   resources :officehours
-  resources :chat_rooms
   resources :courses
   resources :enrollments
   resources :users
+  resources :conversations, only: [:create] do
+    member do
+      post :close
+    end
 
+    resources :messages, only: [:create]
+  end
+  
   root 'users#show'
 
   mount ActionCable.server => '/cable'  

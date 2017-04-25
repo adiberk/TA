@@ -12,6 +12,11 @@ University.delete_all
 Major.delete_all
 Enrollment.delete_all
 EnrollmentTa.delete_all
+Officehour.delete_all
+Review.delete_all
+Appointment.delete_all
+Conversation.delete_all
+
 # create fake users
 # 1st user
 User.create(id: 1, first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar")
@@ -160,3 +165,5 @@ Review.create!(ta_id: 2, student_id:3, course_id: 2, review: "3 am happy with 1"
 Review.create!(ta_id: 1, student_id:5, course_id: 5, review: "2 am happy with 1", score: 4)
 Review.create!(ta_id: 1, student_id:3, course_id: 4, review: "4 am happy with 1", score: 5)
 # Review.create!(ta_id:3, student_id:1, course_id:1, review:"eh", score:3.5)
+
+Conversation.create!(recipient_id: 1, sender_id: 2, created_at: Time.now, updated_at: Time.now)

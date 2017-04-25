@@ -6,4 +6,14 @@ class HomeController < ApplicationController
     @conversations = Conversation.includes(:recipient, :messages)
                                  .find(session[:conversations])
   end
+
+  def close
+    @conversation = Conversation.find(params[:id])
+
+    session[:conversations].delete(@conversation.id)
+
+    respond_to do |format|
+      format.js
+    end
+  end
 end
