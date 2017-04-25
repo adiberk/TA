@@ -157,4 +157,74 @@ $( document ).ready(function() {
 });
 
 
-// Ajax for taprofile: submit the review
+// tab function
+function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+//side bar
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+// ajax in talist for search taname
+
+document.addEventListener("turbolinks:load", function() {
+  $(document).ready(function(){
+
+    $("#search_name").keyup(function(){
+      $.ajax({
+          type: "GET",
+          url: "talist/filter?name=" + $("#search_name").val(),
+          dataType: "html",
+          success:function(data){
+            // alert(data)
+            $("#talist1").html(data)
+          },
+          error:function(jqXHR){
+            alert(jqXHR)
+
+          }
+      });
+
+    });
+    $("#search_course_name").keyup(function(){
+      $.ajax({
+          type: "GET",
+          url: "talist/filter2?coursename=" + $("#search_course_name").val(),
+          dataType: "html",
+          success:function(data){
+            // alert(data)
+            $("#talist2").html(data)
+          },
+          error:function(jqXHR){
+            alert(jqXHR)
+
+          }
+      });
+
+    });
+
+  });
+})

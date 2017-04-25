@@ -1,38 +1,45 @@
 
+
 <h1>TA LIST</h1>
+<div class="row">
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'London')">Normal</button>
+    <button class="tablinks" onclick="openCity(event, 'Paris')">Category by Course</button>
+    <!-- <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button> -->
+  </div>
+
+  <div id="London" class="tabcontent" style=display:block>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= form_tag("#", method: "get") do %>
+          <%= label_tag(:q, "Search for:") %>
+          <%= text_field_tag 'search_name', nil ,:placeholder => 'First or Last Name' %>
+
+        <% end %>
+      </div>
+      <div class="col-sm-10" id="talist1">
+      <%= render 'partial' %>
+      </div>
+    </div>
+  </div>
+
+  <div id="Paris" class="tabcontent">
+    <div class="row">
+      <div class="col-sm-2">
+        <%= form_tag("#", method: "get") do %>
+          <%= label_tag(:q, "Search for:") %>
+          <%= text_field_tag 'search_course_name', nil ,:placeholder => 'Course Name' %>
+
+        <% end %>
+      </div>
+      <div class="col-sm-10" id="talist2">
+      <%= render 'partial2' %>
+      </div>
+    </div>
+  </div>
 
 
-<% @courses.each do |each_course| %>
-  <h2><%= each_course.name %></h2>
-  <form action="/taprofile" method="GET">
-  <table class="table">
-    <thead class="thead-default">
-      <tr>
-        <th></th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-        <th></th>
-
-    </thead>
-    <tbody>
-      <% tas= each_course.tas %>
-      <% tas.each do |each_ta| %>
-        <tr>
-          <th scope="row"><%= each_ta['id'] %></th>
-          <td><%= each_ta['first_name'] %></td>
-          <td><%= each_ta['last_name'] %></td>
-          <td><%= each_ta['email'] %></td>
-          <td>
-      
-            <td><button type="submit" class="btn btn-primary" value="<%= each_ta['id'] %>" name = "ta_id">TA Profile</button></td>
-
-          </td>
 
 
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  </form>
-<% end %>
+
+</div>

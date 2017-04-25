@@ -32,18 +32,20 @@ class UsersController < ApplicationController
       if !review.save(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
         errors = review.errors.messages
         flash.now[:danger] = errors[:base][0]
+      else
+        redirect_to action:'taprofile', ta_id:ta_id
       end
+
     end
     # current user who log in
-    if user_signed_in?
+    # if user_signed_in?
 
-        @current_user ||= User.find_by(id: session[:user_id])
         @user = User.find(id=ta_id)
         @courses = Course.all
 
-    else
-        redirect_to login_path
-    end
+    # else
+        # redirect_to login_path
+    # end
   end
 
   # def taprofile_update
