@@ -32,6 +32,12 @@ class EnrollmentTasController < ApplicationController
     render :partial => 'partial'
 
   end
+  def talistfilter2
+    course_name = params[:coursename]
+    @courses=Course.where("name LIKE ?", "%#{course_name}%")
+
+    render :partial => 'partial2'
+  end
 
 
   def index

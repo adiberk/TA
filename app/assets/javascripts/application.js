@@ -177,7 +177,7 @@ function closeNav() {
 
 document.addEventListener("turbolinks:load", function() {
   $(document).ready(function(){
-    console.log('hi');
+
     $("#search_name").keyup(function(){
       $.ajax({
           type: "GET",
@@ -194,8 +194,22 @@ document.addEventListener("turbolinks:load", function() {
       });
 
     });
+    $("#search_course_name").keyup(function(){
+      $.ajax({
+          type: "GET",
+          url: "talist/filter2?coursename=" + $("#search_course_name").val(),
+          dataType: "html",
+          success:function(data){
+            // alert(data)
+            $("#talist2").html(data)
+          },
+          error:function(jqXHR){
+            alert(jqXHR)
 
-    // console.log("test");
+          }
+      });
+
+    });
 
   });
 })

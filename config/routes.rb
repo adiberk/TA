@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get '/talist',   to: 'enrollment_tas#talist'
   get '/talist/filter',   to: 'enrollment_tas#talistfilter'
+  get '/talist/filter2',   to: 'enrollment_tas#talistfilter2'
   get '/taprofile',   to: 'users#taprofile'
   post '/taprofile',   to: 'users#taprofile'
   get    '/login',   to: 'sessions#new'

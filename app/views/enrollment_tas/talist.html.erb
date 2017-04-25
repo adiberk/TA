@@ -21,52 +21,23 @@
       <%= render 'partial' %>
       </div>
     </div>
-
   </div>
 
   <div id="Paris" class="tabcontent">
-    <form action="/taprofile" method="GET">
-    <% @courses.each do |each_course| %>
-      <h2><%= each_course.name %></h2>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= form_tag("#", method: "get") do %>
+          <%= label_tag(:q, "Search for:") %>
+          <%= text_field_tag 'search_course_name', nil ,:placeholder => 'Course Name' %>
 
-      <table class="table">
-
-
-        <thead class="thead-default">
-          <tr>
-
-            <th style="width:200px">Name</th>
-            <th style="width:300px">Email</th>
-            <th>Profile</th>
-
-        </thead>
-        <tbody>
-          <% tas= each_course.tas %>
-          <% tas.each do |each_ta| %>
-            <tr>
-
-              <td><%= each_ta['first_name'] %> <%= each_ta['last_name'] %></td>
-              <td><%= each_ta['email'] %></td>
-              <td>
-
-                <button type="submit" class="btn btn-primary" value="<%= each_ta['id'] %>" name = "ta_id">TA Profile</button>
-
-              </td>
-
-
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-    <% end %>
-    </form>
+        <% end %>
+      </div>
+      <div class="col-sm-10" id="talist2">
+      <%= render 'partial2' %>
+      </div>
+    </div>
   </div>
 
-  <div id="Tokyo" class="tabcontent">
-    <h3>Tokyo</h3>
-    <p>Tokyo is the capital of Japan.</p>
-  </div>
 
 
 
