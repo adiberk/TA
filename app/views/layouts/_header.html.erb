@@ -2,14 +2,14 @@
   <nav class="navbar navbar-inverse my_head">
     <div class="container-fluid">
       <div class="navbar-header">
-        <%= link_to "TaOnDemand", root_url, class: 'navbar-brand' %>
+        <%= link_to "TaOnDemand", home_index_path, class: 'navbar-brand' %>
       </div>
       <ul class="nav navbar-nav navbar-right">
 
         <%if user_signed_in?%>
 
           <li><%= link_to "Home",   root_url, class: 'navbar-brand' %></li>
-          <li><%= link_to 'Chat', chat_rooms_path, class: 'navbar-brand' %></li>
+          <li><%= link_to 'Chat', chat_index_path, class: 'navbar-brand' %></li>
           <li><%= link_to "TA List",   talist_path, class: 'navbar-brand' %></li>
 
           <li class="dropdown"  >

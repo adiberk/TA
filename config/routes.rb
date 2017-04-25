@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'  
 
   get 'home/index'
+  get 'chat/index'
+
   get '/talist',   to: 'enrollment_tas#talist'
 
   get '/taprofile',   to: 'users#taprofile'
