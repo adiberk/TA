@@ -36,6 +36,5 @@ Rails.application.routes.draw do
 
   get '/ta', to: 'reviews#index'
 
-  delete '/chat_rooms',   to: 'chat_rooms#index'
   # get '/confirm_appointment', to: 'appointments#confirm_app'
 end
