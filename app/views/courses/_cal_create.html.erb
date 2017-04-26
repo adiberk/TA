@@ -138,7 +138,7 @@
 								<div class = 'time-added'>
 									<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'>
 									</button>
-									<%= render 'create_modal', :params => {hours: hours, course: locals[:course], days: @days[count]}%>
+									<%= render 'create_off_hour_modal', :params => {hours: hours, course: locals[:course], days: @days[count]}%>
 								</div>
 							</div>
 						<% end %>

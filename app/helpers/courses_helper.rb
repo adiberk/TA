@@ -79,7 +79,6 @@ module CoursesHelper
 
 
   def off_hour(officehours, count, jcount)
-      # byebug
     hour = nil
     officehours.each do |offh|
       if (offh.start.strftime('%a').downcase.eql?(@days[count].split(" ")[0].downcase))

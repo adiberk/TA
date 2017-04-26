@@ -26,29 +26,30 @@ class OfficehoursController < ApplicationController
   def create
     @officehour = Officehour.new(officehour_params)
 
-    respond_to do |format|
-      if @officehour.save
-        format.html { redirect_to @officehour, notice: 'Officehour was successfully created.' }
-        format.json { render :show, status: :created, location: @officehour }
-      else
-        format.html { render :new }
-        format.json { render json: @officehour.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /officehours/1
-  # PATCH/PUT /officehours/1.json
-  def update
     # respond_to do |format|
-      if @officehour.update(officehour_params)
-        flash[:success] = 'Updated Office Hour'
+      if @officehour.save
+        flash[:success] = 'Office Hour Created'
         redirect_to :controller => 'courses', :action=>'show', :id=> @officehour.course_id, :name=>Course.find(@officehour.course_id).name
       else
         redirect_to :controller => 'courses', :action=>'show', :id=> @officehour.course_id, :name=>Course.find(@officehour.course_id)
         errors = @appointment.errors.messages
         flash[:danger] = errors[:base][0]
-      # end
+      end
+    # end
+  end
+
+  # PATCH/PUT /officehours/1
+  # PATCH/PUT /officehours/1.json
+  def update
+  # respond_to do |format|
+    if @officehour.update(officehour_params)
+      flash[:success] = 'Updated Office Hour'
+      redirect_to :controller => 'courses', :action=>'show', :id=> @officehour.course_id, :name=>Course.find(@officehour.course_id).name
+    else
+      redirect_to :controller => 'courses', :action=>'show', :id=> @officehour.course_id, :name=>Course.find(@officehour.course_id)
+      errors = @appointment.errors.messages
+      flash[:danger] = errors[:base][0]
+    # end
     end
   end
 
