@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -19,15 +20,15 @@ Conversation.delete_all
 
 # create fake users
 # 1st user
-User.create(id: 1, first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar")
+User.create!(id: 1, first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar", confirmed_at:Time.now)
 # 2nd user
-User.create(id: 2, first_name: "Adi", last_name: "Berkowitz", username: "adi", email: "adi@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar")
+User.create!(id: 2, first_name: "Adi", last_name: "Berkowitz", username: "adi", email: "adi@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 # 3rd user
-User.create(id: 3, first_name: "Hao", last_name: "Wang", username: "hao", email: "haowang@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar")
+User.create!(id: 3, first_name: "Hao", last_name: "Wang", username: "hao", email: "haowang@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 # 4th user
-User.create(id: 4, first_name: "Stacy", last_name: "Dean", username: "stacy", email: "stacydean@tuffs.edu", university_id: 2, password:"foobar", password_confirmation: "foobar")
+User.create!(id: 4, first_name: "Stacy", last_name: "Dean", username: "stacy", email: "stacydean@tuffs.edu", university_id: 2, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 # 5th user
-User.create(id: 5, first_name: "Fanny", last_name: "Ferguson", username: "fanny", email: "fannyferguson@bc.edu", university_id: 3, password:"foobar", password_confirmation: "foobar")
+User.create!(id: 5, first_name: "Fanny", last_name: "Ferguson", username: "fanny", email: "fannyferguson@bc.edu", university_id: 3, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 
 # second version of user seed from ID:6
 # seed names from name.txt
@@ -46,7 +47,7 @@ File.open("#{Rails.root}/db/name.txt").each do |line|
   else
     each_uni_id = 1
   end
-	User.create!(id:each_id, first_name:each_fname, last_name:each_lname, username:each_username, email:each_email, university_id:each_uni_id, password:"foobar", password_confirmation: "foobar")
+  	User.create!(id:each_id, first_name:each_fname, last_name:each_lname, username:each_username, email:each_email, university_id:each_uni_id, password:"foobar", password_confirmation: "foobar", confirmed_at:Time.now)
 	each_id += 1
   index += 1
 end
@@ -167,3 +168,4 @@ Review.create!(ta_id: 1, student_id:3, course_id: 4, review: "4 am happy with 1"
 # Review.create!(ta_id:3, student_id:1, course_id:1, review:"eh", score:3.5)
 
 Conversation.create!(recipient_id: 1, sender_id: 2, created_at: Time.now, updated_at: Time.now)
+
