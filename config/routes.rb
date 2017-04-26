@@ -33,7 +33,8 @@ Rails.application.routes.draw do
   post '/confirm_appointment', to: 'appointments#confirm_app'
   post '/unconfirm_appointment', to: 'appointments#unconfirm_app'
   post '/request_appointment', to: 'appointments#request_app'
-
+  patch '/update_hours', to: 'officehours#update'
+  
   get '/ta', to: 'reviews#index'
 
   # get '/confirm_appointment', to: 'appointments#confirm_app'

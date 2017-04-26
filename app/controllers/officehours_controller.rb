@@ -40,14 +40,15 @@ class OfficehoursController < ApplicationController
   # PATCH/PUT /officehours/1
   # PATCH/PUT /officehours/1.json
   def update
-    respond_to do |format|
+    # respond_to do |format|
       if @officehour.update(officehour_params)
-        format.html { redirect_to @officehour, notice: 'Officehour was successfully updated.' }
-        format.json { render :show, status: :ok, location: @officehour }
+        flash[:success] = 'Updated Office Hour'
+        redirect_to :controller => 'courses', :action=>'show', :id=> @officehour.course_id, :name=>Course.find(@officehour.course_id).name
       else
-        format.html { render :edit }
-        format.json { render json: @officehour.errors, status: :unprocessable_entity }
-      end
+        redirect_to :controller => 'courses', :action=>'show', :id=> @officehour.course_id, :name=>Course.find(@officehour.course_id)
+        errors = @appointment.errors.messages
+        flash[:danger] = errors[:base][0]
+      # end
     end
   end
 

@@ -24,6 +24,16 @@ module CoursesHelper
       str.html_safe
   end
 
+  def is_ta_of_course (user, course)
+    talist = course.tas
+    talist.each do |ta|
+      if user.id == ta.id
+        return true
+      end
+    end
+    return false
+  end
+
   def get_confirmed_appointments(tas)
     apps = []
     tas.each do |ta|
