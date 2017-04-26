@@ -1,4 +1,6 @@
 Rails.application.configure do
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger::DEBUG
   # Settings specified here will take precedence over those in config/application.rb.
   config.web_socket_server_url = "wss://taondemand.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = ['https://taondemand.herokuapp.com', 'http://taondemand.herokuapp.com']
