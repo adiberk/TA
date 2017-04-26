@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :destroy_old_appointments
   skip_before_filter :verify_authenticity_token, :only => [:taprofile_update,:taprofile]
 
   # GET /users
@@ -142,6 +143,18 @@ class UsersController < ApplicationController
   end
 
   private
+    def destroy_old_appointments
+      # byebug
+      # time = DateTime.now
+      # appointments = Appointment.all
+      # byebug
+      # appointments.each do |app|
+      #   if time > app.start.utc
+      #     byebug
+      #     Appointment.destroy(app.id)
+      #   end
+      # end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = current_user
