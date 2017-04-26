@@ -4,7 +4,7 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = ['https://taondemand.herokuapp.com', 'http://taondemand.herokuapp.com']
   
   config.action_mailer.default_url_options = { :host => 'taondemand.herokuapp.com' }
-  Rails.application.routes.default_url_options[:host] = 'yoursite.herokuapp.com'
+  Rails.application.routes.default_url_options[:host] = 'taondemand.herokuapp.com'
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
