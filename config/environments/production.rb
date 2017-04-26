@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.sendgrid.net",
     port: 587,
-    domain: "taondemand.com",
+    domain: "heroku.com",
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: "app64858160@heroku.com",
