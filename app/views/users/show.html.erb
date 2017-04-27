@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 <% provide(:title, @user.first_name) %>
-
-<div class="container-fluid main-contain">
+<div class="content">
   <div class="row">
     <!-- sidebar -->
 <!--      <div class="col-sm-1">
@@ -9,33 +8,99 @@
         <img src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
       </p>
     </div> -->
+    <div class="col-sm-3">
+      <div class="user_name">
+        <div class = 'container'>
+        <p>
+          <img src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
+          <h3> <%=@user.first_name%> <%=@user.last_name%></h3>
+        </p>
+        </div>
 
-    <div class="col-sm-4 user_name">
-      <div class = 'container'>
-      <p>
-        <img src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
-        <h3> <%=@user.first_name%> <%=@user.last_name%></h3>
-      </p>
+
+
+      </div>
+
+
+    </div>
+  <div class = "container">
+    <div class="col-sm-9">
+      <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'London')">Student</button>
+        <button class="tablinks" onclick="openCity(event, 'Paris')">TA</button>
+      </div>
+
+      <div id="London" class="tabcontent" style=display:block>
+        <div class="row">
+        <div class="course_appoint col-sm-12">
+          <p>
+            <strong>Courses</strong>
+            <ul>
+                <% course_list = current_user().courses %>
+                <% course_list.each do |c| %>
+                    <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", :class=>"ui-button-text button_text" %> </li>
+                <% end %>
+
+            </ul>
+          </p>
+          <hr>
+        </div>
+        <div id='appointments'>
+          <%=render 'appointments'%>
+        </div>
+        </div>
+      </div>
+
+      <div id="Paris" class="tabcontent">
+        <!--  -->
+<div class="container">
+	<div class="row">
+        <!-- Boxes de Acoes -->
+    	<div class="col-sx-12 col-sm-6 col-lg-6">
+			<div class="box">
+				<div class="icon">
+					<div class="image"><i class="fa fa-thumbs-o-up"></i></div>
+					<div class="info">
+						<h3 class="title">Made with Bootstrap</h3>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper.
+						</p>
+						<button type="submit" class="btn btn-default">submit</button>
+					</div>
+				</div>
+				<div class="space"></div>
+			</div>
+		</div>
+
+        <div class="col-xs-12 col-sm-6 col-lg-6">
+			<div class="box">
+				<div class="icon">
+				    <div class="image"><i class="fa fa-flag"></i></div>
+					<div class="info">
+    					<h3 class="title">Made with Bootstrap</h3>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper.
+						</p>
+						<button type="submit" class="btn btn-default">submit</button>
+					</div>
+				<div class="space"></div>
+			</div>
+		</div>
+
+
+		<!-- /Boxes de Acoes -->
+	</div>
+</div>
+        <!--  -->
       </div>
     </div>
-
-    <div class="col-sm-7 col-lg-9 course_appoint">
-      <p>
-        <strong>Courses</strong>
-        <ul>
-            <% course_list = current_user().courses %>
-            <% course_list.each do |c| %>
-                <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", :class=>"ui-button-text button_text" %> </li>
-            <% end %>
-
-        </ul>
-      </p>
-    </div>
-  </div>
-  <div class = 'row'>
-    <div id='appointments'><%=render 'appointments'%></div>
   </div>
 </div>
+
+
+
+
+
 
     <div class="container">
         <div id="target" style="margin: auto; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start;">
@@ -70,7 +135,7 @@
           //   // $('#debug').prepend('<div class="debugLine">Cell at position (' + [col,row].join(',') + ') clicked!</div>' );
 
           //   console.log("TARGET = " + td);
-            
+
           // // }).on('mouseup', function(){
 
           // });
@@ -95,7 +160,7 @@
               //     // devarionMode = true;
               // }
               // else {
-                  if (!$(this).children().children().hasClass('offhour')){ 
+                  if (!$(this).children().children().hasClass('offhour')){
                     $(this).children().children('div:nth-child(2)').modal('show');
                     // $(this).trigger('selectionmade')
                     // $(this).addClass('selected');
@@ -159,5 +224,4 @@
     </script>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
-
-
+</div>
