@@ -47,10 +47,13 @@ File.open("#{Rails.root}/db/name.txt").each do |line|
   else
     each_uni_id = 1
   end
-  	User.create!(id:each_id, first_name:each_fname, last_name:each_lname, username:each_username, email:each_email, university_id:each_uni_id, password:"foobar", password_confirmation: "foobar", confirmed_at:Time.now)
+  	User.create!(first_name:each_fname, last_name:each_lname, username:each_username, email:each_email, university_id:each_uni_id, password:"foobar", password_confirmation: "foobar", confirmed_at:Time.now)
 	each_id += 1
   index += 1
 end
+
+list = User.all
+
 # total of user: 25
 
 # seed university by Hao
@@ -91,81 +94,81 @@ end
 
 # create fake enrollments
 
-Enrollment.create!(id: 1, user_id: 1, course_id:1)
-Enrollment.create!(id: 2, user_id: 1, course_id:2)
-Enrollment.create!(id: 5, user_id: 2, course_id: 3)
-Enrollment.create!(id: 3, user_id: 3, course_id: 4)
-Enrollment.create!(id: 4, user_id: 3, course_id: 2)
-Enrollment.create!(id: 6, user_id:5, course_id:1)
-Enrollment.create!(id: 7, user_id:5, course_id:5)
+Enrollment.create!(id: 1, user_id: list[0].id, course_id:1)
+Enrollment.create!(id: 2, user_id: list[0].id, course_id:2)
+Enrollment.create!(id: 5, user_id: list[1].id, course_id: 3)
+Enrollment.create!(id: 3, user_id: list[2].id, course_id: 4)
+Enrollment.create!(id: 4, user_id: list[4].id, course_id: 2)
+Enrollment.create!(id: 6, user_id:list[4].id, course_id:1)
+Enrollment.create!(id: 7, user_id:list[4].id, course_id:5)
 
 # 2nd version of enrollments create by hao
-Enrollment.create!(id:8, user_id:6, course_id:12)
-Enrollment.create!(id:9, user_id:6, course_id:7)
-Enrollment.create!(id:10, user_id:6, course_id:5)
+Enrollment.create!(id:8, user_id:list[5].id, course_id:12)
+Enrollment.create!(id:9, user_id:list[5].id, course_id:7)
+Enrollment.create!(id:10, user_id:list[5].id, course_id:5)
 #
-Enrollment.create!(id:11, user_id:7, course_id:3)
-Enrollment.create!(id:12, user_id:7, course_id:8)
-Enrollment.create!(id:13, user_id:7, course_id:11)
+Enrollment.create!(id:11, user_id:list[6].id, course_id:3)
+Enrollment.create!(id:12, user_id:list[6].id, course_id:8)
+Enrollment.create!(id:13, user_id:list[6].id, course_id:11)
 #
-Enrollment.create!(id:14, user_id:8, course_id:4)
-Enrollment.create!(id:15, user_id:8, course_id:13)
-Enrollment.create!(id:16, user_id:8, course_id:6)
+Enrollment.create!(id:14, user_id:list[7].id, course_id:4)
+Enrollment.create!(id:15, user_id:list[7].id, course_id:13)
+Enrollment.create!(id:16, user_id:list[7].id, course_id:6)
 #
-Enrollment.create!(id:17, user_id:9, course_id:2)
-Enrollment.create!(id:18, user_id:9, course_id:4)
-Enrollment.create!(id:19, user_id:9, course_id:2)
+Enrollment.create!(id:17, user_id:list[8].id, course_id:2)
+Enrollment.create!(id:18, user_id:list[8].id, course_id:4)
+Enrollment.create!(id:19, user_id:list[8].id, course_id:2)
 #
-Enrollment.create!(id:20, user_id:10, course_id:4)
+Enrollment.create!(id:20, user_id:list[9].id, course_id:4)
 
 # create fake enrollment_tas
 
-EnrollmentTa.create!(id:1, user_id: 2, course_id:1)
-EnrollmentTa.create!(id:2, user_id: 3, course_id:1)
-EnrollmentTa.create!(id:3, user_id: 2, course_id: 2)
-EnrollmentTa.create!(id:4, user_id:1, course_id:4)
-EnrollmentTa.create!(id:5, user_id:1, course_id:5)
+EnrollmentTa.create!(id:1, user_id: list[1].id, course_id:1)
+EnrollmentTa.create!(id:2, user_id: list[2].id, course_id:1)
+EnrollmentTa.create!(id:3, user_id: list[1].id, course_id: 2)
+EnrollmentTa.create!(id:4, user_id:list[0].id, course_id:4)
+EnrollmentTa.create!(id:5, user_id:list[0].id, course_id:5)
 
 # 2nd version of enrollment_tas
-EnrollmentTa.create!(id:6, user_id:6, course_id:13)
-EnrollmentTa.create!(id:7, user_id:6, course_id:8)
-EnrollmentTa.create!(id:8, user_id:6, course_id:1)
+EnrollmentTa.create!(id:6, user_id:list[5].id, course_id:13)
+EnrollmentTa.create!(id:7, user_id:list[5].id, course_id:8)
+EnrollmentTa.create!(id:8, user_id:list[5].id, course_id:1)
 #
-EnrollmentTa.create!(id:9, user_id:7, course_id:4)
-EnrollmentTa.create!(id:10, user_id:7, course_id:12)
+EnrollmentTa.create!(id:9, user_id:list[6].id, course_id:4)
+EnrollmentTa.create!(id:10, user_id:list[6].id, course_id:12)
 #
-EnrollmentTa.create!(id:12, user_id:8, course_id:9)
-EnrollmentTa.create!(id:13, user_id:8, course_id:7)
-EnrollmentTa.create!(id:14, user_id:8, course_id:3)
+EnrollmentTa.create!(id:12, user_id:list[7].id, course_id:9)
+EnrollmentTa.create!(id:13, user_id:list[7].id, course_id:7)
+EnrollmentTa.create!(id:14, user_id:list[7].id, course_id:3)
 #
-EnrollmentTa.create!(id:15, user_id:9, course_id:11)
-EnrollmentTa.create!(id:16, user_id:9, course_id:10)
-EnrollmentTa.create!(id:17, user_id:9, course_id:7)
+EnrollmentTa.create!(id:15, user_id:list[8].id, course_id:11)
+EnrollmentTa.create!(id:16, user_id:list[8].id, course_id:10)
+EnrollmentTa.create!(id:17, user_id:list[8].id, course_id:7)
 #
-EnrollmentTa.create!(id:19, user_id:10, course_id:7)
-EnrollmentTa.create!(id:20, user_id:10, course_id:10)
+EnrollmentTa.create!(id:19, user_id:list[9].id, course_id:7)
+EnrollmentTa.create!(id:20, user_id:list[9].id, course_id:10)
 
 
 
 
-Officehour.create!(ta_id: 1, course_id: 4, start:"Mon, 3 Apr 2017 08:30:00 AM", end:Time.now, online: false)
-Officehour.create!(ta_id: 3, course_id: 1, start:"Mon, 3 Apr 2017 10:00:00 AM", end:Time.now, online: false)
-Officehour.create!(ta_id: 2, course_id: 2, start:"Mon, 3 Apr 2017 12:30:00 PM", end:Time.now, online: false)
-Officehour.create!(ta_id: 2, course_id: 2, start:"Wed, 5 Apr 2017 03:30:00 PM", end:Time.now, online: false)
-Officehour.create!(ta_id: 1, course_id: 5, start:"Thu, 6 Apr 2017 05:30:00 PM", end:Time.now, online: false)
-Officehour.create!(ta_id: 2, course_id: 2, start:"Thu, 6 Apr 2017 05:30:00 PM", end:Time.now, online: false )
-Officehour.create!(ta_id:2, course_id:1, start:"Mon, 3 Apr 2017 10:00:00 AM", end:Time.now, online: false)
+Officehour.create!(ta_id: list[0].id, course_id: 4, start:"Mon, 3 Apr 2017 08:30:00 AM", end:Time.now, online: false)
+Officehour.create!(ta_id: list[2].id, course_id: 1, start:"Mon, 3 Apr 2017 10:00:00 AM", end:Time.now, online: false)
+Officehour.create!(ta_id: list[1].id, course_id: 2, start:"Mon, 3 Apr 2017 12:30:00 PM", end:Time.now, online: false)
+Officehour.create!(ta_id: list[1].id, course_id: 2, start:"Wed, 5 Apr 2017 03:30:00 PM", end:Time.now, online: false)
+Officehour.create!(ta_id: list[0].id, course_id: 5, start:"Thu, 6 Apr 2017 05:30:00 PM", end:Time.now, online: false)
+Officehour.create!(ta_id: list[1].id, course_id: 2, start:"Thu, 6 Apr 2017 05:30:00 PM", end:Time.now, online: false )
+Officehour.create!(ta_id:list[1].id, course_id:1, start:"Mon, 3 Apr 2017 10:00:00 AM", end:Time.now, online: false)
 
-Appointment.create!(ta_id: 2, student_id:5, course_id: 1, start:"Wed, 26 Apr 2017 11:30:00 AM", end: Faker::Date.forward, confirmed: false)
-Appointment.create!(ta_id: 1, student_id:3, course_id: 4, start: "Fri, 28 Apr 2017 01:30:00 PM", end: Faker::Date.forward, confirmed: true)
-Appointment.create!(ta_id: 3, student_id:1, course_id: 1, start:"Thu, 27 Apr 2017 01:30:00 PM", end: Faker::Date.forward, confirmed: false)
-Appointment.create!(ta_id: 8, student_id:2, course_id: 3, start:"Tue, 25 Apr 2017 09:30:00 AM", end: Faker::Date.forward, confirmed: true)
-Appointment.create!(ta_id: 8, student_id:2, course_id: 3, start:"Mon, 24 Apr 2017 08:00:00 AM", end: Faker::Date.forward, confirmed: true)
+Appointment.create!(ta_id: list[1].id, student_id:list[4].id, course_id: 1, start:"Wed, 26 Apr 2017 11:30:00 AM", end: Faker::Date.forward, confirmed: false)
+Appointment.create!(ta_id: list[0].id, student_id:list[2].id, course_id: 4, start: "Fri, 28 Apr 2017 01:30:00 PM", end: Faker::Date.forward, confirmed: true)
+Appointment.create!(ta_id: list[2].id, student_id:list[0].id, course_id: 1, start:"Thu, 27 Apr 2017 01:30:00 PM", end: Faker::Date.forward, confirmed: false)
+Appointment.create!(ta_id: list[7].id, student_id:list[1].id, course_id: 3, start:"Tue, 25 Apr 2017 09:30:00 AM", end: Faker::Date.forward, confirmed: true)
+Appointment.create!(ta_id: list[7].id, student_id:list[1].id, course_id: 3, start:"Mon, 24 Apr 2017 08:00:00 AM", end: Faker::Date.forward, confirmed: true)
 
-Review.create!(ta_id: 2, student_id:3, course_id: 2, review: "3 am happy with 1", score: 3)
-Review.create!(ta_id: 1, student_id:5, course_id: 5, review: "2 am happy with 1", score: 4)
-Review.create!(ta_id: 1, student_id:3, course_id: 4, review: "4 am happy with 1", score: 5)
+Review.create!(ta_id: list[1].id, student_id:list[0].id, course_id: 2, review: "3 am happy with 1", score: 3)
+Review.create!(ta_id: list[0].id, student_id:list[4].id, course_id: 5, review: "2 am happy with 1", score: 4)
+Review.create!(ta_id: list[0].id, student_id:list[2].id, course_id: 4, review: "4 am happy with 1", score: 5)
 # Review.create!(ta_id:3, student_id:1, course_id:1, review:"eh", score:3.5)
 
-Conversation.create!(recipient_id: 1, sender_id: 2, created_at: Time.now, updated_at: Time.now)
+Conversation.create!(recipient_id: list[0].id, sender_id: list[1].id, created_at: Time.now, updated_at: Time.now)
 
