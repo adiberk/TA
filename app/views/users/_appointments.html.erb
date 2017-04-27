@@ -1,62 +1,72 @@
-<div class = 'col-sm-3 col-lg-2'>
-</div>
-<div>
-  <%userta = current_user.ta_appointments%>
-  <div class = 'col-xs-4'>
-    <p>
-      <strong>Confirmed Appointments</strong>
-      <ul style = "padding-left:0px; margin-left:0px; margin-right:25%;">
-      <% if (userta.where(confirmed: true).size > 0 || current_user.student_appointments.where(confirmed: true).size > 0)%> 
-         <%#= get_appointment()%>
-          <%#userta = current_user.ta_appointments%>
-          <%userta.each do |app|%>
-            <%if app.confirmed == true%>
-              <li class="list-group-item">Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
-                <%=form_tag unconfirm_appointment_path, method:'post', id:'confirm_app', remote:true%>
-                  <%=hidden_field_tag :confirmed, false%>
-                  <%#=hidden_field_tag 'course_id', :value => app.course_id%>
-                  <%#=hidden_field_tag 'student_id', :value => app.student_id%>
-                  <%#=hidden_field_tag 'ta_id', :value => app.ta_id%>
-                  <%#=hidden_field_tag 'end', :value => app.end%>
-                  <%#=hidden_field_tag 'start', :value => app.start%>
-                  <%=hidden_field_tag :id, app.id%>
-                  <%=submit_tag 'Cancel', class: 'confirm_btn'%>
-              </li>
-            <%end%>
-          <%end%>
-          <%user_app = current_user.student_appointments%>
-          <%user_app.each do |app|%>
-            <%if app.confirmed == true%>
-              <li class="list-group-item">Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%></li>
-            <%end%>
-          <%end%>
-        <% else %>
-          <li class = 'list-group-item'>No confirmed appointments</li>
-        <% end %>
-      </ul>
-    </p>
-  </div>
-  <div class = 'col-xs-5 input-group'>
-    <p>
-      <strong>Unconfirmed Appointments</strong>
-      <ul style = "padding-left:0px; margin-left:0px; margin-right:25%;">
-        <% if userta.where(confirmed: false).size > 0%> 
+<%userta = current_user.ta_appointments%>
+        <!-- Boxes de Acoes -->
+<div class="col-sm-6">
+	<div class="box">
+		<div class="icon">
+			<div class="image"><i class="fa fa-check-square-o"></i></div>
+			<div class="info">
+				<h3 class="title">Confirmed Appointments</h3>
+        <p style="list-style-type:none">
+        <% if (userta.where(confirmed: true).size > 0 || current_user.student_appointments.where(confirmed: true).size > 0)%>
            <%#= get_appointment()%>
-           <%#userta = current_user.ta_appointments%>
-           <%userta.each do |app|%>
-            <%if app.confirmed == false%>
-              <li class = 'list-group-item'>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
-                <%=form_tag confirm_appointment_path, method:'post', id:'confirm_app', remote:true%>
-                  <%=hidden_field_tag :confirmed, true%>
-                  <%=hidden_field_tag :id, app.id%>
-                  <%=submit_tag 'Confirm', class: 'confirm_btn'%>
-                <%#end%>
-               </li>
-             <%end%>
-           <%end%>
-        <% else %>
-          <li class = 'list-group-item'>No unconfirmed appointments at this time</li>
-        <% end %>
-      </ul>
-    </p>
-  </div>
+            <%#userta = current_user.ta_appointments%>
+            <%userta.each do |app|%>
+              <%if app.confirmed == true%>
+                <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
+                  <%=form_tag unconfirm_appointment_path, method:'post', id:'confirm_app', remote:true do%>
+                    <%=hidden_field_tag :confirmed, false%>
+                    <%=hidden_field_tag :id, app.id%>
+                    <%= button_tag("Cancel", type: "submit", class: "btn btn-default-confirm")%>
+                    <%end%>
+                </p>
+              <%end%>
+            <%end%>
+            <%user_app = current_user.student_appointments%>
+            <%user_app.each do |app|%>
+              <%if app.confirmed == true%>
+                <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%></p>
+              <%end%>
+            <%end%>
+          <% else %>
+            <p>No confirmed appointments</p>
+          <% end %>
+        </p>
+
+			</div>
+		</div>
+		<div class="space"></div>
+	</div>
+</div>
+
+<div class="col-sm-6">
+	<div class="box">
+		<div class="icon">
+		    <div class="image"><i class="fa fa-square-o"></i></div>
+			<div class="info">
+					<h3 class="title">Unconfirmed Appointments</h3>
+          <p>
+            <% if userta.where(confirmed: false).size > 0%>
+               <%#= get_appointment()%>
+               <%#userta = current_user.ta_appointments%>
+               <%userta.each do |app|%>
+                <%if app.confirmed == false%>
+                  <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
+
+                  <%=form_tag confirm_appointment_path, method:'post', id:'confirm_app', remote:true do%>
+                      <%=hidden_field_tag :confirmed, true%>
+                      <%=hidden_field_tag :id, app.id%>
+                      <%= button_tag("Confirm", type: "Confirm", class: "btn btn-default-confirm") %>
+                  <%end%>
+                <% end %>
+                  </p>
+              <%end%>
+
+            <% else %>
+              <p>No unconfirmed appointments at this time</p>
+            <% end %>
+          </p>
+
+			</div>
+		<div class="space"></div>
+	</div>
+</div>

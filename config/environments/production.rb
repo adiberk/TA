@@ -1,6 +1,23 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.log_level = :debug
+  config.web_socket_server_url = "wss://taondemand.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://taondemand.herokuapp.com', 'http://taondemand.herokuapp.com']
+  config.action_mailer.default_url_options = { :host => 'taondemand.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
 
+  config.action_mailer.smtp_settings = {
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: ENV['DOMAIN_MAIL'],
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: ENV['USERNAME_MAIL'],
+  password: ENV['PASSWORD_MAIL']
+  }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
