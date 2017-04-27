@@ -12,8 +12,8 @@ Rails.application.configure do
   domain: "taondemand.herokuapp.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: "brandeis.taondemand@gmail.com",
-  password: "gmail.com"
+  user_name: "app64858160@heroku.com",
+  password: "jwfqgv1b0232"
   }
   # Code is not reloaded between requests.
   config.cache_classes = true
