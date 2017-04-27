@@ -20,15 +20,15 @@ Conversation.delete_all
 
 # create fake users
 # 1st user
-User.create!(id: 1, first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar", confirmed_at:Time.now)
+User.create!(first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar", confirmed_at:Time.now)
 # 2nd user
-User.create!(id: 2, first_name: "Adi", last_name: "Berkowitz", username: "adi", email: "adi@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
+User.create!(first_name: "Adi", last_name: "Berkowitz", username: "adi", email: "adi@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 # 3rd user
-User.create!(id: 3, first_name: "Hao", last_name: "Wang", username: "hao", email: "haowang@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
+User.create!(first_name: "Hao", last_name: "Wang", username: "hao", email: "haowang@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 # 4th user
-User.create!(id: 4, first_name: "Stacy", last_name: "Dean", username: "stacy", email: "stacydean@tuffs.edu", university_id: 2, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
+User.create!(first_name: "Stacy", last_name: "Dean", username: "stacy", email: "stacydean@tuffs.edu", university_id: 2, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 # 5th user
-User.create!(id: 5, first_name: "Fanny", last_name: "Ferguson", username: "fanny", email: "fannyferguson@bc.edu", university_id: 3, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
+User.create!(first_name: "Fanny", last_name: "Ferguson", username: "fanny", email: "fannyferguson@bc.edu", university_id: 3, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 
 # second version of user seed from ID:6
 # seed names from name.txt
