@@ -10,13 +10,13 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-  address: "smtp.sendgrid.com",
+  address: "smtp.gmail.com",
   port: 587,
-  domain: "heroku.com",
+  domain: ENV['DOMAIN_MAIL'],
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: "app64858160@heroku.com",
-  password: "jwfqgv1b0232"
+  user_name: ENV['USERNAME_MAIL'],
+  password: ENV['PASSWORD_MAIL']
   }
   # Code is not reloaded between requests.
   config.cache_classes = true
