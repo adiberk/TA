@@ -38,7 +38,7 @@
             <ul>
                 <% course_list = current_user().courses %>
                 <% course_list.each do |c| %>
-                    <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", :class=>"ui-button-text button_text" %> </li>
+                    <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", class: 'link' %> </li>
                 <% end %>
 
             </ul>
