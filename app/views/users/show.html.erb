@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <% provide(:title, @user.first_name) %>
-<div class="content">
-  <div class="row">
+
+<div class="col-sm-9">
     <!-- sidebar -->
 <!--      <div class="col-sm-1">
       <p>
@@ -9,21 +9,17 @@
       </p>
     </div> -->
     <div class="col-sm-3">
+      <center>
       <div class="user_name">
-        <div class = 'container'>
+
         <p>
           <img src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
           <h3> <%=@user.first_name%> <%=@user.last_name%></h3>
         </p>
-        </div>
-
-
-
       </div>
-
-
+      </center>
     </div>
-  <div class = "container">
+
     <div class="col-sm-9">
       <div class="tab">
         <button class="tablinks" onclick="openCity(event, 'London')">Student</button>
@@ -95,7 +91,7 @@
       </div>
     </div>
   </div>
-</div>
+
 
 
 
