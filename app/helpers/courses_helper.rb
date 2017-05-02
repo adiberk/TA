@@ -17,7 +17,7 @@ module CoursesHelper
         id = my_courses[count].id
 
         #str += "<li> <%= link_to 'name', :controller => 'courses', :action =>'show', :course_id=>'id', :course_name=>'name' %> </li>"
-        str += "<li> poop </li>"
+        str += "<li> test </li>"
 
       	count+=1;
       end

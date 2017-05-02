@@ -9,14 +9,17 @@
       <div class="panel-body chatdiv">
         <ul>
           <% @users.each do |user| %>
-            <li><%= button_to user.first_name, conversations_path(user_id: user), remote: true, method: :post, class: 'chatlist' %></li>
+            <li class="online_sym">
+              <%= button_to user.first_name + "", conversations_path(user_id: user), remote: true, method: :post, class: 'chatlist' %>  
+            </li> 
+            <li class="online_sym"> <%= render 'partial' %> </li>
+
+
           <% end %>
         </ul>
       </div>
     </div>
   </div>
-
-
 
   <div class="col-md-6">
     <ul id="conversations-list">
