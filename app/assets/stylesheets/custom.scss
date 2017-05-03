@@ -468,6 +468,15 @@ footer ul li {
 nav > h3 {
   font-size: 1.2em;
   letter-spacing: -1px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+nav > h5 {
+  font-size: 1em;
+  letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
@@ -477,7 +486,6 @@ nav > h3 {
 .tasidebar {
   color: #777;
 }
-
 
 
 /* Link Styles */
@@ -530,6 +538,7 @@ $b: #4f90c1;
 
 .chatdiv {
   height: 500px;
+  width: 150px;
   overflow-x: hidden;
 }
 
@@ -555,6 +564,11 @@ $b: #4f90c1;
   border: 3px solid #e5e5e5;
 }
 
+
+.chat_section {
+  font-size: 1.3em;
+  line-height: 3;
+}
 
 // @import "bootstrap-sprockets";
 // @import "bootstrap";
