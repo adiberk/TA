@@ -13,9 +13,9 @@
     <div class="col-sm-4">
       <dl class="row">
         <div class="row"><dt class="col-md-2">University</dt>
-        <dd class="col-md-7"><%= @user.university_id %></dd></div>
+        <dd class="col-md-7"> Brandeis University </dd></div>
         <div class="row">
-        <dt class="col-md-4">Course he tutors</dt><br>
+        <dt class="col-md-4">Courses</dt><br>
         <% course_list = course_list_of_ta(@user)%>
         <% course_list.each do |each_course_id| %>
           <dd class="col-md-7"><%= Course.find(id=each_course_id)['name']%></dd>

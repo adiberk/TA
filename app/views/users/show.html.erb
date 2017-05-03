@@ -13,7 +13,7 @@
       <div class="user_name">
 
         <p>
-          <img src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
+          <img class ="profile_image" src="<%=Faker::Avatar.image%>" height = "150" width = "150"/>
           <h3> <%=@user.first_name%> <%=@user.last_name%></h3>
         </p>
       </div>
@@ -34,7 +34,7 @@
             <ul>
                 <% course_list = current_user().courses %>
                 <% course_list.each do |c| %>
-                    <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", class: 'link' %> </li>
+                    <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", class: 'basiclink' %> </li>
                 <% end %>
 
             </ul>
