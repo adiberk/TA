@@ -20,8 +20,8 @@ class EnrollmentTasController < ApplicationController
     puts ta_name
     puts "******************"
 
-    users_fname=User.where("first_name LIKE ?", "%#{ta_name}%")
-    users_lname=User.where("last_name LIKE ?", "%#{ta_name}%")
+    users_fname=User.where("lower(first_name) LIKE lower(?)", "%#{ta_name}%")
+    users_lname=User.where("lower(last_name) LIKE lower(?)", "%#{ta_name}%")
 
     user_fname_list=get_user_list_from_users(users_fname)
     user_lname_list=get_user_list_from_users(users_lname)
@@ -34,7 +34,7 @@ class EnrollmentTasController < ApplicationController
   end
   def talistfilter2
     course_name = params[:coursename]
-    @courses=Course.where("name LIKE ?", "%#{course_name}%")
+    @courses=Course.where("lower(name) LIKE lower(?)", "%#{course_name}%")
 
     render :partial => 'partial2'
   end
