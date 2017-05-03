@@ -6,7 +6,11 @@
         <h1 class = "sidebar">Live Now </h1>
         <% name =  current_user.first_name + " " + current_user.last_name %>
         <h3><%= name %></h3>
-
+        <%if current_user.online == true%>
+         <%= link_to "Go offline?", go_offline_path(user_id: current_user.id), style:'none', class: 'btn btn-default'%>
+        <%else%>
+         <%= link_to "Go online?", go_online_path(user_id: current_user.id), style:'none', class: 'btn btn-default'%>
+        <%end%>
 
         <dl>
           <% current_courses=current_user.courses%>

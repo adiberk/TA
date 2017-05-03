@@ -34,7 +34,8 @@ Rails.application.routes.draw do
   post '/unconfirm_appointment', to: 'appointments#unconfirm_app'
   post '/request_appointment', to: 'appointments#request_app'
   patch '/update_hours', to: 'officehours#update'
-  
+  get '/go_online', to: 'users#go_online'
+  get '/go_offline', to: 'users#go_offline'
   get '/ta', to: 'reviews#index'
 
   # get '/confirm_appointment', to: 'appointments#confirm_app'

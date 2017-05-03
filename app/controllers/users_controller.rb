@@ -131,6 +131,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def go_offline
+    @user = set_user
+    @user.online = false
+    @user.save
+    byebug
+    redirect_to root_url
+  end
+  def go_online
+    @user = set_user
+    @user.online = true
+    @user.save
+    byebug
+    redirect_to root_url
+  end
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
