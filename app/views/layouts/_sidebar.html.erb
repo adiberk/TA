@@ -23,7 +23,7 @@
           <% ta_list = each_course.tas%>
           <% ta_list.each do |each_ta|%>
             <% ta_name =  each_ta.first_name + " " + each_ta.last_name %>
-            <li><%= link_to ta_name, taprofile_path(user_id:each_ta) %></li>
+            <li><%= link_to ta_name, taprofile_path(ta_id:each_ta) %></li>
           <% end %>
           </ul>
         <% end %>

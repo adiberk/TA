@@ -40,8 +40,8 @@ class UsersController < ApplicationController
     # current user who log in
     # if user_signed_in?
 
-        @user = User.find(id=ta_id)
-        @courses = Course.all
+    @user = User.find(ta_id)
+    @courses = Course.all
 
     # else
         # redirect_to login_path
