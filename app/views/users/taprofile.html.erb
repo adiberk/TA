@@ -5,7 +5,11 @@
     <center>
     <h2 style="font-size:26px"><strong><%= @user.first_name %> <%= @user.last_name %></strong></h2>
     <br>
-    <img style="border:3px solid black;" src="<%=Faker::Avatar.image%>" height = "100" width = "100" />
+    <% if @user.picture? %>
+    <%= image_tag @user.picture.url, class:"profile_image", size:120 %>
+    <% else %>
+    <%= image_tag Faker::Avatar.image, class:"profile_image", size:120 %>
+    <% end %>
 
     </center>
     <div id="introduction">
