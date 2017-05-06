@@ -1,6 +1,6 @@
 module CoursesHelper
   def get_course_list()
-	  my_courses = current_user().courses		
+	  my_courses = current_user().courses
       if my_courses.length == 0
         return "Not registered for courses"
       end
@@ -127,28 +127,28 @@ module CoursesHelper
     while curHour <= endHour do
       parsedStr = ''
 
-      if (curHour > 12) 
+      if (curHour > 12)
         if (count  == 0)
-              parsedStr += (curHour-12).to_s + ":00PM"
+              parsedStr += (curHour-12).to_s + ":00 PM"
               count = 1
         else
-          parsedStr += (curHour-12).to_s+ ":30PM"
+          parsedStr += (curHour-12).to_s+ ":30 PM"
           count = 0
         end
       elsif curHour == 12
         if count == 0
-          parsedStr += curHour.to_s + ":00PM"
+          parsedStr += curHour.to_s + ":00 PM"
           count = 1
         else
-          parsedStr += curHour.to_s + ":30PM"
+          parsedStr += curHour.to_s + ":30 PM"
           count = 0
-        end 
+        end
       else
         if (count  == 0)
-          parsedStr += (curHour).to_s + ":00AM"
-          count = 1   
+          parsedStr += (curHour).to_s + ":00 AM"
+          count = 1
         else
-          parsedStr += (curHour).to_s + ":30AM"
+          parsedStr += (curHour).to_s + ":30 AM"
           count = 0
         end
       end

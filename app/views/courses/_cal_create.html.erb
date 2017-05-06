@@ -21,7 +21,7 @@
 					<%correct_app = off_hour(ta_appointments, count, jcount)%>
 					<%hours = parseHours(@hours)[jcount]%>
 					<%if correct_hour!=nil%>
-						<div id = "cal-table" class = "hour <%=parseHours(@hours)[jcount]%>">
+						<div id = "cal-table" class = "hour correct_hour <%=parseHours(@hours)[jcount]%>">
 							<div class = 'time-added'>
 								<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
 								<%=render 'create_modal', :params => {hours: hours, course:locals[:course], days: @days[count]}%>
@@ -34,7 +34,7 @@
 								<%else%>
 									<%hold = create_rating_icon(nil)%>
 								<%end%>
-								Rating: <%=hold%> 
+								 <%=hold%>
 								</h5>
 							</div>
 						</div>
@@ -54,7 +54,7 @@
 									<%else%>
 										<%hold = create_rating_icon(nil)%>
 									<%end%>
-									Rating: <%=hold%> 
+									Rating: <%=hold%>
 									</h5>
 								</div>
 							</div>
@@ -108,7 +108,7 @@
 								<%else%>
 									<%hold = create_rating_icon(nil)%>
 								<%end%>
-								Rating: <%=hold%> 
+								Rating: <%=hold%>
 								</h5>
 							</div>
 						</div>
@@ -128,7 +128,7 @@
 									<%else%>
 										<%hold = create_rating_icon(nil)%>
 									<%end%>
-									Rating: <%=hold%> 
+									Rating: <%=hold%>
 									</h5>
 								</div>
 							</div>
