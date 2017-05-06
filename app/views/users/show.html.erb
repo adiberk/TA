@@ -8,7 +8,12 @@
       <div class="user_name">
 
         <p>
-          <img class ="profile_image" src="<%=Faker::Avatar.image%>" height = "150" width = "150"/>
+          <% if @user.picture? %>
+          <%= image_tag @user.picture.url, class:"profile_image", size:150 %>
+          <% else %>
+          <%= image_tag Faker::Avatar.image, class:"profile_image", size:150 %>
+          <% end %>
+          <%= link_to "Settings", edit_user_path(current_user) %>
           <h3> <%=@user.first_name%> <%=@user.last_name%></h3>
         </p>
       </div>

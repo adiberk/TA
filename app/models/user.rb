@@ -9,7 +9,8 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: {maximum: 50}
   validates :last_name, presence:true, length: {maximum: 50}
   validates :email, length: { maximum: 255 }
-  
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validate  :picture_size
   has_many :enrollments
   has_many :courses, :through => :enrollments
 
@@ -27,5 +28,14 @@ class User < ApplicationRecord
   has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
 
+  mount_uploader :picture, PictureUploader
 
+  private
+
+    # Validates the size of an uploaded picture.
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+      end
+    end
 end
