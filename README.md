@@ -15,4 +15,4 @@ Some key features are:
 <img src="app/assets/images/apntmnt.png" width="300"><img src="app/assets/images/confirm-apt.png" width="350">
 * Connecting students and TA through a chat feature for those office hours that are online
 * Making TA's mre accountable by allowing students to rate and review their TAs, and making those reviews public
-  
+![image](app/assets/images/reviews.png) 
