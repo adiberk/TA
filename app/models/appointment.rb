@@ -20,9 +20,6 @@ class Appointment < ApplicationRecord
 			errors.add(:base, 'Student not enrolled in course')
 		end
 	end
-	# model.errors.full_messages.each do |message|
-	# 	byebug
- #  		puts message
-	# end
+
 end
 

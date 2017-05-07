@@ -2,81 +2,59 @@
 <% provide(:title, @course) %>
 
 
-   <div class="container-fluid main-contain">
-      <div class="row">
-
-        
-
-        <div class="col-xs-9">
-          <p>
-            <h3> <%=@course.name%></h3>
-            <h5> <strong>Professor:</strong> <%=@course.teacher%> </h5>
-            <p><strong>Course description:</strong> <%=@course.description.to_s%></p>
-            <p>
-            </p>
-
-          </p>
-          <div class = 'row'>
-<!--             <div class = 'col-xs-3'>
-              <p style = "text-align:left"> <strong>Office Hours</strong> </p>
-            </div>  -->     
-
-          </div>
-          <br><br>
-          <!-- <p style = "text-align:left"> <strong>Office Hours</strong> </p> -->
-        </div>
-      </div>
-      <div class = 'row'>
-
-        <div class = "col-sm-2">
-
-          <p>
-            <strong>Students</strong>
-            <ul>
-               <%= get_student_list(@course) %>
-            </ul>
-          </p>
-
-          <p>
-            <strong> Teaching Assistants </strong>
-            <ul>
-              <%= get_ta_list(@course) %>
-            </ul>
-          </p> 
-
-
-        </div>
-
-        <div class = "col-lg-10">
-          <div id="target" style="margin-right:0px;padding-right:90px; width: 1000px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; overflow-x:auto;">
-            <%= render 'cal_create', :locals=> {course:@course}%>
-          </div>
-        </div>
-      </div>
-<!--       <div class = 'row'>
-          <img src = "http://www-scf.usc.edu/~csci104/20142/img/last_oh.png" />
-          <div>
-              <div id="target" style="margin-right:0px;padding-right:90px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start;">
-                <%#= render 'cal_create', :locals=> {course:@course}%>
-              </div>
-          </div>
+<div class="container-fluid main-contain">
+  <div class="row">
+    <div class="col-xs-9">
+      <p>
+        <h3> <%=@course.name%></h3>
+        <h5> <strong>Professor:</strong> <%=@course.teacher%> </h5>
+        <p><strong>Course description:</strong> <%=@course.description.to_s%></p>
+        <p>
         </p>
-      </div> -->
-    <script>
-      $('.schedule').on('selectionmade', function() {
-        console.log("Selection Made");
+      </p>
+      <div class = 'row'>    
+      </div>
+      <br><br>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = "col-sm-2">
+      <p>
+        <strong>Students</strong>
+        <ul>
+           <%= get_student_list(@course) %>
+        </ul>
+      </p>
+      <p>
+        <strong> Teaching Assistants </strong>
+        <ul>
+          <%= get_ta_list(@course) %>
+        </ul>
+      </p> 
+    </div>
 
-      }).on('selectionremoved', function() {
-        console.log("Selection Removed");
-      });
-      $(document).ready( function() {
-        var mousedown = false;
-        var devarionMode = false;
-        $('.hour').on('mousedown', function(event) {
-          if (!$(this).children().children().hasClass('offhour')){ 
-            $(this).children().children('div:nth-child(2)').modal('show');
-          }
-        })
-      });
+    <div class = "col-lg-10">
+      <div id="target" style="margin-right:0px;padding-right:90px; width: 1000px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; overflow-x:auto;">
+        <%= render 'cal_create', :locals=> {course:@course}%>
+      </div>
+    </div>
+  </div>
+</div>
 
-    </script>
+<script>
+  $('.schedule').on('selectionmade', function() {
+    console.log("Selection Made");
+
+  }).on('selectionremoved', function() {
+    console.log("Selection Removed");
+  });
+  $(document).ready( function() {
+    var mousedown = false;
+    var devarionMode = false;
+    $('.hour').on('mousedown', function(event) {
+      if (!$(this).children().children().hasClass('offhour')){ 
+        $(this).children().children('div:nth-child(2)').modal('show');
+      }
+    })
+  });
+</script>

@@ -25,7 +25,6 @@ class User < ApplicationRecord
   has_many :student_reviews, :class_name => 'Review', :foreign_key => 'student_id'
   has_many :ta_reviews, :class_name => 'Review', :foreign_key => 'ta_id'
 
-  has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
 
   mount_uploader :picture, PictureUploader

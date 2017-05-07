@@ -2,8 +2,6 @@ class Enrollment < ApplicationRecord
   belongs_to :user
   belongs_to :course
 
-  # validates :user_id, :uniqueness: {is_ta?}
-  # validates_presence_of :user_id, :unless => lambda {is_ta? == false}
   validate :is_ta
 
   def is_ta

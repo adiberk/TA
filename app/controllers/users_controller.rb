@@ -16,19 +16,7 @@ class UsersController < ApplicationController
     ta_id = params[:ta_id]
     user_id = params[:user_id] #for new review
     review = params[:review]
-    # print "**********************"
-    # print score
-    # print course_id
-    # print ta_id
-    # print user_id
-    # print review
     if user_id != nil
-      # print "=============="
-      # print score
-      # print course_id
-      # print ta_id
-      # print user_id
-      # print review
       review = Review.new(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
 
       if !review.save(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
@@ -39,35 +27,11 @@ class UsersController < ApplicationController
       end
 
     end
-    # current user who log in
-    # if user_signed_in?
 
     @user = User.find(ta_id)
     @courses = Course.all
 
-    # else
-        # redirect_to login_path
-    # end
   end
-
-  # def taprofile_update
-  #   # after submit the new reviews
-  #   score = params[:score]
-  #   course_id = params[:course_id]
-  #   ta_id = params[:ta_id]
-  #   user_id = params[:user_id]
-  #   review = params[:review]
-  #
-  #   Review.create(ta_id: ta_id, student_id:user_id, course_id: course_id, review: review, score: score)
-  #
-  #   @current_user ||= User.find_by(id: session[:user_id])
-  #   @user = User.find(id=ta_id)
-  #   @courses = Course.all
-  #   render 'taprofile'
-  #
-  # end
-
-
 
 
   def index
@@ -78,8 +42,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = current_user
-    # @user = User.find(params[:id])
-    # @message = params[:message]
     @courses = Course.all
     days_hold = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', "Saturday"]
     @days = []
@@ -179,12 +141,4 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation, :picture)
     end
-
-    # Confirms a logged-in user.
-    # def logged_in_user
-    #   unless logged_in?
-    #     flash[:danger] = "Please log in."
-    #     redirect_to login_url
-    #   end
-    # end
 end

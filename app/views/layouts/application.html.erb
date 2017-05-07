@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TA<%#= full_title(yield(:title)) %></title>
+    <title>TA</title>
 
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all',
                                               'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- <link rel="stylesheet" media="all" href="/assets/custom.self" data-turbolinks-track="reload"> -->
-    <%#= stylesheet_link_tag 'custom'%>
+
     <%= render 'layouts/shim' %>
-<!--     <script src="assets/stylesheets/jquery.weekly-schedule-plugin.min.js"></script> -->
   </head>
   <body>
     <div class="container-narrow">

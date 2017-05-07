@@ -12,10 +12,8 @@
         <%= bootstrap_form_for(@officehour) do |f| %>
             <%= f.hidden_field :course_id, :value=> params[:course].id %>
             <%= f.hidden_field :ta_id, :value=> current_user.id%>
-            <%#= f.number_field :ta_id %>
             <%t = params[:hours].split(":")%>
             <%d = params[:days].split(" ")%>
-            <%#byebug%>
             <% if params[:hours].include? "PM"%>
             	<%if t[0].to_i == 12%>
 	            	<%= f.datetime_select :start, order:[:month, :day, :year], :default => {hour:t[0].to_i, minute: t[1][0..1].to_i, day: d[1].split("/")[0][0..1].to_i, month: d[1].split("/")[1][0..1].to_i, year: d[1].split("/")[2][0..1].to_i }, ampm: true, minute_step:30%>

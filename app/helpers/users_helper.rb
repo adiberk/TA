@@ -26,21 +26,17 @@ module UsersHelper
 		split = string.upcase.split("-")
 		startInt = Integer(split[0].split(":")[0])
 		endInt = Integer(split[1].split(":")[0])
-		# byebug
 
 		startHour = 0
 		if split[0].include?("PM")
 			startHour = startInt+12
-			# byebug
 		else
 			startHour = startInt
 		end
 		endHour = 0
 		if split[1].include?("PM")
 			endHour = endInt+12;
-			# byebug
 		end
-		# byebug
 		curHour = startHour
 		count = 0
 		while curHour <= endHour
@@ -74,7 +70,6 @@ module UsersHelper
 			if count == 0
 				curHour+=1
 			end
-      # curHour+=1
       output.push(parsedStr)
 		end
     return output;
@@ -86,8 +81,7 @@ module UsersHelper
 
 # small rating icon for 0 0.5 1 1.5 ...
 	def create_rating_icon(score)
-		# print "======================"
-		# print score
+
 		if score == nil
 			rating_icon = ""
 			return rating_icon.html_safe
@@ -121,8 +115,7 @@ module UsersHelper
 # big rating icon for taprofile only
 
 	def create_big_rating_icon(score)
-		# print "======================"
-		# print score
+
 		if score == nil
 			rating_icon = "<span>Not yet rated</span>"
 			return rating_icon.html_safe

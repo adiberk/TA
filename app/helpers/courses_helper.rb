@@ -47,10 +47,6 @@ module CoursesHelper
     return apps
   end
 
-
-
-
-
   def get_student_list(course)
     enrolled = course.enrollments
     if enrolled.length == 0

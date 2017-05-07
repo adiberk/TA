@@ -15,10 +15,8 @@ class EnrollmentTasController < ApplicationController
 
   end
   def talistfilter
-    puts "========hi========="
     ta_name = params[:name]
     puts ta_name
-    puts "******************"
 
     users_fname=User.where("lower(first_name) LIKE lower(?)", "%#{ta_name}%")
     users_lname=User.where("lower(last_name) LIKE lower(?)", "%#{ta_name}%")
