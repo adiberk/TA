@@ -95,7 +95,7 @@ arr.each do |course|
 			abrv+= name[0]
 		end
 	end
-	Course.create!(id: count, name: course, major_id: major_id, abbrev: abrv)	#teacher: arr2[count],
+	Course.create!(id: count, name: course, major_id: major_id, abbrev: abrv, description: Faker::Lorem.paragraph(6, true), teacher: Faker::Name.name)	#teacher: arr2[count],
 	count+=1
 end
 # total of courses : 14 courses
@@ -156,8 +156,6 @@ EnrollmentTa.create!(id:17, user_id:list[8].id, course_id:7)
 #
 EnrollmentTa.create!(id:19, user_id:list[9].id, course_id:7)
 EnrollmentTa.create!(id:20, user_id:list[9].id, course_id:10)
-byebug
-
 
 
 

@@ -10,8 +10,10 @@
         <div class="col-xs-9">
           <p>
             <h3> <%=@course.name%></h3>
-            <h5> Professor </h5>
-            <h5> Course description </h5>
+            <h5> <strong>Professor:</strong> <%=@course.teacher%> </h5>
+            <p><strong>Course description:</strong> <%=@course.description.to_s%></p>
+            <p>
+            </p>
 
           </p>
           <div class = 'row'>
