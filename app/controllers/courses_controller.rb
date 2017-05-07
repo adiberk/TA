@@ -15,7 +15,7 @@ class CoursesController < ApplicationController
     # @user = User.find(params[:id])
     # @message = params[:message]
     @courses = Course.all
-    days_hold = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    days_hold = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', "Saturday"]
     @days = []
     f = 0
     days_hold.each do |d|

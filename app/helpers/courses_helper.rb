@@ -80,10 +80,18 @@ module CoursesHelper
 
   def off_hour(officehours, count, jcount)
     hour = nil
-    officehours.each do |offh|
-      if (offh.start.strftime('%a').downcase.eql?(@days[count].split(" ")[0].downcase))
-        if(offh.start.strftime("%l:%M%p").split(" ")[0].eql?(parseHours(@hours)[jcount]))
-          hour = offh
+    if (officehours.many? == false && officehours!=nil && officehours.size>0)
+      if (officehours[0].start.strftime('%a').downcase.eql?(@days[count].split(" ")[0].downcase))
+        if(officehours[0].start.strftime("%l:%M%p").split(" ")[0].eql?(parseHours(@hours)[jcount]))
+          hour = officehours[0]
+        end
+      end
+    else
+      officehours.each do |offh|
+        if (offh.start.strftime('%a').downcase.eql?(@days[count].split(" ")[0].downcase))
+          if(offh.start.strftime("%l:%M%p").split(" ")[0].eql?(parseHours(@hours)[jcount]))
+            hour = offh
+          end
         end
       end
     end
