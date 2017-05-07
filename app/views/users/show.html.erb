@@ -22,68 +22,66 @@
     </div>
 
     <div class="col-sm-9">
-      <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'London')">Student</button>
-        <button class="tablinks" onclick="openCity(event, 'Paris')">TA</button>
+      <ul class="nav nav-tabs mytab" role= "tablist">
+        <li class = "nav-item">
+          <li class = "nav-link active"><a data-toggle="tab" role = "tab" href="#student">Student</a></li>
+        </li>
+        <li class = "nav-item">
+          <li class = "nav-link"><a data-toggle="tab" href="#ta" role = "tab">TA</a></li>
+        </li>
+      </ul>
+      <div class = "tab-content">
+        <div id="student" class = "tab-pane fade in active" role = "tabpanel">
+          <div class="row">
+            <div class="course_appoint col-sm-12">
+              <p>
+                <strong>Courses</strong>
+                <ul>
+                    <% course_list = current_user().courses %>
+                    <% course_list.each do |c| %>
+                        <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", class: 'basiclink' %> </li>
+                    <% end %>
+
+                </ul>
+              </p>
+              <hr>
+            </div>
+            <div id='appointments'>
+              <%=render 'student_appointments'%>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="ta" class="tab-pane fade" role = "tabpanel">
+          <div class="row">
+            <div class="course_appoint col-sm-12">
+              <p>
+                <strong>Courses</strong>
+                <ul>
+                    <% course_list = current_user().tacourses %>
+                    <% course_list.each do |c| %>
+                        <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", class: 'basiclink' %> </li>
+                    <% end %>
+
+                </ul>
+              </p>
+              <hr>
+            </div>
+            <div id='ta_appointments'>
+              <%=render 'ta_appointments'%>
+            </div>
+          </div>
+        </div>
+          <!--  -->
       </div>
-
-      <div id="London" class="tabcontent" style=display:block>
-        <div class="row">
-        <div class="course_appoint col-sm-12">
-          <p>
-            <strong>Courses</strong>
-            <ul>
-                <% course_list = current_user().courses %>
-                <% course_list.each do |c| %>
-                    <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", class: 'basiclink' %> </li>
-                <% end %>
-
-            </ul>
-          </p>
-          <hr>
-        </div>
-        <div id='appointments'>
-          <%=render 'appointments'%>
-        </div>
-        </div>
+    <br>
+    <br>
+    <div class = "row">
+      <div id="target" style="margin-right:0px;padding-right:90px; width: 1000px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; overflow-x:auto;">
+        <%= render 'cal_create', :locals=> {course:@course}%>
       </div>
-
-      <div id="Paris" class="tabcontent">
-        <!--  -->
-<div class="container">
-	<div class="row">
-        <!-- Boxes de Acoes -->
-    	<div class="col-sx-12 col-sm-6 col-lg-6">
-			<div class="box">
-				<div class="icon">
-					<div class="image"><i class="fa fa-thumbs-o-up"></i></div>
-					<div class="info">
-						<h3 class="title">Made with Bootstrap</h3>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper.
-						</p>
-						<button type="submit" class="btn btn-default">submit</button>
-					</div>
-				</div>
-				<div class="space"></div>
-			</div>
-		</div>
-
-        <div class="col-xs-12 col-sm-6 col-lg-6">
-			<div class="box">
-				<div class="icon">
-				    <div class="image"><i class="fa fa-flag"></i></div>
-					<div class="info">
-    					<h3 class="title">Made with Bootstrap</h3>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper.
-						</p>
-						<button type="submit" class="btn btn-default">submit</button>
-					</div>
-				<div class="space"></div>
-			</div>
-		</div>
-
+    </div>
 
 		<!-- /Boxes de Acoes -->
 	</div>
@@ -96,22 +94,9 @@
 
 
 
-
-
-
-    <div class="container">
-        <div id="target" style="margin: auto; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start;">
-          <%#=create_header%>
-          <%#=create_cal(Course.find(2))%>
-          <%#= render 'cal_create'%>
-        </div>
     </div>
-<!--         <div class="container">
-        <div id="mytarget" style="margin: auto; width: 50%; height: 100%; display: flex; flex-direction: row; justify-content: center;">
-        </div>
-    </div> -->
+
     <script>
-        // $().weekly_schedule();
         $('.schedule').on('selectionmade', function() {
           console.log("Selection Made");
 
@@ -121,103 +106,12 @@
         $(document).ready( function() {
           var mousedown = false;
           var devarionMode = false;
-          // $('#cal-table').on('mousedown', function(event) {
-          //   var target = $(event.target);
-          //   $td = target.closest('div');
-          //   mousedown = true;
-          //   $td.append('HELLO');
-          //   var col   = $td.index();
-          //   var row   = $td.closest('div').index();
-
-          //   // $('#debug').prepend('<div class="debugLine">Cell at position (' + [col,row].join(',') + ') clicked!</div>' );
-
-          //   console.log("TARGET = " + td);
-
-          // // }).on('mouseup', function(){
-
-          // });
           $('.hour').on('mousedown', function(event) {
-              // var count = 0;
-          // }).on('mousedown', function() {
-              // mousedown = true;
-              // focusOn($(this).parent());
-
-              // if ($(this).hasClass('selected')) {
-              //     // $(this).trigger('selectionremoved')
-              //     // // // time = $(this).children()[1].remove();
-              //     // $(this).removeClass('selected');
-              //     if (!$(this).children().children().hasClass('offhour')){
-              //       // $(this).children().children('div:nth-child(2)').modal('hide');
-              //       $(this).trigger('selectionremoved')
-              //       // // time = $(this).children()[1].remove();
-              //       $(this).removeClass('selected');
-              //     }
-
-              //     // console.log(time)
-              //     // devarionMode = true;
-              // }
-              // else {
-                  if (!$(this).children().children().hasClass('offhour')){
-                    $(this).children().children('div:nth-child(2)').modal('show');
-                    // $(this).trigger('selectionmade')
-                    // $(this).addClass('selected');
-                  }
-                  // $(this).addClass('counter');
-                  // $(this).append("<h4 class = 'time-added', id = 'time-added'>HELLO</h4>");
-
-              // }
-              // $(this).removeClass('hover');
-          // }).on('mouseup', function() {
-              // devarionMode = false;
-              // mousedown = false;
-              // clearFocus();
-          // }).on('mouseleave', function () {
-          //     if (!mousedown) {
-          //         $(this).removeClass('hover');
-          //     }
-          });
-
-          // function focusOn(day) {
-          //   var targetDayClass = $(day).attr('class').split('\ ')[1];
-          //   var dayContainer = $('.day');
-
-          //   for (var i = 0; i < dayContainer.length; i++) {
-          //       if ($(dayContainer[i]).hasClass(targetDayClass)) {
-          //           continue;
-          //       }
-          //       console.log("HEYP");
-          //       var hours = $(dayContainer[i]).children();
-          //       for (var j = 0; j < hours.length; j++) {
-          //           $(hours[j]).addClass('disabled');
-          //       }
-          //   }
-
-            // $(day).on('mouseleave', function() {
-            //     clearFocus();
-            //     console.log("Hover");
-            //     mousedown = false;
-            //     devarionMode = false;
-            // });
-          // }
-          // function clearFocus() {
-          //   var dayContainer = $('.day');
-
-          //   for (var i = 0; i < dayContainer.length; i++) {
-
-          //     var hours = $(dayContainer[i]).children();
-          //     for (var j = 0; j < hours.length; j++) {
-          //         $(hours[j]).removeClass('disabled');
-          //     }
-          //   }
-          // }
+            // if (!$(this).children().children().hasClass('offhour')){ 
+              $(this).children().children('div:nth-child(2)').modal('show');
+            // }
+          })
         });
-      //   $('.hour').on('click', function(event) {
-      //       if $(this).children().children('div:nth-child(2)').hasClass()
-      //       $(this).children().children('div:nth-child(2)').modal('show');
-      //       $(this).children().children('div:nth-child(2)').toggle();
-      //       $(this).children().children('div:nth-child(2)').modal('hide');
-      //   // $(this).children().children('button').click()
-      // });
     </script>
 
 </div>

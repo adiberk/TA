@@ -40,7 +40,7 @@
 						</div>
 						<%correct_hour = nil%>
 					<% else %>
-						<%if correct_app!=nil%>
+						<%if correct_app!=nil && correct_app.start > Time.now%>
 							<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>" style="background:#00eaff;">
 								<div class = 'time-added'>
 									<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
@@ -54,7 +54,10 @@
 									<%else%>
 										<%hold = create_rating_icon(nil)%>
 									<%end%>
-									Rating: <%=hold%>
+									<% if hold == ""%>
+									<%else%>
+										Rating: <%=hold%>
+									<% end %>
 									</h5>
 								</div>
 							</div>
@@ -95,7 +98,7 @@
 					<%correct_app = off_hour(ta_appointments, count, jcount)%>
 					<%hours = parseHours(@hours)[jcount]%>
 					<%if correct_hour!=nil%>
-						<div id = "cal-table" class = "hour <%=parseHours(@hours)[jcount]%>">
+						<div id = "cal-table" class = "hour correct_hour <%=parseHours(@hours)[jcount]%>">
 							<div class = 'time-added'>
 								<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
 								<%=render 'update_modal', :params => {office_hour: correct_hour}%>
@@ -108,7 +111,7 @@
 								<%else%>
 									<%hold = create_rating_icon(nil)%>
 								<%end%>
-								Rating: <%=hold%>
+								<%=hold%>
 								</h5>
 							</div>
 						</div>
@@ -128,7 +131,7 @@
 									<%else%>
 										<%hold = create_rating_icon(nil)%>
 									<%end%>
-									Rating: <%=hold%>
+									<%=hold%>
 									</h5>
 								</div>
 							</div>

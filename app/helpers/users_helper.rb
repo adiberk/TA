@@ -1,5 +1,17 @@
 module UsersHelper
+	def get_all_user_tas
+		tas = []
+		courses=current_user.courses
+		courses.each do |course|
+			tas = tas + course.tas
+		end
+		if tas.include?(current_user)
+			f = tas.pop(current_user)
+		end
+		tas = tas.uniq
+		return tas
 
+	end
 	def create_header(days)
 		dayHeaderContainer = "<div class = 'header'><div class = 'align-block'></div>"
 		days.each do |day|
@@ -77,7 +89,7 @@ module UsersHelper
 		# print "======================"
 		# print score
 		if score == nil
-			rating_icon = "<span>Not yet rated</span>"
+			rating_icon = ""
 			return rating_icon.html_safe
 		end
 		if score == 0

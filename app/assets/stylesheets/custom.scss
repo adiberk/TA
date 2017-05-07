@@ -1056,6 +1056,7 @@ $b: #4f90c1;
   margin-bottom:30px;
 
 }
+
 // footer
 .copyright { min-height:40px; background-color:#000000;}
 .copyright p { text-align:left; color:#FFF; padding:10px 0; margin-bottom:0px;}
@@ -1063,3 +1064,11 @@ $b: #4f90c1;
 .bottom_ul li { float:left; line-height:40px;}
 .bottom_ul li:after {  color:#FFF; margin-right:8px; margin-left:8px;}
 .bottom_ul li a { color:#FFF;  font-size:12px;}
+
+/*edit tabs on user page*/
+ul.mytab{
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+/*done editing tabs on user page*/
