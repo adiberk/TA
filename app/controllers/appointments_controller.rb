@@ -13,9 +13,19 @@ class AppointmentsController < ApplicationController
   end
   def confirm_app
     @appointment = Appointment.find(params[:id])
-    @appointment.confirmed = params[:confirmed]
+    # @appointment.confirmed = params[:confirmed]
     respond_to do |format|
-      if @appointment.save
+      if @appointment.update_attribute(:confirmed, params[:confirmed])
+        format.js {render 'users/confirm_app'}
+      end
+    end
+  end
+
+  def unconfirm_app
+    @appointment = Appointment.find(params[:id])
+    # @appointment.confirmed = params[:confirmed]
+    respond_to do |format|
+      if @appointment.update_attribute(:confirmed, params[:confirmed])
         format.js {render 'users/confirm_app'}
       end
     end
@@ -35,7 +45,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
 
     respond_to do |format|
-      if @appointment.save
+      if @appointment.save!
         format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
         format.json { render :show, status: :created, location: @appointment }
       else
@@ -43,6 +53,21 @@ class AppointmentsController < ApplicationController
         format.json { render json: @appointment.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def request_app
+    @appointment = Appointment.new(appointment_params)
+    # respond_to do |format|
+    # byebug
+      if @appointment.save
+        flash[:success] = 'Sent appointment request (to cancel, please check your user page)'
+        redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id).name
+      else
+        redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id)
+        errors = @appointment.errors.messages
+        flash[:danger] = errors[:base][0]
+      end
+    # end
   end
 
   # PATCH/PUT /appointments/1

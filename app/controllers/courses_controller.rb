@@ -10,8 +10,30 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @course = Course.find(params[:id])
+    @course = set_course
     @users = User.all
+    # @user = User.find(params[:id])
+    # @message = params[:message]
+    @courses = Course.all
+    days_hold = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', "Saturday"]
+    @days = []
+    f = 0
+    days_hold.each do |d|
+      day = Date.parse(d)
+      if day > (Date.today+f)
+          day -= 7
+      end
+      f+=1
+      @days.push(day.strftime('%a %d/%m/%y'))
+    end
+    @hours = "8:00AM-8:00PM"
+    @fontFamily = "Montserrat"
+    @fontColor = "black"
+    @fontWeight =  "100"
+    @fontSize = "0.8em"
+    @hoverColor = "#727bad"
+    @selectionColor = "#9aa7ee"
+    @headerBackgroundColor = "transparent"
   end
 
   # GET /courses/new

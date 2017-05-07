@@ -5,7 +5,7 @@ class UserTest < ActiveSupport::TestCase
   #   assert true
   # end
   def setup
-    @user = User.new(first_name: "Example", last_name: "User", username: "euser", email: "user@example.com", university_id:"1", password: "foobar", password_confirmation: "foobar")
+    @user = User.new(first_name: "Example", last_name: "User", username: "euser", email: "user@example.com", university_id:"1", password: "foobar", password_confirmation: "foobar", confirmed_at:Time.now)
   end
 
   test "should be valid" do
@@ -28,11 +28,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
-  # test "last_name should not be too long" do
-  #   @user.last_name=  "a" * 26
-  #   assert_not @user.valid?
-  # end
-  # ABOVE TEST CAUSES TO FAIL
+
   test "email should not be too long" do
     @user.email = "a" * 244 + "@example.com"
     assert_not @user.valid?
@@ -65,13 +61,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "username should be present" do
-     @user.username = "     "
+    @user.username = "     "
     assert_not @user.valid?
-  end
-
-
-  test "authenticated? should return false for a user with nil digest" do
-    assert_not @user.authenticated?('')
   end
 
 end

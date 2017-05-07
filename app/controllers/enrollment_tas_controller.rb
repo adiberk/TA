@@ -1,8 +1,43 @@
 class EnrollmentTasController < ApplicationController
   before_action :set_enrollment_ta, only: [:show, :edit, :update, :destroy]
-
+  include EnrollmentTasHelper
   # GET /enrollment_tas
   # GET /enrollment_tas.json
+
+  #Using for the ta_list
+  def talist
+    @courses = Course.all
+    @user=User.all
+
+      @enrollment_tas = EnrollmentTa.all
+      @ta_list=get_ta_list_from_enrollment_tas(@enrollment_tas)
+      render 'talist'
+
+  end
+  def talistfilter
+    ta_name = params[:name]
+    puts ta_name
+
+    users_fname=User.where("lower(first_name) LIKE lower(?)", "%#{ta_name}%")
+    users_lname=User.where("lower(last_name) LIKE lower(?)", "%#{ta_name}%")
+
+    user_fname_list=get_user_list_from_users(users_fname)
+    user_lname_list=get_user_list_from_users(users_lname)
+    user_list = user_fname_list | user_lname_list
+    @enrollment_tas = EnrollmentTa.all
+    ta_list=get_ta_list_from_enrollment_tas(@enrollment_tas)
+    @ta_list = ta_list & user_list
+    render :partial => 'partial'
+
+  end
+  def talistfilter2
+    course_name = params[:coursename]
+    @courses=Course.where("lower(name) LIKE lower(?)", "%#{course_name}%")
+
+    render :partial => 'partial2'
+  end
+
+
   def index
     @enrollment_tas = EnrollmentTa.all
   end

@@ -6,4 +6,7 @@ class Course < ApplicationRecord
 	has_many :tas, :through => :enrollment_tas, :source => :user
 
 	has_many :officehours
+
+	belongs_to :major
+	has_one :university, :through => :major
 end
