@@ -7,14 +7,17 @@
 			<div class="info">
 				<h3 class="title">Confirmed Appointments</h3>
         <p style="list-style-type:none">
+        <%listed = false%>
         <% if (userstudent.where(confirmed: true).size > 0)%>
           <%userstudent.each do |app|%>
-            <%if app.confirmed == true && app.start> Time.now%>
+            <%if app.start> Time.now%>
+              <%listed = true%>
               <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
               </p>
             <%end%>
           <%end%>
-        <% else %>
+        <%end %>
+        <%if listed == false%>
           <p>No confirmed appointments</p>
         <% end %>
         </p>
@@ -32,17 +35,17 @@
 			<div class="info">
 					<h3 class="title">Unconfirmed Appointments</h3>
           <p>
+          <%listed = false%>
             <% if userstudent.where(confirmed: false).size > 0%>
-               <%#= get_appointment()%>
-               <%#userstudent = current_user.ta_appointments%>
                <%userstudent.each do |app|%>
-                <%if app.confirmed == false && app.start > Time.now%>
+                <%if app.start > Time.now%>
+                  <%listed = true%>
                   <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
                   </p>
                 <% end %>
               <%end%>
-
-            <% else %>
+            <% end %>
+            <% if listed== false%>
               <p>No unconfirmed appointments at this time</p>
             <% end %>
           </p>

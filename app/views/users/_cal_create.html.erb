@@ -1,6 +1,6 @@
 <%if user_signed_in?%>
 		<%=create_header(@days)%>
-		<div class = 'days-wrapper'>
+		<div class = 'days-wrapper-user'>
 			<div class = 'hour-header'>
 			<%(0..parseHours(@hours).length-1).each do |count|%>
 				<div class = "hour-header-item <%=parseHours(@hours)[count]%>">
@@ -27,9 +27,7 @@
 					<%if correct_hour!=nil%>
 						<div id = "cal-table" class = "hour correct_hour <%=parseHours(@hours)[jcount]%>">
 							<div class = 'time-added'>
-								<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
-								<%=render 'update_modal', :params => {office_hour: correct_hour}%>
-								<h5 class = 'offhour' style = "margin-bottom:0px"><%=Course.find(correct_hour.course_id).name%>
+								<h5 class = 'offhour' style = "margin-bottom:0px"><%=Course.find(correct_hour.course_id).abbrev%>
 								</h5>
 								<h5 style = "margin-top:0px">
 								<%hold = User.find(correct_hour.ta_id).ta_reviews%>
@@ -67,9 +65,6 @@
 						<%else%>
 							<div class = 'hour <%=parseHours(@hours)[jcount]%>', id = 'cal-table'>
 								<div class = 'time-added'>
-									<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'>
-									</button>
-									<%= render 'create_off_hour_modal', :params => {hours: hours, days: @days[count]}%>
 								</div>
 							</div>
 						<% end %>

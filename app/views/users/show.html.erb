@@ -22,13 +22,24 @@
     </div>
 
     <div class="col-sm-9">
+    <!-- <div class = "row"> -->
+      <div id="target" style="margin-right:0px;padding-right:90px; width: 1000px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; overflow-x:auto;">
+        <%= render 'cal_create'%>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class = "row">
+    <div class = 'col-sm-12'>
       <ul class="nav nav-tabs mytab" role= "tablist">
         <li class = "nav-item">
           <li class = "nav-link active"><a data-toggle="tab" role = "tab" href="#student">Student</a></li>
         </li>
-        <li class = "nav-item">
-          <li class = "nav-link"><a data-toggle="tab" href="#ta" role = "tab">TA</a></li>
-        </li>
+        <%if current_user.tacourses != nil || current_user.tacourses.size > 0%>
+          <li class = "nav-item">
+            <li class = "nav-link"><a data-toggle="tab" href="#ta" role = "tab">TA</a></li>
+          </li>
+        <%end%>
       </ul>
       <div class = "tab-content">
         <div id="student" class = "tab-pane fade in active" role = "tabpanel">
@@ -39,7 +50,7 @@
                 <ul>
                     <% course_list = current_user().courses %>
                     <% course_list.each do |c| %>
-                        <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", class: 'basiclink' %> </li>
+                        <li> <%= link_to "#{c.name} (#{c.abbrev})", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", class: 'basiclink' %> </li>
                     <% end %>
 
                 </ul>
@@ -52,37 +63,32 @@
           </div>
         </div>
 
+        <%if current_user.tacourses != nil || current_user.tacourses.size > 0%>
+          <div id="ta" class="tab-pane fade" role = "tabpanel">
+            <div class="row">
+              <div class="course_appoint col-sm-12">
+                <p>
+                  <strong>Courses</strong>
+                  <ul>
+                      <% course_list = current_user().tacourses %>
+                      <% course_list.each do |c| %>
+                          <li> <%= link_to "#{c.name}, (#{c.abbrev})", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", class: 'basiclink' %> </li>
+                      <% end %>
 
-        <div id="ta" class="tab-pane fade" role = "tabpanel">
-          <div class="row">
-            <div class="course_appoint col-sm-12">
-              <p>
-                <strong>Courses</strong>
-                <ul>
-                    <% course_list = current_user().tacourses %>
-                    <% course_list.each do |c| %>
-                        <li> <%= link_to "#{c.name}", :controller => "courses", :action =>"show", :id=>"#{c.id}", :course_name=>"#{c.name}", class: 'basiclink' %> </li>
-                    <% end %>
-
-                </ul>
-              </p>
-              <hr>
-            </div>
-            <div id='ta_appointments'>
-              <%=render 'ta_appointments'%>
+                  </ul>
+                </p>
+                <hr>
+              </div>
+              <div id='ta_appointments'>
+                <%=render 'ta_appointments'%>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
           <!--  -->
       </div>
     <br>
     <br>
-    <div class = "row">
-      <div id="target" style="margin-right:0px;padding-right:90px; width: 1000px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; overflow-x:auto;">
-        <%= render 'cal_create', :locals=> {course:@course}%>
-      </div>
-    </div>
-
 		<!-- /Boxes de Acoes -->
 	</div>
 </div>

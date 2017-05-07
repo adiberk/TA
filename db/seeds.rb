@@ -86,7 +86,12 @@ arr.each do |course|
 	else
 		major_id = 1
 	end
-	Course.create!(id: count, name: course, major_id: major_id)	#teacher: arr2[count],
+	course_split = course.split(" ")
+	abrv = ""
+	course_split.each do |name|
+		abrv+= name[0]
+	end
+	Course.create!(id: count, name: course, major_id: major_id, abbrev: abrv)	#teacher: arr2[count],
 	count+=1
 end
 # total of courses : 14 courses

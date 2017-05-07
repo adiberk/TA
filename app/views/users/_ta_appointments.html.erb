@@ -7,9 +7,11 @@
 			<div class="info">
 				<h3 class="title">Confirmed Appointments</h3>
         <p style="list-style-type:none">
+        <%listed = false%>
         <% if (userta.where(confirmed: true).size > 0 || current_user.student_appointments.where(confirmed: true).size > 0)%>
           <%userta.each do |app|%>
-            <%if app.confirmed == true && app.start > Time.now%>
+            <%if app.start > Time.now%>
+              <%listed = true%>
               <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
                 <%=form_tag unconfirm_appointment_path, method:'post', id:'confirm_app', remote:true do%>
                   <%=hidden_field_tag :confirmed, false%>
@@ -19,7 +21,8 @@
               </p>
             <%end%>
           <%end%>
-        <% else %>
+        <% end %>
+        <%if listed == false%>
           <p>No confirmed appointments</p>
         <% end %>
         </p>
@@ -37,9 +40,11 @@
 			<div class="info">
 					<h3 class="title">Unconfirmed Appointments</h3>
           <p>
+          <%listed = false%>
             <% if userta.where(confirmed: false).size > 0%>
               <%userta.each do |app|%>
-                <%if app.confirmed == false  && app.start> Time.now%>
+                <%if app.start> Time.now%>
+                  <%listed = true%>
                   <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
 
                   <%=form_tag confirm_appointment_path, method:'post', id:'confirm_app', remote:true do%>
@@ -48,12 +53,12 @@
                       <%= button_tag("Confirm", type: "Confirm", class: "btn btn-default-confirm") %>
                   <%end%>
                   </p>
-                <% end %>
               <%end%>
-
-            <% else %>
-              <p>No unconfirmed appointments at this time</p>
             <% end %>
+          <% end %>
+          <% if listed== false%>
+            <p>No unconfirmed appointments at this time</p>
+          <% end %>
           </p>
 
 			</div>
