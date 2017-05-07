@@ -1,6 +1,6 @@
-# TAOnDemand
-### created by: Nick, Horace, Adi
-### ==TaOnDemand is a web application that better connects students to their teaching assistants as well as providing easier ways for teachinga ssistnats to manage their schedules==
+# TAOnDemand 
+### *created by: Nick, Horace, Adi*
+==TaOnDemand is a web application that better connects students to their teaching assistants as well as providing easier ways for teachinga ssistnats to manage their schedules==
 ![Connect](https://computing.ece.vt.edu/~santol/projects/zsl_via_visual_abstraction/interact/interact_illustration_instance_dataset/imgs/28X8B727M0IG2TUJK1PFYVF9E5ACXR_11.jpg)
 
 Some key features are:
