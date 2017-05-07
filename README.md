@@ -1,24 +1,9 @@
 # TAOnDemand
-### Nick, Horace, Adi
+#### created by: Nick, Horace, Adi
+#### TaOnDemand is a web application that better connects students to their teaching assistants as well as providing easier ways for teachinga ssistnats to manage their schedules
 
-
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Some key features are:
+  * Providing a way to create and update office hours in a nicely organized calendar
+  * Connecting students and TA through a chat feature for those office hours that are online
+  * Making TA's mre accountable by allowing students to rate and review their TAs, and making those reviews public
+  
