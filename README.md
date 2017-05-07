@@ -1,4 +1,3 @@
-# README
 # TAOnDemand
 ### Nick, Horace, Adi
 
