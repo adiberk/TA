@@ -6,12 +6,13 @@
           <% name =  current_user.first_name + " " + current_user.last_name %>
             <small><b><%= name %></b></small>
         </h3>
-
+        <%if current_user.tacourses.size>0%>
           <%if current_user.online == true%>
            <%= link_to "Go offline?", go_offline_path(user_id: current_user.id), style:'none', class: 'btn btn-sm btn-warning'%>
           <%else%>
            <%= link_to "Go online?", go_online_path(user_id: current_user.id), style:'none', class: 'btn btn-sm btn-success'%>
           <%end%>
+        <%end%>
           <hr>
         </ul>
         <% current_courses=current_user.courses%>
