@@ -16,27 +16,33 @@
       </div>
       <br><br>
     </div>
+
+    <div class = "col-lg-10">
+      <div id="target" style="margin-right:0px;padding-right:90px; width: 1000px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; overflow-x:auto;">
+        <%= render 'cal_create', :locals=> {course:@course}%>
+      </div>
+    </div>
   </div>
-  <div class = 'row'>
-    <div class = "col-sm-2">
+
+  <br>
+  <br>
+
+  <div class = 'row participants' >
+    <div class = "col-sm-4">
       <p>
         <strong>Students</strong>
         <ul>
            <%= get_student_list(@course) %>
         </ul>
       </p>
+    </div>
+    <div class = "col-sm-4">
       <p>
         <strong> Teaching Assistants </strong>
         <ul>
           <%= get_ta_list(@course) %>
         </ul>
       </p> 
-    </div>
-
-    <div class = "col-lg-10">
-      <div id="target" style="margin-right:0px;padding-right:90px; width: 1000px; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; overflow-x:auto;">
-        <%= render 'cal_create', :locals=> {course:@course}%>
-      </div>
     </div>
   </div>
 </div>
