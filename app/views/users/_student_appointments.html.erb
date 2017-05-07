@@ -12,7 +12,7 @@
           <%userstudent.each do |app|%>
             <%if app.start> Time.now%>
               <%listed = true%>
-              <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
+              <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start.strftime('%y-%m-%d at %I:%M:%S%p')%>
               </p>
             <%end%>
           <%end%>
@@ -40,7 +40,7 @@
                <%userstudent.each do |app|%>
                 <%if app.start > Time.now%>
                   <%listed = true%>
-                  <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
+                  <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start.strftime('%y-%m-%d at %I:%M:%S%p')%>
                   </p>
                 <% end %>
               <%end%>

@@ -12,7 +12,7 @@
           <%userta.each do |app|%>
             <%if app.start > Time.now%>
               <%listed = true%>
-              <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
+              <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start.strftime('%y-%m-%d at %I:%M:%S%p')%>
                 <%=form_tag unconfirm_appointment_path, method:'post', id:'confirm_app', remote:true do%>
                   <%=hidden_field_tag :confirmed, false%>
                   <%=hidden_field_tag :id, app.id%>
@@ -45,7 +45,7 @@
               <%userta.each do |app|%>
                 <%if app.start> Time.now%>
                   <%listed = true%>
-                  <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start%> - <%=app.end%>
+                  <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start.strftime('%y-%m-%d at %I:%M:%S%p')%>
 
                   <%=form_tag confirm_appointment_path, method:'post', id:'confirm_app', remote:true do%>
                       <%=hidden_field_tag :confirmed, true%>

@@ -11,11 +11,15 @@
 			<%tas= current_user%>
 			<%studentapp = current_user.student_appointments.where(confirmed: true)%>
 			<%ta_apps = current_user.ta_appointments.where(confirmed: true)%>
-			<%studentapp.merge(ta_apps)%>
+			<%studentapp= studentapp + ta_apps%>
 			<%(0..@days.length-1).each do |count|%>
 				<div class = "day <%=@days[count]%>">
 
 				<%officehours = current_user.officehours%>
+				<%mycourses = current_user.courses%>
+				<%mycourses.each do |course|%>
+					<%officehours = officehours + course.officehours%>
+				<%end%>
 				<%correct_hour = nil%>
 				<%(0..parseHours(@hours).length-1).each do |jcount|%>
 					<%correct_hour = off_hour(officehours, count, jcount)%>
@@ -27,7 +31,7 @@
 					<%if correct_hour!=nil%>
 						<div id = "cal-table" class = "hour correct_hour <%=parseHours(@hours)[jcount]%>">
 							<div class = 'time-added'>
-								<h5 class = 'offhour' style = "margin-bottom:0px"><%=Course.find(correct_hour.course_id).abbrev%>
+								<h5 class = 'offhour' style = "margin-bottom:0px"><%=User.find(correct_hour.ta_id).first_name%>: <%=Course.find(correct_hour.course_id).abbrev%>
 								</h5>
 								<h5 style = "margin-top:0px">
 								<%hold = User.find(correct_hour.ta_id).ta_reviews%>
@@ -43,7 +47,7 @@
 						<%correct_hour = nil%>
 					<% else %>
 						<%if correct_app!=nil && correct_app.start > Time.now%>
-							<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>" style="background:#00eaff;">
+							<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>" style="background:#e59edd;">
 								<div class = 'time-added'>
 									<h5 class = 'offhour'><%="Appointment with "%><%=User.find(correct_app.ta_id).first_name%>
 									</h5>

@@ -88,8 +88,12 @@ arr.each do |course|
 	end
 	course_split = course.split(" ")
 	abrv = ""
-	course_split.each do |name|
-		abrv+= name[0]
+	if course_split.length <= 1
+		abrv = course_split[0][0] + course_split[0][1]
+	else
+		course_split.each do |name|
+			abrv+= name[0]
+		end
 	end
 	Course.create!(id: count, name: course, major_id: major_id, abbrev: abrv)	#teacher: arr2[count],
 	count+=1
@@ -125,7 +129,7 @@ Enrollment.create!(id:18, user_id:list[8].id, course_id:4)
 Enrollment.create!(id:19, user_id:list[8].id, course_id:2)
 #
 Enrollment.create!(id:20, user_id:list[9].id, course_id:4)
-
+Enrollment.create!(id:21, user_id:list[15].id, course_id:7)
 # create fake enrollment_tas
 
 EnrollmentTa.create!(id:1, user_id: list[1].id, course_id:1)
@@ -152,6 +156,7 @@ EnrollmentTa.create!(id:17, user_id:list[8].id, course_id:7)
 #
 EnrollmentTa.create!(id:19, user_id:list[9].id, course_id:7)
 EnrollmentTa.create!(id:20, user_id:list[9].id, course_id:10)
+byebug
 
 
 
@@ -164,11 +169,10 @@ Officehour.create!(ta_id: list[0].id, course_id: 5, start:"Thu, 6 Apr 2017 05:30
 Officehour.create!(ta_id: list[1].id, course_id: 2, start:"Thu, 6 Apr 2017 05:30:00 PM", end:Time.now, online: false )
 Officehour.create!(ta_id:list[1].id, course_id:1, start:"Mon, 3 Apr 2017 10:00:00 AM", end:Time.now, online: false)
 
-Appointment.create!(ta_id: list[1].id, student_id:list[4].id, course_id: 1, start:"Wed, 26 Apr 2017 11:30:00 AM", end: Faker::Date.forward, confirmed: false)
-Appointment.create!(ta_id: list[0].id, student_id:list[2].id, course_id: 4, start: "Fri, 28 Apr 2017 01:30:00 PM", end: Faker::Date.forward, confirmed: true)
-Appointment.create!(ta_id: list[2].id, student_id:list[0].id, course_id: 1, start:"Thu, 27 Apr 2017 01:30:00 PM", end: Faker::Date.forward, confirmed: false)
-Appointment.create!(ta_id: list[7].id, student_id:list[1].id, course_id: 3, start:"Tue, 25 Apr 2017 09:30:00 AM", end: Faker::Date.forward, confirmed: true)
-Appointment.create!(ta_id: list[7].id, student_id:list[1].id, course_id: 3, start:"Mon, 24 Apr 2017 08:00:00 AM", end: Faker::Date.forward, confirmed: true)
+Appointment.create!(ta_id: list[1].id, student_id:list[4].id, course_id: 1, start:DateTime.parse(DateTime.now.strftime("%Y-%m-%dT08:30:00%z")),  end: Faker::Date.forward, confirmed: false)
+Appointment.create!(ta_id: list[2].id, student_id:list[0].id, course_id: 1, start:DateTime.now.change({ day: Time.now.day+1, hour: 10, min: 30, sec: 0 }), end: Faker::Date.forward, confirmed: false)
+Appointment.create!(ta_id: list[7].id, student_id:list[1].id, course_id: 3, start:DateTime.now.change({ day: Time.now.day+2, hour: 13, min: 0, sec: 0 }), end: Faker::Date.forward, confirmed: true)
+Appointment.create!(ta_id: list[7].id, student_id:list[1].id, course_id: 3, start:DateTime.now.change({ day: Time.now.day+1, hour: 16, min: 30, sec: 0 }), end: Faker::Date.forward, confirmed: true)
 
 Review.create!(ta_id: list[1].id, student_id:list[0].id, course_id: 2, review: "3 am happy with 1", score: 3)
 Review.create!(ta_id: list[0].id, student_id:list[4].id, course_id: 5, review: "2 am happy with 1", score: 4)
