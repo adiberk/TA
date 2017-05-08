@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'chat/index'
 
+  get '/about', to: 'static_pages#about'
   get '/talist',   to: 'enrollment_tas#talist'
   get '/talist/filter',   to: 'enrollment_tas#talistfilter'
   get '/talist/filter2',   to: 'enrollment_tas#talistfilter2'
