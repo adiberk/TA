@@ -50,7 +50,7 @@
 						<%correct_hour = nil%>
 					<% else %>
 						<%if correct_app!=nil && correct_app.start > Time.now%>
-							<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>" style="background:#e59edd;">
+							<div id = 'cal-table' class = "hour appointment_hour <%=parseHours(@hours)[jcount]%>" >
 								<div class = 'time-added'>
 									<h5 class = 'offhour'><%="Appointment with "%><%=User.find(correct_app.ta_id).first_name%>
 									</h5>
