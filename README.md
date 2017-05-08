@@ -34,7 +34,7 @@ TA OnDemand accomplishes these goals by automating the relationship between stud
 - Students and TAs can chat live. This can allow a TA to completely virtualize his/her office hour by fielding questions online.
 - TAs can "Go Online" by clicking a button in the sidebar. Once online, a green circle will show up next to their name for students looking to chat with them
 
-#### Review and Rating
+#### Reviews
 - Each student can rate their TAs based on a 5-point scale and a written review
 - Each TA has a TA Profile page which shows their average rating and all the comments given by any of their students. This allows TAs to build a reputation, making them more likely to be hired by professors and can go on their resume.
 
