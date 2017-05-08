@@ -9,7 +9,7 @@
         <%listed = false%>
         <% if (userta.where(confirmed: true).size > 0 || current_user.student_appointments.where(confirmed: true).size > 0)%>
           <%userta.each do |app|%>
-            <%if app.start > Time.now%>
+            <%if app.start > Time.now && app.confirmed == true%>
               <%listed = true%>
               <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start.strftime('%y-%m-%d at %I:%M:%S%p')%>
                 <%=form_tag unconfirm_appointment_path, method:'post', id:'confirm_app', remote:true do%>
@@ -42,7 +42,7 @@
           <%listed = false%>
             <% if userta.where(confirmed: false).size > 0%>
               <%userta.each do |app|%>
-                <%if app.start> Time.now%>
+                <%if app.start> Time.now && app.confirmed == false%>
                   <%listed = true%>
                   <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start.strftime('%y-%m-%d at %I:%M:%S%p')%>
 
