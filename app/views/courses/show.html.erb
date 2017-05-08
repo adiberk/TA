@@ -10,6 +10,7 @@
         <h5> <strong>Professor:</strong> <%=@course.teacher%> </h5>
         <p><strong>Course description:</strong> <%=@course.description.to_s%></p>
         <p>
+          <%=render 'shared/online'%><%= "Online"%>
         </p>
       </p>
       <div class = 'row'>    

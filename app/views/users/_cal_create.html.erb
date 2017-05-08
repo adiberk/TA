@@ -32,6 +32,9 @@
 						<div id = "cal-table" class = "hour correct_hour <%=parseHours(@hours)[jcount]%>">
 							<div class = 'time-added'>
 								<h5 class = 'offhour' style = "margin-bottom:0px"><%=User.find(correct_hour.ta_id).first_name%>: <%=Course.find(correct_hour.course_id).abbrev%>
+								<%if correct_hour.online == true%>
+									<%=render 'shared/online'%>
+								<%end%>
 								</h5>
 								<h5 style = "margin-top:0px">
 								<%hold = User.find(correct_hour.ta_id).ta_reviews%>
@@ -50,18 +53,6 @@
 							<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>" style="background:#e59edd;">
 								<div class = 'time-added'>
 									<h5 class = 'offhour'><%="Appointment with "%><%=User.find(correct_app.ta_id).first_name%>
-									</h5>
-									<h5>
-									<%hold = User.find(correct_app.ta_id).ta_reviews%>
-									<%if hold.size > 0%>
-										<%hold = create_rating_icon(hold.first.score)%>
-									<%else%>
-										<%hold = create_rating_icon(nil)%>
-									<%end%>
-									<% if hold == ""%>
-									<%else%>
-										Rating: <%=hold%>
-									<% end %>
 									</h5>
 								</div>
 							</div>
