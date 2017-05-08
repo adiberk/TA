@@ -108,7 +108,7 @@
 						</div>
 						<%correct_hour = nil%>
 					<% else %>
-						<%if correct_app!=nil%>
+						<%if correct_app!=nil && correct_app.start>Time.now%>
 							<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>" style="background:#e59edd;">
 								<div class = 'time-added'>
 									<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
