@@ -110,7 +110,7 @@ arr.each do |course|
 			abrv+= name[0]
 		end
 	end
-	Course.create!(id: count, name: course[0], major_id: major_id, abbrev: abrv, description: course[3], teacher: course[1] )	#teacher: arr2[count],
+	Course.create!(id: count, name: course[0], major_id: major_id, abbrev: abrv, description: course[2], teacher: course[1] )	#teacher: arr2[count],
 	count+=1
 end
 # total of courses : 14 courses
