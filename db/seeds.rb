@@ -74,7 +74,22 @@ Major.create!(id:3, university_id:1, name:"Mathmatic")
 # create fake courses
 # the first version is from capstone to Algebra by Adi
 # the second version is from discrete to matlab by Hao
-arr = ["Capstone Project", "Data Structure", "Mobile App", "Macroeconomics", "Algebra", "Discrete Math", "Linear Algebra", "Calculus", "Network Information Systems", "Operating Systems", "Database Management", "Algorithm", "Information Retrieval", "Scientific Data Processing in Matlab" ]
+arr = [
+	["Capstone Project","Mr. Salas","Teaches modern software engineering concepts, emphasizing rapid prototyping, unit testing, usability testing, and collaborative software development principles. Students apply these concepts by building a complex software system in small teams of programmers/developers using current platforms and technologies."], 
+	["Data Structure","Mr. Storer","An introduction to the fundamental concepts of computation: discrete structures (sets, relations, functions, sequences, graphs), the fundamental data structures and algorithms for sorting and searching (lists, queues, dequeues, heaps, hashing, binary trees, tries), and the analysis of algorithms (predicate logic, termination and correctness proofs, computational complexity)."], 
+	["Mobile App", "Ms. Chaturvedi", "Introduces the design and analysis of mobile applications that covers the architecture of mobile devices, APIs for graphical user interfaces on mobile devices, location-aware computing, social networking. Also covers the theory and practice of space and time optimization for these relatively small and slow devices."], 
+	["Macroeconomics","Mr. Redenius","Introduces the field of macroeconomics. Macroeconomics is the study of the overall or aggregate economic performance of national economies. "],
+	["Algebra", "Mr. Bellaïche", "Groups, rings, modules, Galois theory, affine rings, and rings of algebraic numbers. Multilinear algebra. The Wedderburn theorems. Other topics as time permits."], 
+	["Discrete Math","Mr. Cherniack", "Covers topics in discrete mathematics with applications within computer science. Some of the topics to be covered include graphs and matrices; principles of logic and induction; number theory; counting, summation, and recurrence relations; discrete probability."],
+	["Linear Algebra", "Mr. Matveev", "Matrices, determinants, linear equations, vector spaces, eigenvalues, quadratic forms, linear programming. Emphasis on techniques and applications."],
+	["Calculus", "Mr. Merril", "Introduction to differential (and some integral) calculus of one variable, with emphasis on techniques and applications."], 
+	["Information Retrieval", "Mr. Anick", "Explores the theory and practice of textual information retrieval, including text indexing; Boolean, vector space and probabilistic retrieval models; evaluation; interfaces; linguistic issues; web search; QA and text classification. Students will implement algorithms and design and build a search-based application."],
+	["Operating Systems", "Ms. Shrira","Fundamental structures of a computer system from hardware abstractions through machine and assembly language, to the overall structure of an operating system and key resource management abstractions."], 
+	["Database Management Systems", "Mr. Cherniack", "Introduces database structure, organization, and languages. Studies relational and object-oriented models, query languages, optimization, normalization, file structures and indexes, concurrency control and recovery algorithms, and distributed databases."], 
+	["Algorithms", "Mr. Storer", "Basic concepts in the design and analysis of algorithms."], 
+	["Scientific Data Processing in Matlab", "Ms. DiLillo", "Introduces scientific computing using Matlab. Programming concepts such as data types, vectors, conditional execution, loops, procedural abstraction, modules, APIs are presented. The course will present scientific techniques relevant to computational science, with an emphasis on image processing."], 
+	["Advanced Programming Techniques", "Ms. Papaemmanouil", "An introduction to fundamental programming techniques covering basic software engineering, object oriented programming, interfaces, APIs and abstract classes, with applications to Graphical User Interfaces, web programming, graphics, and other topics."]
+]
 # arr2 = ["Pito Salas", "	Antonella Di Lillo", "James Storer", "	Melissa Nemon", "Frank Lowenstein"]
 count = 1
 major_id = 1
@@ -86,7 +101,7 @@ arr.each do |course|
 	else
 		major_id = 1
 	end
-	course_split = course.split(" ")
+	course_split = course[0].split(" ")
 	abrv = ""
 	if course_split.length <= 1
 		abrv = course_split[0][0] + course_split[0][1]
@@ -95,7 +110,7 @@ arr.each do |course|
 			abrv+= name[0]
 		end
 	end
-	Course.create!(id: count, name: course, major_id: major_id, abbrev: abrv, description: Faker::Lorem.paragraph(6, true), teacher: Faker::Name.name)	#teacher: arr2[count],
+	Course.create!(id: count, name: course[0], major_id: major_id, abbrev: abrv, description: course[3], teacher: course[1] )	#teacher: arr2[count],
 	count+=1
 end
 # total of courses : 14 courses
