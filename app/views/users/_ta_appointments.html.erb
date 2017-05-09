@@ -7,8 +7,9 @@
 				<h3 class="title">Confirmed Appointments</h3>
         <p style="list-style-type:none">
         <%listed = false%>
-        <% if (userta.where(confirmed: true).size > 0 || current_user.student_appointments.where(confirmed: true).size > 0)%>
-          <%userta.each do |app|%>
+        <% taapps = userta.where(confirmed: true)
+        <% if (taapps.size > 0)%>
+          <%taapps.each do |app|%>
             <%if app.start > Time.now && app.confirmed == true%>
               <%listed = true%>
               <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start.strftime('%y-%m-%d at %I:%M:%S%p')%>
@@ -40,8 +41,9 @@
 					<h3 class="title">Unconfirmed Appointments</h3>
           <p>
           <%listed = false%>
-            <% if userta.where(confirmed: false).size > 0%>
-              <%userta.each do |app|%>
+          <% taapps = userta.where(confirmed: false)
+            <% if taapps.size > 0%>
+              <% taapps.each do |app|%>
                 <%if app.start> Time.now && app.confirmed == false%>
                   <%listed = true%>
                   <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start.strftime('%y-%m-%d at %I:%M:%S%p')%>

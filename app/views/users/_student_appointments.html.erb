@@ -7,8 +7,9 @@
 				<h3 class="title">Confirmed Appointments</h3>
         <p style="list-style-type:none">
         <%listed = false%>
-        <% if (userstudent.where(confirmed: true).size > 0)%>
-          <%userstudent.each do |app|%>
+        <%userapps = userstudent.where(confirmed: true)
+        <% if (userapps.size > 0)%>
+          <%userapps.each do |app|%>
             <%if app.start> Time.now%>
               <%listed = true%>
               <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start.strftime('%y-%m-%d at %I:%M:%S%p')%>
@@ -35,8 +36,9 @@
 					<h3 class="title">Unconfirmed Appointments</h3>
           <p>
           <%listed = false%>
-            <% if userstudent.where(confirmed: false).size > 0%>
-               <%userstudent.each do |app|%>
+            <% userapps = userstudent.where(confirmed: false)
+            <% if userapps.size > 0%>
+               <%userapps.each do |app|%>
                 <%if app.start > Time.now%>
                   <%listed = true%>
                   <p>Appointment between <%=User.find(app.ta_id).first_name%> and <%=User.find(app.student_id).first_name%> for course: <%=Course.find(app.course_id).name%> Time: <%=app.start.strftime('%y-%m-%d at %I:%M:%S%p')%>
