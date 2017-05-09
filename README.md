@@ -39,3 +39,11 @@ TA OnDemand accomplishes these goals by automating the relationship between stud
 - Each TA has a TA Profile page which shows their average rating and all the comments given by any of their students. This allows TAs to build a reputation, making them more likely to be hired by professors and can go on their resume.
 
 ![image](app/assets/images/reviews.png)
+![image](app/assets/images/chat.png)
+![image](app/assets/images/schedule1.png)
+![image](app/assets/images/schedule2.png)
+![image](app/assets/images/apntmnt.png)
+![image](app/assets/images/appointment-confirm.png)
+![image](app/assets/images/sidebar.png)
+
+
