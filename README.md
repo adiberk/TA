@@ -29,21 +29,21 @@ TA OnDemand accomplishes these goals by automating the relationship between stud
 - Appears on the users home page with the office hour schedule from all of their classes integrated as well as their own office hours if they are a TA
 - TAs can easily create or change their office hours by clicking on a time slot
 - Students can request to meet outside of the regular office hours by clicking on an empty time slot. Both the student and the TA can view the status of appointment requests on their own profile page.
+![image](app/assets/images/Schedule2.png)
+![image](app/assets/images/apntmnt.png)
+![image](app/assets/images/appointment-confirm.png)
 
 #### Live Chat
 - Students and TAs can chat live. This can allow a TA to completely virtualize his/her office hour by fielding questions online.
 - TAs can "Go Online" by clicking a button in the sidebar. Once online, a green circle will show up next to their name for students looking to chat with them
+![image](app/assets/images/chat.png)
+![image](app/assets/images/sidebar.png)
+
 
 #### Reviews
 - Each student can rate their TAs based on a 5-point scale and a written review
 - Each TA has a TA Profile page which shows their average rating and all the comments given by any of their students. This allows TAs to build a reputation, making them more likely to be hired by professors and can go on their resume.
-
 ![image](app/assets/images/reviews.png)
-![image](app/assets/images/chat.png)
-![image](app/assets/images/schedule1.png)
-![image](app/assets/images/schedule2.png)
-![image](app/assets/images/apntmnt.png)
-![image](app/assets/images/appointment-confirm.png)
-![image](app/assets/images/sidebar.png)
+
 
 
