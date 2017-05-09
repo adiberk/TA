@@ -18,6 +18,12 @@ Review.delete_all
 Appointment.delete_all
 Conversation.delete_all
 
+university_ls = ["Brandeis Univeristy", "Boston University", "Boston College" , "Northeastern University", "Harvard University"]
+index = 1
+university_ls.each do |each_uni|
+	University.create(id:index, name:each_uni)
+	index += 1
+end
 # create fake users
 # 1st user
 User.create!(first_name: "Nick", last_name: "April", username: "nick", email: "nick@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar", confirmed_at:Time.now)
@@ -26,9 +32,9 @@ User.create!(first_name: "Adi", last_name: "Berkowitz", username: "adi", email: 
 # 3rd user
 User.create!(first_name: "Hao", last_name: "Wang", username: "hao", email: "haowang@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 # 4th user
-User.create!(first_name: "Stacy", last_name: "Dean", username: "stacy", email: "stacydean@tuffs.edu", university_id: 2, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
+User.create!(first_name: "Stacy", last_name: "Dean", username: "stacy", email: "stacydean@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 # 5th user
-User.create!(first_name: "Fanny", last_name: "Ferguson", username: "fanny", email: "fannyferguson@bc.edu", university_id: 3, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
+User.create!(first_name: "Fanny", last_name: "Ferguson", username: "fanny", email: "fannyferguson@brandeis.edu", university_id: 1, password:"foobar", password_confirmation: "foobar",confirmed_at:Time.now)
 
 # second version of user seed from ID:6
 # seed names from name.txt
@@ -42,27 +48,10 @@ File.open("#{Rails.root}/db/name.txt").each do |line|
   each_lname = split_list[1]
   each_username = each_fname.downcase+each_lname.downcase
   each_email = each_username+"@brandeis.edu"
-  if index > 10
-    each_uni_id = prng.rand(1..5)
-  else
-    each_uni_id = 1
-  end
-  	User.create!(first_name:each_fname, last_name:each_lname, username:each_username, email:each_email, university_id:each_uni_id, password:"foobar", password_confirmation: "foobar", confirmed_at:Time.now)
-	each_id += 1
-  index += 1
+  User.create!(first_name:each_fname, last_name:each_lname, username:each_username, email:each_email, university_id:1, password:"foobar", password_confirmation: "foobar", confirmed_at:Time.now)
 end
 
 list = User.all
-
-# total of user: 25
-
-# seed university by Hao
-university_ls = ["Brandeis Univeristy", "Boston University", "Boston College" , "Northeastern University", "Harvard University"]
-index = 1
-university_ls.each do |each_uni|
-	University.create(id:index, name:each_uni)
-	index += 1
-end
 # total of university: 5
 
 # create fake major
@@ -76,7 +65,7 @@ Major.create!(id:3, university_id:1, name:"Mathmatic")
 # the second version is from discrete to matlab by Hao
 arr = [
 	["Capstone Project","Mr. Salas","Teaches modern software engineering concepts, emphasizing rapid prototyping, unit testing, usability testing, and collaborative software development principles. Students apply these concepts by building a complex software system in small teams of programmers/developers using current platforms and technologies."], 
-	["Data Structure","Mr. Storer","An introduction to the fundamental concepts of computation: discrete structures (sets, relations, functions, sequences, graphs), the fundamental data structures and algorithms for sorting and searching (lists, queues, dequeues, heaps, hashing, binary trees, tries), and the analysis of algorithms (predicate logic, termination and correctness proofs, computational complexity)."], 
+	["Data Structures","Mr. Storer","An introduction to the fundamental concepts of computation: discrete structures (sets, relations, functions, sequences, graphs), the fundamental data structures and algorithms for sorting and searching (lists, queues, dequeues, heaps, hashing, binary trees, tries), and the analysis of algorithms (predicate logic, termination and correctness proofs, computational complexity)."], 
 	["Mobile App", "Ms. Chaturvedi", "Introduces the design and analysis of mobile applications that covers the architecture of mobile devices, APIs for graphical user interfaces on mobile devices, location-aware computing, social networking. Also covers the theory and practice of space and time optimization for these relatively small and slow devices."], 
 	["Macroeconomics","Mr. Redenius","Introduces the field of macroeconomics. Macroeconomics is the study of the overall or aggregate economic performance of national economies. "],
 	["Algebra", "Mr. Bellaïche", "Groups, rings, modules, Galois theory, affine rings, and rings of algebraic numbers. Multilinear algebra. The Wedderburn theorems. Other topics as time permits."], 
@@ -96,7 +85,7 @@ major_id = 1
 arr.each do |course|
 	if count ==4
 		major_id = 2
-	elsif count == 5 or count == 6 or count == 7 or count == 8
+	elsif count == 5 || count == 6 || count == 7 || count == 8
 		major_id = 3
 	else
 		major_id = 1

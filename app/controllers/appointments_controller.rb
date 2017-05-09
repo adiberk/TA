@@ -43,7 +43,6 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
     @appointment = Appointment.new(appointment_params)
-
     respond_to do |format|
       if @appointment.save!
         format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
@@ -58,7 +57,7 @@ class AppointmentsController < ApplicationController
   def request_app
     @appointment = Appointment.new(appointment_params)
     # respond_to do |format|
-    # byebug
+    @appointment.start = "20"+@appointment.start.to_s[2..@appointment.start.to_s.length]
       if @appointment.save
         flash[:success] = 'Sent appointment request (to cancel, please check your user page)'
         redirect_to :controller => 'courses', :action=>'show', :id=> @appointment.course_id, :name=>Course.find(@appointment.course_id).name
