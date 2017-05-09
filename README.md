@@ -28,8 +28,10 @@ TA OnDemand accomplishes these goals by automating the relationship between stud
 - Appears on each course page to show the weekly office hour schedule for the given class
 - Appears on the users home page with the office hour schedule from all of their classes integrated as well as their own office hours if they are a TA
 - TAs can easily create or change their office hours by clicking on a time slot
-- Students can request to meet outside of the regular office hours by clicking on an empty time slot. Both the student and the TA can view the status of appointment requests on their own profile page.
+
 ![image](app/assets/images/Schedule2.png)
+
+- Students can request to meet outside of the regular office hours by clicking on an empty time slot. Both the student and the TA can view the status of appointment requests on their own profile page.
 ![image](app/assets/images/apntmnt.png)
 ![image](app/assets/images/appointment-confirm.png)
 
@@ -44,6 +46,18 @@ TA OnDemand accomplishes these goals by automating the relationship between stud
 - Each student can rate their TAs based on a 5-point scale and a written review
 - Each TA has a TA Profile page which shows their average rating and all the comments given by any of their students. This allows TAs to build a reputation, making them more likely to be hired by professors and can go on their resume.
 ![image](app/assets/images/reviews.png)
+
+### Technology
+TA OnDemand uses technology beyond Ruby on Rails including Javascript, Amazon Web Services and Action Cable. 
+
+#### JavaScript
+We were surprised at how much JavaScript we had to use in this App. We had no JavaScript experience before building this application so we learned while developing this App. JavaScript is used in the TA review feature to make the live search function and the star ratings update in real time. JavaScript is also used in the live chat feature to support action cable.
+
+#### Action Cable
+Action cable was a big challenge. We used it in the Live Chat featue to seamlessly integrate WebSockets into our Rails application. This integration is what makes real-time messaging possible in our Live Chat feature. It also supports multiple channels from a single user, allowing someone to hold many private conversations at once. This was a challenging feature because it required a strong understanding of WebSockets, Channels and JavaScript.
+
+#### Schema
+TA OnDemand is built on a rich and complicated backend schema. We spent many hours developing our schema due to complicated User relationships. Since a user might have two identities, student and TA, we implemented two associative tables between User and Course: Enrollment and Enrollment_ta.  We also assigned alias names for tables, like tacourses, to make our queries straightforward and our development simpler.
 
 
 
