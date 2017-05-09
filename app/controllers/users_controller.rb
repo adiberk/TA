@@ -98,9 +98,6 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     @user = User.find(params[:id])
-    print "=========="
-    print @user['id']
-    print @user['picture']
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user

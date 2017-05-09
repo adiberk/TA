@@ -200,7 +200,11 @@ Officehour.create!(ta_id: list[7].id, course_id: 3, start:"Mon, 3 Apr 2017 09:30
 Officehour.create!(ta_id: list[7].id, course_id: 3, start:"Tue, 4 Apr 2017 11:00:00 AM", end:Time.now, online: false)
 Officehour.create!(ta_id: list[4].id, course_id: 4, start:"Wed, 5 Apr 2017 12:00:00 PM", end:Time.now, online: true)
 Officehour.create!(ta_id: list[4].id, course_id: 4, start:"Mon, 3 Apr 2017 10:00:00 AM", end:Time.now, online: false)
-Officehour.create!(ta_id: list[4].id, course_id: 4, start:"Tue, 4 Apr 2017 01:00:00 AM", end:Time.now, online: false)
+Officehour.create!(ta_id: list[4].id, course_id: 4, start:"Tue, 4 Apr 2017 01:00:00 PM", end:Time.now, online: false)
+Officehour.create!(ta_id: list[7].id, course_id: 7, start:"Tue, 4 Apr 2017 03:00:00 PM", end:Time.now, online: true)
+Officehour.create!(ta_id: list[9].id, course_id: 7, start:"Wed, 5 Apr 2017 11:00:00 AM", end:Time.now, online: false)
+Officehour.create!(ta_id: list[8].id, course_id: 7, start:"Tue, 4 Apr 2017 02:00:00 PM", end:Time.now, online: true)
+Officehour.create!(ta_id: list[8].id, course_id: 7, start:"Thu, 6 Apr 2017 09:30:00 AM", end:Time.now, online: true)
 
 Appointment.create!(ta_id: list[1].id, student_id:list[4].id, course_id: 1, start:DateTime.parse(DateTime.now.strftime("%Y-%m-%dT08:30:00%z")),  end: Faker::Date.forward, confirmed: false)
 Appointment.create!(ta_id: list[2].id, student_id:list[0].id, course_id: 1, start:DateTime.now.change({ day: Time.now.day+1, hour: 10, min: 30, sec: 0 }), end: Faker::Date.forward, confirmed: false)
