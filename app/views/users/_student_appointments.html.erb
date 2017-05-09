@@ -7,7 +7,7 @@
 				<h3 class="title">Confirmed Appointments</h3>
         <p style="list-style-type:none">
         <%listed = false%>
-        <%userapps = userstudent.where(confirmed: true)
+        <%userapps = userstudent.where(confirmed: true)%>
         <% if (userapps.size > 0)%>
           <%userapps.each do |app|%>
             <%if app.start> Time.now%>
@@ -36,7 +36,7 @@
 					<h3 class="title">Unconfirmed Appointments</h3>
           <p>
           <%listed = false%>
-            <% userapps = userstudent.where(confirmed: false)
+            <% userapps = userstudent.where(confirmed: false)%>
             <% if userapps.size > 0%>
                <%userapps.each do |app|%>
                 <%if app.start > Time.now%>

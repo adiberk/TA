@@ -7,7 +7,7 @@
 				<h3 class="title">Confirmed Appointments</h3>
         <p style="list-style-type:none">
         <%listed = false%>
-        <% taapps = userta.where(confirmed: true)
+        <% taapps = userta.where(confirmed: true)%>
         <% if (taapps.size > 0)%>
           <%taapps.each do |app|%>
             <%if app.start > Time.now && app.confirmed == true%>
@@ -41,7 +41,7 @@
 					<h3 class="title">Unconfirmed Appointments</h3>
           <p>
           <%listed = false%>
-          <% taapps = userta.where(confirmed: false)
+          <% taapps = userta.where(confirmed: false)%>
             <% if taapps.size > 0%>
               <% taapps.each do |app|%>
                 <%if app.start> Time.now && app.confirmed == false%>
