@@ -38,5 +38,4 @@ TA OnDemand accomplishes these goals by automating the relationship between stud
 - Each student can rate their TAs based on a 5-point scale and a written review
 - Each TA has a TA Profile page which shows their average rating and all the comments given by any of their students. This allows TAs to build a reputation, making them more likely to be hired by professors and can go on their resume.
 
-![alt text](https://raw.githubusercontent.com/adiberk/TA/app/assets/images/reviews.png)
-
+![image](app/assets/images/reviews.png)
