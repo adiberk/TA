@@ -44,7 +44,7 @@
 						<%correct_hour = nil%>
 					<% else %>
 						<%if correct_app!=nil && correct_app.start > Time.now%>
-							<div id = 'cal-table' class = "hour <%=parseHours(@hours)[jcount]%>" style="background:#e59edd;">
+							<div id = 'cal-table' class = "hour appointment_hour <%=parseHours(@hours)[jcount]%>">
 								<div class = 'time-added'>
 									<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
 									<%=render 'create_modal', :params => {hours: hours, course:locals[:course], days: @days[count]}%>
