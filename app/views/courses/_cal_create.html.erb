@@ -94,10 +94,10 @@
 								<button type='button' id ='modal_btn' style = 'display:none' data-toggle='modal' data-target='#myModal'></button>
 								<%=render 'update_modal', :params => {office_hour: correct_hour}%>
 								<h5 class = ''><%=User.find(correct_hour.ta_id).first_name%>
-								</h5>
 								<%if correct_hour.online == true%>
 									<%=render 'shared/online'%>
 								<%end%>
+								</h5>
 								<h5>
 								<%hold = User.find(correct_hour.ta_id).ta_reviews%>
 								<%if hold.size > 0%>
